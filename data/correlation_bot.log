@@ -1,0 +1,1043 @@
+2025-08-28 23:17:17,382 | INFO | Starting Correlation Scanner Bot
+2025-08-28 23:17:23,741 | INFO | Cycle 2025-08-28T20:17:23.741190+00:00 | timeframe=1h | lookback=500 | symbols=10 | pairs=45
+2025-08-28 23:18:29,456 | INFO | Cycle 2025-08-28T20:18:29.456350+00:00 | timeframe=1h | lookback=500 | symbols=10 | pairs=45
+2025-08-28 23:19:35,264 | INFO | Cycle 2025-08-28T20:19:35.264051+00:00 | timeframe=1h | lookback=500 | symbols=10 | pairs=45
+2025-08-28 23:20:40,932 | INFO | Cycle 2025-08-28T20:20:40.932365+00:00 | timeframe=1h | lookback=500 | symbols=10 | pairs=45
+2025-08-28 23:21:46,691 | INFO | Cycle 2025-08-28T20:21:46.691870+00:00 | timeframe=1h | lookback=500 | symbols=10 | pairs=45
+2025-08-28 23:22:53,015 | INFO | Shutting down by user request.
+2025-08-28 23:24:57,979 | INFO | Starting Correlation Scanner Bot
+2025-08-28 23:25:03,873 | INFO | Cycle 2025-08-28T20:25:03.873316+00:00 | timeframe=1h | lookback=500 | symbols=10 | pairs=36
+2025-08-28 23:25:03,921 | INFO | Scheduled every 1 minute(s)
+2025-08-28 23:26:10,373 | INFO | Cycle 2025-08-28T20:26:10.373636+00:00 | timeframe=1h | lookback=500 | symbols=10 | pairs=36
+2025-08-28 23:27:15,962 | INFO | Cycle 2025-08-28T20:27:15.962846+00:00 | timeframe=1h | lookback=500 | symbols=10 | pairs=36
+2025-08-28 23:28:21,644 | INFO | Cycle 2025-08-28T20:28:21.644701+00:00 | timeframe=1h | lookback=500 | symbols=10 | pairs=36
+2025-08-28 23:29:27,325 | INFO | Cycle 2025-08-28T20:29:27.325685+00:00 | timeframe=1h | lookback=500 | symbols=10 | pairs=36
+2025-08-28 23:30:33,654 | INFO | Cycle 2025-08-28T20:30:33.654815+00:00 | timeframe=1h | lookback=500 | symbols=10 | pairs=36
+2025-08-28 23:31:39,564 | INFO | Cycle 2025-08-28T20:31:39.564070+00:00 | timeframe=1h | lookback=500 | symbols=10 | pairs=36
+2025-08-28 23:32:45,281 | INFO | Cycle 2025-08-28T20:32:45.281934+00:00 | timeframe=1h | lookback=500 | symbols=10 | pairs=36
+2025-08-28 23:33:50,924 | INFO | Cycle 2025-08-28T20:33:50.924454+00:00 | timeframe=1h | lookback=500 | symbols=10 | pairs=36
+2025-08-28 23:34:56,585 | INFO | Cycle 2025-08-28T20:34:56.585381+00:00 | timeframe=1h | lookback=500 | symbols=10 | pairs=36
+2025-08-28 23:36:02,162 | INFO | Cycle 2025-08-28T20:36:02.162846+00:00 | timeframe=1h | lookback=500 | symbols=10 | pairs=36
+2025-08-28 23:37:08,416 | INFO | Cycle 2025-08-28T20:37:08.416211+00:00 | timeframe=1h | lookback=500 | symbols=10 | pairs=36
+2025-08-28 23:38:13,955 | INFO | Cycle 2025-08-28T20:38:13.955526+00:00 | timeframe=1h | lookback=500 | symbols=10 | pairs=36
+2025-08-28 23:39:23,969 | INFO | Cycle 2025-08-28T20:39:23.969567+00:00 | timeframe=1h | lookback=500 | symbols=10 | pairs=36
+2025-08-28 23:40:29,633 | INFO | Cycle 2025-08-28T20:40:29.633698+00:00 | timeframe=1h | lookback=500 | symbols=10 | pairs=36
+2025-08-28 23:41:35,231 | INFO | Cycle 2025-08-28T20:41:35.231243+00:00 | timeframe=1h | lookback=500 | symbols=10 | pairs=36
+2025-08-28 23:42:41,010 | INFO | Cycle 2025-08-28T20:42:41.009329+00:00 | timeframe=1h | lookback=500 | symbols=10 | pairs=36
+2025-08-28 23:43:46,678 | INFO | Cycle 2025-08-28T20:43:46.678118+00:00 | timeframe=1h | lookback=500 | symbols=10 | pairs=36
+2025-08-28 23:44:52,308 | INFO | Cycle 2025-08-28T20:44:52.308311+00:00 | timeframe=1h | lookback=500 | symbols=10 | pairs=36
+2025-08-28 23:45:57,841 | INFO | Cycle 2025-08-28T20:45:57.841770+00:00 | timeframe=1h | lookback=500 | symbols=10 | pairs=36
+2025-08-28 23:47:03,463 | INFO | Cycle 2025-08-28T20:47:03.463123+00:00 | timeframe=1h | lookback=500 | symbols=10 | pairs=36
+2025-08-28 23:48:09,272 | INFO | Cycle 2025-08-28T20:48:09.272252+00:00 | timeframe=1h | lookback=500 | symbols=10 | pairs=36
+2025-08-28 23:49:14,895 | INFO | Cycle 2025-08-28T20:49:14.895278+00:00 | timeframe=1h | lookback=500 | symbols=10 | pairs=36
+2025-08-28 23:50:21,145 | INFO | Cycle 2025-08-28T20:50:21.144639+00:00 | timeframe=1h | lookback=500 | symbols=10 | pairs=36
+2025-08-28 23:51:27,425 | INFO | Cycle 2025-08-28T20:51:27.425565+00:00 | timeframe=1h | lookback=500 | symbols=10 | pairs=36
+2025-08-28 23:52:32,954 | INFO | Cycle 2025-08-28T20:52:32.954798+00:00 | timeframe=1h | lookback=500 | symbols=10 | pairs=36
+2025-08-28 23:53:38,680 | INFO | Cycle 2025-08-28T20:53:38.680362+00:00 | timeframe=1h | lookback=500 | symbols=10 | pairs=36
+2025-08-28 23:54:44,299 | INFO | Cycle 2025-08-28T20:54:44.299423+00:00 | timeframe=1h | lookback=500 | symbols=10 | pairs=36
+2025-08-28 23:55:50,630 | INFO | Cycle 2025-08-28T20:55:50.630693+00:00 | timeframe=1h | lookback=500 | symbols=10 | pairs=36
+2025-08-28 23:56:56,931 | INFO | Cycle 2025-08-28T20:56:56.931067+00:00 | timeframe=1h | lookback=500 | symbols=10 | pairs=36
+2025-08-28 23:58:02,690 | INFO | Cycle 2025-08-28T20:58:02.690544+00:00 | timeframe=1h | lookback=500 | symbols=10 | pairs=36
+2025-08-28 23:59:08,288 | INFO | Cycle 2025-08-28T20:59:08.288799+00:00 | timeframe=1h | lookback=500 | symbols=10 | pairs=36
+2025-08-29 00:00:14,719 | INFO | Cycle 2025-08-28T21:00:14.719296+00:00 | timeframe=1h | lookback=500 | symbols=10 | pairs=36
+2025-08-29 00:01:20,403 | INFO | Cycle 2025-08-28T21:01:20.403492+00:00 | timeframe=1h | lookback=500 | symbols=10 | pairs=36
+2025-08-29 00:02:27,506 | INFO | Cycle 2025-08-28T21:02:27.506135+00:00 | timeframe=1h | lookback=500 | symbols=10 | pairs=36
+2025-08-29 00:03:33,624 | INFO | Cycle 2025-08-28T21:03:33.624316+00:00 | timeframe=1h | lookback=500 | symbols=10 | pairs=36
+2025-08-29 00:04:39,225 | INFO | Cycle 2025-08-28T21:04:39.225943+00:00 | timeframe=1h | lookback=500 | symbols=10 | pairs=36
+2025-08-29 00:05:45,421 | INFO | Cycle 2025-08-28T21:05:45.421105+00:00 | timeframe=1h | lookback=500 | symbols=10 | pairs=36
+2025-08-29 00:06:52,066 | INFO | Cycle 2025-08-28T21:06:52.066381+00:00 | timeframe=1h | lookback=500 | symbols=10 | pairs=36
+2025-08-29 00:07:58,472 | INFO | Cycle 2025-08-28T21:07:58.472670+00:00 | timeframe=1h | lookback=500 | symbols=10 | pairs=36
+2025-08-29 00:09:04,187 | INFO | Cycle 2025-08-28T21:09:04.187483+00:00 | timeframe=1h | lookback=500 | symbols=10 | pairs=36
+2025-08-29 00:10:09,774 | INFO | Cycle 2025-08-28T21:10:09.774166+00:00 | timeframe=1h | lookback=500 | symbols=10 | pairs=36
+2025-08-29 00:11:15,427 | INFO | Cycle 2025-08-28T21:11:15.427691+00:00 | timeframe=1h | lookback=500 | symbols=10 | pairs=36
+2025-08-29 00:12:21,047 | INFO | Cycle 2025-08-28T21:12:21.047568+00:00 | timeframe=1h | lookback=500 | symbols=10 | pairs=36
+2025-08-29 00:13:26,760 | INFO | Cycle 2025-08-28T21:13:26.760074+00:00 | timeframe=1h | lookback=500 | symbols=10 | pairs=36
+2025-08-29 00:14:32,298 | INFO | Cycle 2025-08-28T21:14:32.298468+00:00 | timeframe=1h | lookback=500 | symbols=10 | pairs=36
+2025-08-29 00:15:37,844 | INFO | Cycle 2025-08-28T21:15:37.844894+00:00 | timeframe=1h | lookback=500 | symbols=10 | pairs=36
+2025-08-29 00:16:44,396 | INFO | Cycle 2025-08-28T21:16:44.396916+00:00 | timeframe=1h | lookback=500 | symbols=10 | pairs=36
+2025-08-29 00:17:50,146 | INFO | Cycle 2025-08-28T21:17:50.146717+00:00 | timeframe=1h | lookback=500 | symbols=10 | pairs=36
+2025-08-29 00:18:29,694 | INFO | Shutting down by user request.
+2025-08-29 00:22:42,909 | INFO | Starting Correlation Scanner Bot
+2025-08-29 00:23:02,416 | WARNING | RON/USDT: fetch_ohlcv failed: binance does not have market symbol RON/USDT
+2025-08-29 00:23:03,869 | WARNING | SATS/USDT: fetch_ohlcv failed: binance does not have market symbol SATS/USDT
+2025-08-29 00:23:05,607 | WARNING | ASI/USDT: fetch_ohlcv failed: binance does not have market symbol ASI/USDT
+2025-08-29 00:23:10,802 | WARNING | AIOZ/USDT: fetch_ohlcv failed: binance does not have market symbol AIOZ/USDT
+2025-08-29 00:23:11,382 | WARNING | BLAST/USDT: fetch_ohlcv failed: binance does not have market symbol BLAST/USDT
+2025-08-29 00:23:23,869 | INFO | Cycle 2025-08-28T21:23:23.869231+00:00 | timeframe=1h | lookback=500 | symbols=95 | pairs=3916
+2025-08-29 00:23:23,958 | INFO | Scheduled every 1 minute(s)
+2025-08-29 00:24:43,166 | WARNING | RON/USDT: fetch_ohlcv failed: binance does not have market symbol RON/USDT
+2025-08-29 00:24:44,609 | WARNING | SATS/USDT: fetch_ohlcv failed: binance does not have market symbol SATS/USDT
+2025-08-29 00:24:46,329 | WARNING | ASI/USDT: fetch_ohlcv failed: binance does not have market symbol ASI/USDT
+2025-08-29 00:24:51,482 | WARNING | AIOZ/USDT: fetch_ohlcv failed: binance does not have market symbol AIOZ/USDT
+2025-08-29 00:24:52,052 | WARNING | BLAST/USDT: fetch_ohlcv failed: binance does not have market symbol BLAST/USDT
+2025-08-29 00:25:03,987 | INFO | Cycle 2025-08-28T21:25:03.987333+00:00 | timeframe=1h | lookback=500 | symbols=95 | pairs=3916
+2025-08-29 00:26:24,983 | WARNING | RON/USDT: fetch_ohlcv failed: binance does not have market symbol RON/USDT
+2025-08-29 00:26:26,425 | WARNING | SATS/USDT: fetch_ohlcv failed: binance does not have market symbol SATS/USDT
+2025-08-29 00:26:28,151 | WARNING | ASI/USDT: fetch_ohlcv failed: binance does not have market symbol ASI/USDT
+2025-08-29 00:26:34,043 | WARNING | AIOZ/USDT: fetch_ohlcv failed: binance does not have market symbol AIOZ/USDT
+2025-08-29 00:26:34,613 | WARNING | BLAST/USDT: fetch_ohlcv failed: binance does not have market symbol BLAST/USDT
+2025-08-29 00:26:46,130 | INFO | Cycle 2025-08-28T21:26:46.130313+00:00 | timeframe=1h | lookback=500 | symbols=95 | pairs=3916
+2025-08-29 00:28:05,708 | WARNING | RON/USDT: fetch_ohlcv failed: binance does not have market symbol RON/USDT
+2025-08-29 00:28:07,140 | WARNING | SATS/USDT: fetch_ohlcv failed: binance does not have market symbol SATS/USDT
+2025-08-29 00:28:08,858 | WARNING | ASI/USDT: fetch_ohlcv failed: binance does not have market symbol ASI/USDT
+2025-08-29 00:28:14,025 | WARNING | AIOZ/USDT: fetch_ohlcv failed: binance does not have market symbol AIOZ/USDT
+2025-08-29 00:28:14,595 | WARNING | BLAST/USDT: fetch_ohlcv failed: binance does not have market symbol BLAST/USDT
+2025-08-29 00:28:26,174 | INFO | Cycle 2025-08-28T21:28:26.174269+00:00 | timeframe=1h | lookback=500 | symbols=95 | pairs=3916
+2025-08-29 00:29:45,317 | WARNING | RON/USDT: fetch_ohlcv failed: binance does not have market symbol RON/USDT
+2025-08-29 00:29:46,755 | WARNING | SATS/USDT: fetch_ohlcv failed: binance does not have market symbol SATS/USDT
+2025-08-29 00:29:48,468 | WARNING | ASI/USDT: fetch_ohlcv failed: binance does not have market symbol ASI/USDT
+2025-08-29 00:29:54,345 | WARNING | AIOZ/USDT: fetch_ohlcv failed: binance does not have market symbol AIOZ/USDT
+2025-08-29 00:29:54,932 | WARNING | BLAST/USDT: fetch_ohlcv failed: binance does not have market symbol BLAST/USDT
+2025-08-29 00:30:06,971 | INFO | Cycle 2025-08-28T21:30:06.971409+00:00 | timeframe=1h | lookback=500 | symbols=95 | pairs=3916
+2025-08-29 00:31:27,706 | WARNING | RON/USDT: fetch_ohlcv failed: binance does not have market symbol RON/USDT
+2025-08-29 00:31:29,145 | WARNING | SATS/USDT: fetch_ohlcv failed: binance does not have market symbol SATS/USDT
+2025-08-29 00:31:30,872 | WARNING | ASI/USDT: fetch_ohlcv failed: binance does not have market symbol ASI/USDT
+2025-08-29 00:31:37,005 | WARNING | AIOZ/USDT: fetch_ohlcv failed: binance does not have market symbol AIOZ/USDT
+2025-08-29 00:31:37,577 | WARNING | BLAST/USDT: fetch_ohlcv failed: binance does not have market symbol BLAST/USDT
+2025-08-29 00:31:51,780 | INFO | Cycle 2025-08-28T21:31:51.780560+00:00 | timeframe=1h | lookback=500 | symbols=95 | pairs=3916
+2025-08-29 00:33:12,747 | WARNING | RON/USDT: fetch_ohlcv failed: binance does not have market symbol RON/USDT
+2025-08-29 00:33:14,197 | WARNING | SATS/USDT: fetch_ohlcv failed: binance does not have market symbol SATS/USDT
+2025-08-29 00:33:16,650 | WARNING | ASI/USDT: fetch_ohlcv failed: binance does not have market symbol ASI/USDT
+2025-08-29 00:33:22,542 | WARNING | AIOZ/USDT: fetch_ohlcv failed: binance does not have market symbol AIOZ/USDT
+2025-08-29 00:33:23,847 | WARNING | BLAST/USDT: fetch_ohlcv failed: binance does not have market symbol BLAST/USDT
+2025-08-29 00:33:36,494 | INFO | Cycle 2025-08-28T21:33:36.494371+00:00 | timeframe=1h | lookback=500 | symbols=95 | pairs=3916
+2025-08-29 00:34:56,016 | WARNING | RON/USDT: fetch_ohlcv failed: binance does not have market symbol RON/USDT
+2025-08-29 00:34:57,456 | WARNING | SATS/USDT: fetch_ohlcv failed: binance does not have market symbol SATS/USDT
+2025-08-29 00:34:59,203 | WARNING | ASI/USDT: fetch_ohlcv failed: binance does not have market symbol ASI/USDT
+2025-08-29 00:35:06,271 | WARNING | AIOZ/USDT: fetch_ohlcv failed: binance does not have market symbol AIOZ/USDT
+2025-08-29 00:35:07,567 | WARNING | BLAST/USDT: fetch_ohlcv failed: binance does not have market symbol BLAST/USDT
+2025-08-29 00:35:20,140 | INFO | Cycle 2025-08-28T21:35:20.140909+00:00 | timeframe=1h | lookback=500 | symbols=95 | pairs=3916
+2025-08-29 00:36:39,597 | WARNING | RON/USDT: fetch_ohlcv failed: binance does not have market symbol RON/USDT
+2025-08-29 00:36:41,771 | WARNING | SATS/USDT: fetch_ohlcv failed: binance does not have market symbol SATS/USDT
+2025-08-29 00:36:43,506 | WARNING | ASI/USDT: fetch_ohlcv failed: binance does not have market symbol ASI/USDT
+2025-08-29 00:36:50,172 | WARNING | AIOZ/USDT: fetch_ohlcv failed: binance does not have market symbol AIOZ/USDT
+2025-08-29 00:36:50,758 | WARNING | BLAST/USDT: fetch_ohlcv failed: binance does not have market symbol BLAST/USDT
+2025-08-29 00:37:03,881 | INFO | Cycle 2025-08-28T21:37:03.881748+00:00 | timeframe=1h | lookback=500 | symbols=95 | pairs=3916
+2025-08-29 00:38:23,137 | WARNING | RON/USDT: fetch_ohlcv failed: binance does not have market symbol RON/USDT
+2025-08-29 00:38:24,563 | WARNING | SATS/USDT: fetch_ohlcv failed: binance does not have market symbol SATS/USDT
+2025-08-29 00:38:26,276 | WARNING | ASI/USDT: fetch_ohlcv failed: binance does not have market symbol ASI/USDT
+2025-08-29 00:38:32,141 | WARNING | AIOZ/USDT: fetch_ohlcv failed: binance does not have market symbol AIOZ/USDT
+2025-08-29 00:38:32,713 | WARNING | BLAST/USDT: fetch_ohlcv failed: binance does not have market symbol BLAST/USDT
+2025-08-29 00:38:45,136 | INFO | Cycle 2025-08-28T21:38:45.136211+00:00 | timeframe=1h | lookback=500 | symbols=95 | pairs=3916
+2025-08-29 00:40:09,289 | WARNING | RON/USDT: fetch_ohlcv failed: binance does not have market symbol RON/USDT
+2025-08-29 00:40:10,704 | WARNING | SATS/USDT: fetch_ohlcv failed: binance does not have market symbol SATS/USDT
+2025-08-29 00:40:12,664 | WARNING | ASI/USDT: fetch_ohlcv failed: binance does not have market symbol ASI/USDT
+2025-08-29 00:40:17,774 | WARNING | AIOZ/USDT: fetch_ohlcv failed: binance does not have market symbol AIOZ/USDT
+2025-08-29 00:40:18,341 | WARNING | BLAST/USDT: fetch_ohlcv failed: binance does not have market symbol BLAST/USDT
+2025-08-29 00:40:30,102 | INFO | Cycle 2025-08-28T21:40:30.102925+00:00 | timeframe=1h | lookback=500 | symbols=95 | pairs=3916
+2025-08-29 00:41:49,449 | WARNING | RON/USDT: fetch_ohlcv failed: binance does not have market symbol RON/USDT
+2025-08-29 00:41:50,883 | WARNING | SATS/USDT: fetch_ohlcv failed: binance does not have market symbol SATS/USDT
+2025-08-29 00:41:52,603 | WARNING | ASI/USDT: fetch_ohlcv failed: binance does not have market symbol ASI/USDT
+2025-08-29 00:41:58,463 | WARNING | AIOZ/USDT: fetch_ohlcv failed: binance does not have market symbol AIOZ/USDT
+2025-08-29 00:41:59,032 | WARNING | BLAST/USDT: fetch_ohlcv failed: binance does not have market symbol BLAST/USDT
+2025-08-29 00:42:09,535 | INFO | Cycle 2025-08-28T21:42:09.534084+00:00 | timeframe=1h | lookback=500 | symbols=95 | pairs=3916
+2025-08-29 00:43:31,596 | WARNING | RON/USDT: fetch_ohlcv failed: binance does not have market symbol RON/USDT
+2025-08-29 00:43:33,747 | WARNING | SATS/USDT: fetch_ohlcv failed: binance does not have market symbol SATS/USDT
+2025-08-29 00:43:35,466 | WARNING | ASI/USDT: fetch_ohlcv failed: binance does not have market symbol ASI/USDT
+2025-08-29 00:43:41,573 | WARNING | AIOZ/USDT: fetch_ohlcv failed: binance does not have market symbol AIOZ/USDT
+2025-08-29 00:43:42,143 | WARNING | BLAST/USDT: fetch_ohlcv failed: binance does not have market symbol BLAST/USDT
+2025-08-29 00:43:52,888 | INFO | Cycle 2025-08-28T21:43:52.888861+00:00 | timeframe=1h | lookback=500 | symbols=95 | pairs=3916
+2025-08-29 00:45:15,104 | WARNING | RON/USDT: fetch_ohlcv failed: binance does not have market symbol RON/USDT
+2025-08-29 00:45:16,555 | WARNING | SATS/USDT: fetch_ohlcv failed: binance does not have market symbol SATS/USDT
+2025-08-29 00:45:19,745 | WARNING | ASI/USDT: fetch_ohlcv failed: binance does not have market symbol ASI/USDT
+2025-08-29 00:45:26,123 | WARNING | AIOZ/USDT: fetch_ohlcv failed: binance does not have market symbol AIOZ/USDT
+2025-08-29 00:45:27,429 | WARNING | BLAST/USDT: fetch_ohlcv failed: binance does not have market symbol BLAST/USDT
+2025-08-29 00:45:40,987 | INFO | Cycle 2025-08-28T21:45:40.987232+00:00 | timeframe=1h | lookback=500 | symbols=95 | pairs=3916
+2025-08-29 00:47:01,145 | WARNING | RON/USDT: fetch_ohlcv failed: binance does not have market symbol RON/USDT
+2025-08-29 00:47:03,307 | WARNING | SATS/USDT: fetch_ohlcv failed: binance does not have market symbol SATS/USDT
+2025-08-29 00:47:05,025 | WARNING | ASI/USDT: fetch_ohlcv failed: binance does not have market symbol ASI/USDT
+2025-08-29 00:47:10,939 | WARNING | AIOZ/USDT: fetch_ohlcv failed: binance does not have market symbol AIOZ/USDT
+2025-08-29 00:47:12,240 | WARNING | BLAST/USDT: fetch_ohlcv failed: binance does not have market symbol BLAST/USDT
+2025-08-29 00:47:26,795 | INFO | Cycle 2025-08-28T21:47:26.794542+00:00 | timeframe=1h | lookback=500 | symbols=95 | pairs=3916
+2025-08-29 00:48:46,840 | WARNING | RON/USDT: fetch_ohlcv failed: binance does not have market symbol RON/USDT
+2025-08-29 00:48:48,995 | WARNING | SATS/USDT: fetch_ohlcv failed: binance does not have market symbol SATS/USDT
+2025-08-29 00:48:50,739 | WARNING | ASI/USDT: fetch_ohlcv failed: binance does not have market symbol ASI/USDT
+2025-08-29 00:48:56,616 | WARNING | AIOZ/USDT: fetch_ohlcv failed: binance does not have market symbol AIOZ/USDT
+2025-08-29 00:48:57,191 | WARNING | BLAST/USDT: fetch_ohlcv failed: binance does not have market symbol BLAST/USDT
+2025-08-29 00:49:09,316 | INFO | Cycle 2025-08-28T21:49:09.316876+00:00 | timeframe=1h | lookback=500 | symbols=95 | pairs=3916
+2025-08-29 00:50:28,524 | WARNING | RON/USDT: fetch_ohlcv failed: binance does not have market symbol RON/USDT
+2025-08-29 00:50:29,957 | WARNING | SATS/USDT: fetch_ohlcv failed: binance does not have market symbol SATS/USDT
+2025-08-29 00:50:31,685 | WARNING | ASI/USDT: fetch_ohlcv failed: binance does not have market symbol ASI/USDT
+2025-08-29 00:50:36,844 | WARNING | AIOZ/USDT: fetch_ohlcv failed: binance does not have market symbol AIOZ/USDT
+2025-08-29 00:50:37,668 | WARNING | BLAST/USDT: fetch_ohlcv failed: binance does not have market symbol BLAST/USDT
+2025-08-29 00:50:49,441 | INFO | Cycle 2025-08-28T21:50:49.441172+00:00 | timeframe=1h | lookback=500 | symbols=95 | pairs=3916
+2025-08-29 00:52:10,300 | WARNING | RON/USDT: fetch_ohlcv failed: binance does not have market symbol RON/USDT
+2025-08-29 00:52:12,470 | WARNING | SATS/USDT: fetch_ohlcv failed: binance does not have market symbol SATS/USDT
+2025-08-29 00:52:14,217 | WARNING | ASI/USDT: fetch_ohlcv failed: binance does not have market symbol ASI/USDT
+2025-08-29 00:52:19,445 | WARNING | AIOZ/USDT: fetch_ohlcv failed: binance does not have market symbol AIOZ/USDT
+2025-08-29 00:52:20,026 | WARNING | BLAST/USDT: fetch_ohlcv failed: binance does not have market symbol BLAST/USDT
+2025-08-29 00:52:31,972 | INFO | Cycle 2025-08-28T21:52:31.972650+00:00 | timeframe=1h | lookback=500 | symbols=95 | pairs=3916
+2025-08-29 00:53:53,880 | WARNING | RON/USDT: fetch_ohlcv failed: binance does not have market symbol RON/USDT
+2025-08-29 00:53:55,565 | WARNING | SATS/USDT: fetch_ohlcv failed: binance does not have market symbol SATS/USDT
+2025-08-29 00:53:58,015 | WARNING | ASI/USDT: fetch_ohlcv failed: binance does not have market symbol ASI/USDT
+2025-08-29 00:54:04,644 | WARNING | AIOZ/USDT: fetch_ohlcv failed: binance does not have market symbol AIOZ/USDT
+2025-08-29 00:54:05,218 | WARNING | BLAST/USDT: fetch_ohlcv failed: binance does not have market symbol BLAST/USDT
+2025-08-29 00:54:17,157 | INFO | Cycle 2025-08-28T21:54:17.157031+00:00 | timeframe=1h | lookback=500 | symbols=95 | pairs=3916
+2025-08-29 00:55:42,086 | WARNING | RON/USDT: fetch_ohlcv failed: binance does not have market symbol RON/USDT
+2025-08-29 00:55:43,753 | WARNING | SATS/USDT: fetch_ohlcv failed: binance does not have market symbol SATS/USDT
+2025-08-29 00:55:45,459 | WARNING | ASI/USDT: fetch_ohlcv failed: binance does not have market symbol ASI/USDT
+2025-08-29 00:55:50,827 | WARNING | AIOZ/USDT: fetch_ohlcv failed: binance does not have market symbol AIOZ/USDT
+2025-08-29 00:55:51,405 | WARNING | BLAST/USDT: fetch_ohlcv failed: binance does not have market symbol BLAST/USDT
+2025-08-29 00:56:03,220 | INFO | Cycle 2025-08-28T21:56:03.220652+00:00 | timeframe=1h | lookback=500 | symbols=95 | pairs=3916
+2025-08-29 00:57:24,665 | WARNING | RON/USDT: fetch_ohlcv failed: binance does not have market symbol RON/USDT
+2025-08-29 00:57:26,105 | WARNING | SATS/USDT: fetch_ohlcv failed: binance does not have market symbol SATS/USDT
+2025-08-29 00:57:28,811 | WARNING | ASI/USDT: fetch_ohlcv failed: binance does not have market symbol ASI/USDT
+2025-08-29 00:57:34,973 | WARNING | AIOZ/USDT: fetch_ohlcv failed: binance does not have market symbol AIOZ/USDT
+2025-08-29 00:57:35,547 | WARNING | BLAST/USDT: fetch_ohlcv failed: binance does not have market symbol BLAST/USDT
+2025-08-29 00:57:48,810 | INFO | Cycle 2025-08-28T21:57:48.810991+00:00 | timeframe=1h | lookback=500 | symbols=95 | pairs=3916
+2025-08-29 00:59:11,870 | WARNING | RON/USDT: fetch_ohlcv failed: binance does not have market symbol RON/USDT
+2025-08-29 00:59:13,772 | WARNING | SATS/USDT: fetch_ohlcv failed: binance does not have market symbol SATS/USDT
+2025-08-29 00:59:16,449 | WARNING | ASI/USDT: fetch_ohlcv failed: binance does not have market symbol ASI/USDT
+2025-08-29 00:59:23,265 | WARNING | AIOZ/USDT: fetch_ohlcv failed: binance does not have market symbol AIOZ/USDT
+2025-08-29 00:59:23,838 | WARNING | BLAST/USDT: fetch_ohlcv failed: binance does not have market symbol BLAST/USDT
+2025-08-29 00:59:36,000 | INFO | Cycle 2025-08-28T21:59:36.000981+00:00 | timeframe=1h | lookback=500 | symbols=95 | pairs=3916
+2025-08-29 01:00:56,554 | WARNING | RON/USDT: fetch_ohlcv failed: binance does not have market symbol RON/USDT
+2025-08-29 01:00:58,004 | WARNING | SATS/USDT: fetch_ohlcv failed: binance does not have market symbol SATS/USDT
+2025-08-29 01:00:59,766 | WARNING | ASI/USDT: fetch_ohlcv failed: binance does not have market symbol ASI/USDT
+2025-08-29 01:01:05,011 | WARNING | AIOZ/USDT: fetch_ohlcv failed: binance does not have market symbol AIOZ/USDT
+2025-08-29 01:01:05,596 | WARNING | BLAST/USDT: fetch_ohlcv failed: binance does not have market symbol BLAST/USDT
+2025-08-29 01:01:19,660 | INFO | Cycle 2025-08-28T22:01:19.660131+00:00 | timeframe=1h | lookback=500 | symbols=95 | pairs=3916
+2025-08-29 01:02:40,390 | WARNING | RON/USDT: fetch_ohlcv failed: binance does not have market symbol RON/USDT
+2025-08-29 01:02:41,844 | WARNING | SATS/USDT: fetch_ohlcv failed: binance does not have market symbol SATS/USDT
+2025-08-29 01:02:43,596 | WARNING | ASI/USDT: fetch_ohlcv failed: binance does not have market symbol ASI/USDT
+2025-08-29 01:02:48,812 | WARNING | AIOZ/USDT: fetch_ohlcv failed: binance does not have market symbol AIOZ/USDT
+2025-08-29 01:02:49,387 | WARNING | BLAST/USDT: fetch_ohlcv failed: binance does not have market symbol BLAST/USDT
+2025-08-29 01:03:03,110 | INFO | Cycle 2025-08-28T22:03:03.110766+00:00 | timeframe=1h | lookback=500 | symbols=95 | pairs=3916
+2025-08-29 01:41:57,470 | ERROR | Cycle failed: binance GET https://api.binance.com/api/v3/exchangeInfo
+Traceback (most recent call last):
+  File "C:\Users\User\AppData\Local\Programs\Python\Python312\Lib\site-packages\urllib3\connection.py", line 196, in _new_conn
+    sock = connection.create_connection(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\User\AppData\Local\Programs\Python\Python312\Lib\site-packages\urllib3\util\connection.py", line 60, in create_connection
+    for res in socket.getaddrinfo(host, port, family, socket.SOCK_STREAM):
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\User\AppData\Local\Programs\Python\Python312\Lib\socket.py", line 976, in getaddrinfo
+    for res in _socket.getaddrinfo(host, port, family, type, proto, flags):
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+socket.gaierror: [Errno 11001] getaddrinfo failed
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\User\AppData\Local\Programs\Python\Python312\Lib\site-packages\urllib3\connectionpool.py", line 789, in urlopen
+    response = self._make_request(
+               ^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\User\AppData\Local\Programs\Python\Python312\Lib\site-packages\urllib3\connectionpool.py", line 490, in _make_request
+    raise new_e
+  File "C:\Users\User\AppData\Local\Programs\Python\Python312\Lib\site-packages\urllib3\connectionpool.py", line 466, in _make_request
+    self._validate_conn(conn)
+  File "C:\Users\User\AppData\Local\Programs\Python\Python312\Lib\site-packages\urllib3\connectionpool.py", line 1095, in _validate_conn
+    conn.connect()
+  File "C:\Users\User\AppData\Local\Programs\Python\Python312\Lib\site-packages\urllib3\connection.py", line 615, in connect
+    self.sock = sock = self._new_conn()
+                       ^^^^^^^^^^^^^^^^
+  File "C:\Users\User\AppData\Local\Programs\Python\Python312\Lib\site-packages\urllib3\connection.py", line 203, in _new_conn
+    raise NameResolutionError(self.host, self, e) from e
+urllib3.exceptions.NameResolutionError: <urllib3.connection.HTTPSConnection object at 0x000002080456DEB0>: Failed to resolve 'api.binance.com' ([Errno 11001] getaddrinfo failed)
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\User\AppData\Local\Programs\Python\Python312\Lib\site-packages\requests\adapters.py", line 667, in send
+    resp = conn.urlopen(
+           ^^^^^^^^^^^^^
+  File "C:\Users\User\AppData\Local\Programs\Python\Python312\Lib\site-packages\urllib3\connectionpool.py", line 843, in urlopen
+    retries = retries.increment(
+              ^^^^^^^^^^^^^^^^^^
+  File "C:\Users\User\AppData\Local\Programs\Python\Python312\Lib\site-packages\urllib3\util\retry.py", line 519, in increment
+    raise MaxRetryError(_pool, url, reason) from reason  # type: ignore[arg-type]
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+urllib3.exceptions.MaxRetryError: HTTPSConnectionPool(host='api.binance.com', port=443): Max retries exceeded with url: /api/v3/exchangeInfo (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x000002080456DEB0>: Failed to resolve 'api.binance.com' ([Errno 11001] getaddrinfo failed)"))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\User\AppData\Local\Programs\Python\Python312\Lib\site-packages\ccxt\base\exchange.py", line 554, in fetch
+    response = self.session.request(
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\User\AppData\Local\Programs\Python\Python312\Lib\site-packages\requests\sessions.py", line 589, in request
+    resp = self.send(prep, **send_kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\User\AppData\Local\Programs\Python\Python312\Lib\site-packages\requests\sessions.py", line 703, in send
+    r = adapter.send(request, **kwargs)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\User\AppData\Local\Programs\Python\Python312\Lib\site-packages\requests\adapters.py", line 700, in send
+    raise ConnectionError(e, request=request)
+requests.exceptions.ConnectionError: HTTPSConnectionPool(host='api.binance.com', port=443): Max retries exceeded with url: /api/v3/exchangeInfo (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x000002080456DEB0>: Failed to resolve 'api.binance.com' ([Errno 11001] getaddrinfo failed)"))
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\User\Projects\cbbot-corr-volatility\correlation_bot.py", line 208, in run_cycle
+    exchange = get_exchange()
+               ^^^^^^^^^^^^^^
+  File "C:\Users\User\Projects\cbbot-corr-volatility\correlation_bot.py", line 117, in get_exchange
+    ex.load_markets()
+  File "C:\Users\User\AppData\Local\Programs\Python\Python312\Lib\site-packages\ccxt\base\exchange.py", line 1516, in load_markets
+    markets = self.fetch_markets(params)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\User\AppData\Local\Programs\Python\Python312\Lib\site-packages\ccxt\binance.py", line 3087, in fetch_markets
+    promisesRaw.append(self.publicGetExchangeInfo(params))
+                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\User\AppData\Local\Programs\Python\Python312\Lib\site-packages\ccxt\base\types.py", line 35, in unbound_method
+    return _self.request(self.path, self.api, self.method, params, config=self.config)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\User\AppData\Local\Programs\Python\Python312\Lib\site-packages\ccxt\binance.py", line 11235, in request
+    response = self.fetch2(path, api, method, params, headers, body, config)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\User\AppData\Local\Programs\Python\Python312\Lib\site-packages\ccxt\base\exchange.py", line 4240, in fetch2
+    raise e
+  File "C:\Users\User\AppData\Local\Programs\Python\Python312\Lib\site-packages\ccxt\base\exchange.py", line 4231, in fetch2
+    return self.fetch(request['url'], request['method'], request['headers'], request['body'])
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\User\AppData\Local\Programs\Python\Python312\Lib\site-packages\ccxt\base\exchange.py", line 607, in fetch
+    raise NetworkError(details) from e
+ccxt.base.errors.NetworkError: binance GET https://api.binance.com/api/v3/exchangeInfo
+2025-08-29 02:03:51,688 | ERROR | Cycle failed: binance GET https://api.binance.com/api/v3/exchangeInfo
+Traceback (most recent call last):
+  File "C:\Users\User\AppData\Local\Programs\Python\Python312\Lib\site-packages\urllib3\connection.py", line 196, in _new_conn
+    sock = connection.create_connection(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\User\AppData\Local\Programs\Python\Python312\Lib\site-packages\urllib3\util\connection.py", line 60, in create_connection
+    for res in socket.getaddrinfo(host, port, family, socket.SOCK_STREAM):
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\User\AppData\Local\Programs\Python\Python312\Lib\socket.py", line 976, in getaddrinfo
+    for res in _socket.getaddrinfo(host, port, family, type, proto, flags):
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+socket.gaierror: [Errno 11001] getaddrinfo failed
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\User\AppData\Local\Programs\Python\Python312\Lib\site-packages\urllib3\connectionpool.py", line 789, in urlopen
+    response = self._make_request(
+               ^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\User\AppData\Local\Programs\Python\Python312\Lib\site-packages\urllib3\connectionpool.py", line 490, in _make_request
+    raise new_e
+  File "C:\Users\User\AppData\Local\Programs\Python\Python312\Lib\site-packages\urllib3\connectionpool.py", line 466, in _make_request
+    self._validate_conn(conn)
+  File "C:\Users\User\AppData\Local\Programs\Python\Python312\Lib\site-packages\urllib3\connectionpool.py", line 1095, in _validate_conn
+    conn.connect()
+  File "C:\Users\User\AppData\Local\Programs\Python\Python312\Lib\site-packages\urllib3\connection.py", line 615, in connect
+    self.sock = sock = self._new_conn()
+                       ^^^^^^^^^^^^^^^^
+  File "C:\Users\User\AppData\Local\Programs\Python\Python312\Lib\site-packages\urllib3\connection.py", line 203, in _new_conn
+    raise NameResolutionError(self.host, self, e) from e
+urllib3.exceptions.NameResolutionError: <urllib3.connection.HTTPSConnection object at 0x000002080456F5F0>: Failed to resolve 'api.binance.com' ([Errno 11001] getaddrinfo failed)
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\User\AppData\Local\Programs\Python\Python312\Lib\site-packages\requests\adapters.py", line 667, in send
+    resp = conn.urlopen(
+           ^^^^^^^^^^^^^
+  File "C:\Users\User\AppData\Local\Programs\Python\Python312\Lib\site-packages\urllib3\connectionpool.py", line 843, in urlopen
+    retries = retries.increment(
+              ^^^^^^^^^^^^^^^^^^
+  File "C:\Users\User\AppData\Local\Programs\Python\Python312\Lib\site-packages\urllib3\util\retry.py", line 519, in increment
+    raise MaxRetryError(_pool, url, reason) from reason  # type: ignore[arg-type]
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+urllib3.exceptions.MaxRetryError: HTTPSConnectionPool(host='api.binance.com', port=443): Max retries exceeded with url: /api/v3/exchangeInfo (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x000002080456F5F0>: Failed to resolve 'api.binance.com' ([Errno 11001] getaddrinfo failed)"))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\User\AppData\Local\Programs\Python\Python312\Lib\site-packages\ccxt\base\exchange.py", line 554, in fetch
+    response = self.session.request(
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\User\AppData\Local\Programs\Python\Python312\Lib\site-packages\requests\sessions.py", line 589, in request
+    resp = self.send(prep, **send_kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\User\AppData\Local\Programs\Python\Python312\Lib\site-packages\requests\sessions.py", line 703, in send
+    r = adapter.send(request, **kwargs)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\User\AppData\Local\Programs\Python\Python312\Lib\site-packages\requests\adapters.py", line 700, in send
+    raise ConnectionError(e, request=request)
+requests.exceptions.ConnectionError: HTTPSConnectionPool(host='api.binance.com', port=443): Max retries exceeded with url: /api/v3/exchangeInfo (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x000002080456F5F0>: Failed to resolve 'api.binance.com' ([Errno 11001] getaddrinfo failed)"))
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\User\Projects\cbbot-corr-volatility\correlation_bot.py", line 208, in run_cycle
+    exchange = get_exchange()
+               ^^^^^^^^^^^^^^
+  File "C:\Users\User\Projects\cbbot-corr-volatility\correlation_bot.py", line 117, in get_exchange
+    ex.load_markets()
+  File "C:\Users\User\AppData\Local\Programs\Python\Python312\Lib\site-packages\ccxt\base\exchange.py", line 1516, in load_markets
+    markets = self.fetch_markets(params)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\User\AppData\Local\Programs\Python\Python312\Lib\site-packages\ccxt\binance.py", line 3087, in fetch_markets
+    promisesRaw.append(self.publicGetExchangeInfo(params))
+                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\User\AppData\Local\Programs\Python\Python312\Lib\site-packages\ccxt\base\types.py", line 35, in unbound_method
+    return _self.request(self.path, self.api, self.method, params, config=self.config)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\User\AppData\Local\Programs\Python\Python312\Lib\site-packages\ccxt\binance.py", line 11235, in request
+    response = self.fetch2(path, api, method, params, headers, body, config)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\User\AppData\Local\Programs\Python\Python312\Lib\site-packages\ccxt\base\exchange.py", line 4240, in fetch2
+    raise e
+  File "C:\Users\User\AppData\Local\Programs\Python\Python312\Lib\site-packages\ccxt\base\exchange.py", line 4231, in fetch2
+    return self.fetch(request['url'], request['method'], request['headers'], request['body'])
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\User\AppData\Local\Programs\Python\Python312\Lib\site-packages\ccxt\base\exchange.py", line 607, in fetch
+    raise NetworkError(details) from e
+ccxt.base.errors.NetworkError: binance GET https://api.binance.com/api/v3/exchangeInfo
+2025-08-29 13:44:02,150 | ERROR | Cycle failed: binance GET https://api.binance.com/api/v3/exchangeInfo
+Traceback (most recent call last):
+  File "C:\Users\User\AppData\Local\Programs\Python\Python312\Lib\site-packages\urllib3\connection.py", line 196, in _new_conn
+    sock = connection.create_connection(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\User\AppData\Local\Programs\Python\Python312\Lib\site-packages\urllib3\util\connection.py", line 60, in create_connection
+    for res in socket.getaddrinfo(host, port, family, socket.SOCK_STREAM):
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\User\AppData\Local\Programs\Python\Python312\Lib\socket.py", line 976, in getaddrinfo
+    for res in _socket.getaddrinfo(host, port, family, type, proto, flags):
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+socket.gaierror: [Errno 11001] getaddrinfo failed
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\User\AppData\Local\Programs\Python\Python312\Lib\site-packages\urllib3\connectionpool.py", line 789, in urlopen
+    response = self._make_request(
+               ^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\User\AppData\Local\Programs\Python\Python312\Lib\site-packages\urllib3\connectionpool.py", line 490, in _make_request
+    raise new_e
+  File "C:\Users\User\AppData\Local\Programs\Python\Python312\Lib\site-packages\urllib3\connectionpool.py", line 466, in _make_request
+    self._validate_conn(conn)
+  File "C:\Users\User\AppData\Local\Programs\Python\Python312\Lib\site-packages\urllib3\connectionpool.py", line 1095, in _validate_conn
+    conn.connect()
+  File "C:\Users\User\AppData\Local\Programs\Python\Python312\Lib\site-packages\urllib3\connection.py", line 615, in connect
+    self.sock = sock = self._new_conn()
+                       ^^^^^^^^^^^^^^^^
+  File "C:\Users\User\AppData\Local\Programs\Python\Python312\Lib\site-packages\urllib3\connection.py", line 203, in _new_conn
+    raise NameResolutionError(self.host, self, e) from e
+urllib3.exceptions.NameResolutionError: <urllib3.connection.HTTPSConnection object at 0x000002080456FDD0>: Failed to resolve 'api.binance.com' ([Errno 11001] getaddrinfo failed)
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\User\AppData\Local\Programs\Python\Python312\Lib\site-packages\requests\adapters.py", line 667, in send
+    resp = conn.urlopen(
+           ^^^^^^^^^^^^^
+  File "C:\Users\User\AppData\Local\Programs\Python\Python312\Lib\site-packages\urllib3\connectionpool.py", line 843, in urlopen
+    retries = retries.increment(
+              ^^^^^^^^^^^^^^^^^^
+  File "C:\Users\User\AppData\Local\Programs\Python\Python312\Lib\site-packages\urllib3\util\retry.py", line 519, in increment
+    raise MaxRetryError(_pool, url, reason) from reason  # type: ignore[arg-type]
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+urllib3.exceptions.MaxRetryError: HTTPSConnectionPool(host='api.binance.com', port=443): Max retries exceeded with url: /api/v3/exchangeInfo (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x000002080456FDD0>: Failed to resolve 'api.binance.com' ([Errno 11001] getaddrinfo failed)"))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\User\AppData\Local\Programs\Python\Python312\Lib\site-packages\ccxt\base\exchange.py", line 554, in fetch
+    response = self.session.request(
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\User\AppData\Local\Programs\Python\Python312\Lib\site-packages\requests\sessions.py", line 589, in request
+    resp = self.send(prep, **send_kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\User\AppData\Local\Programs\Python\Python312\Lib\site-packages\requests\sessions.py", line 703, in send
+    r = adapter.send(request, **kwargs)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\User\AppData\Local\Programs\Python\Python312\Lib\site-packages\requests\adapters.py", line 700, in send
+    raise ConnectionError(e, request=request)
+requests.exceptions.ConnectionError: HTTPSConnectionPool(host='api.binance.com', port=443): Max retries exceeded with url: /api/v3/exchangeInfo (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x000002080456FDD0>: Failed to resolve 'api.binance.com' ([Errno 11001] getaddrinfo failed)"))
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\User\Projects\cbbot-corr-volatility\correlation_bot.py", line 208, in run_cycle
+    exchange = get_exchange()
+               ^^^^^^^^^^^^^^
+  File "C:\Users\User\Projects\cbbot-corr-volatility\correlation_bot.py", line 117, in get_exchange
+    ex.load_markets()
+  File "C:\Users\User\AppData\Local\Programs\Python\Python312\Lib\site-packages\ccxt\base\exchange.py", line 1516, in load_markets
+    markets = self.fetch_markets(params)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\User\AppData\Local\Programs\Python\Python312\Lib\site-packages\ccxt\binance.py", line 3087, in fetch_markets
+    promisesRaw.append(self.publicGetExchangeInfo(params))
+                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\User\AppData\Local\Programs\Python\Python312\Lib\site-packages\ccxt\base\types.py", line 35, in unbound_method
+    return _self.request(self.path, self.api, self.method, params, config=self.config)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\User\AppData\Local\Programs\Python\Python312\Lib\site-packages\ccxt\binance.py", line 11235, in request
+    response = self.fetch2(path, api, method, params, headers, body, config)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\User\AppData\Local\Programs\Python\Python312\Lib\site-packages\ccxt\base\exchange.py", line 4240, in fetch2
+    raise e
+  File "C:\Users\User\AppData\Local\Programs\Python\Python312\Lib\site-packages\ccxt\base\exchange.py", line 4231, in fetch2
+    return self.fetch(request['url'], request['method'], request['headers'], request['body'])
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\User\AppData\Local\Programs\Python\Python312\Lib\site-packages\ccxt\base\exchange.py", line 607, in fetch
+    raise NetworkError(details) from e
+ccxt.base.errors.NetworkError: binance GET https://api.binance.com/api/v3/exchangeInfo
+2025-08-29 13:45:01,993 | INFO | Shutting down by user request.
+2025-08-29 13:45:17,488 | INFO | Starting Correlation Scanner Bot
+2025-08-29 13:45:36,908 | WARNING | RON/USDT: fetch_ohlcv failed: binance does not have market symbol RON/USDT
+2025-08-29 13:45:38,381 | WARNING | SATS/USDT: fetch_ohlcv failed: binance does not have market symbol SATS/USDT
+2025-08-29 13:45:40,147 | WARNING | ASI/USDT: fetch_ohlcv failed: binance does not have market symbol ASI/USDT
+2025-08-29 13:45:45,451 | WARNING | AIOZ/USDT: fetch_ohlcv failed: binance does not have market symbol AIOZ/USDT
+2025-08-29 13:45:46,038 | WARNING | BLAST/USDT: fetch_ohlcv failed: binance does not have market symbol BLAST/USDT
+2025-08-29 13:46:01,478 | INFO | Cycle 2025-08-29T10:46:01.478431+00:00 | timeframe=1h | lookback=500 | symbols=95 | pairs=3916
+2025-08-29 13:46:01,530 | INFO | Scheduled every 1 minute(s)
+2025-08-29 13:47:22,572 | WARNING | RON/USDT: fetch_ohlcv failed: binance does not have market symbol RON/USDT
+2025-08-29 13:47:24,017 | WARNING | SATS/USDT: fetch_ohlcv failed: binance does not have market symbol SATS/USDT
+2025-08-29 13:47:25,762 | WARNING | ASI/USDT: fetch_ohlcv failed: binance does not have market symbol ASI/USDT
+2025-08-29 13:47:30,991 | WARNING | AIOZ/USDT: fetch_ohlcv failed: binance does not have market symbol AIOZ/USDT
+2025-08-29 13:47:31,563 | WARNING | BLAST/USDT: fetch_ohlcv failed: binance does not have market symbol BLAST/USDT
+2025-08-29 13:47:47,871 | INFO | Cycle 2025-08-29T10:47:47.871117+00:00 | timeframe=1h | lookback=500 | symbols=95 | pairs=3916
+2025-08-29 13:49:13,177 | WARNING | RON/USDT: fetch_ohlcv failed: binance does not have market symbol RON/USDT
+2025-08-29 13:49:14,629 | WARNING | SATS/USDT: fetch_ohlcv failed: binance does not have market symbol SATS/USDT
+2025-08-29 13:49:16,375 | WARNING | ASI/USDT: fetch_ohlcv failed: binance does not have market symbol ASI/USDT
+2025-08-29 13:49:22,090 | WARNING | AIOZ/USDT: fetch_ohlcv failed: binance does not have market symbol AIOZ/USDT
+2025-08-29 13:49:22,673 | WARNING | BLAST/USDT: fetch_ohlcv failed: binance does not have market symbol BLAST/USDT
+2025-08-29 13:49:39,568 | INFO | Cycle 2025-08-29T10:49:39.568763+00:00 | timeframe=1h | lookback=500 | symbols=95 | pairs=3916
+2025-08-29 13:50:59,698 | WARNING | RON/USDT: fetch_ohlcv failed: binance does not have market symbol RON/USDT
+2025-08-29 13:51:01,149 | WARNING | SATS/USDT: fetch_ohlcv failed: binance does not have market symbol SATS/USDT
+2025-08-29 13:51:03,633 | WARNING | ASI/USDT: fetch_ohlcv failed: binance does not have market symbol ASI/USDT
+2025-08-29 13:51:09,660 | WARNING | AIOZ/USDT: fetch_ohlcv failed: binance does not have market symbol AIOZ/USDT
+2025-08-29 13:51:10,254 | WARNING | BLAST/USDT: fetch_ohlcv failed: binance does not have market symbol BLAST/USDT
+2025-08-29 13:51:25,058 | INFO | Cycle 2025-08-29T10:51:25.058186+00:00 | timeframe=1h | lookback=500 | symbols=95 | pairs=3916
+2025-08-29 13:53:01,416 | ERROR | Cycle failed: binance GET https://api.binance.com/api/v3/exchangeInfo
+Traceback (most recent call last):
+  File "C:\Users\User\AppData\Local\Programs\Python\Python312\Lib\site-packages\urllib3\connection.py", line 196, in _new_conn
+    sock = connection.create_connection(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\User\AppData\Local\Programs\Python\Python312\Lib\site-packages\urllib3\util\connection.py", line 60, in create_connection
+    for res in socket.getaddrinfo(host, port, family, socket.SOCK_STREAM):
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\User\AppData\Local\Programs\Python\Python312\Lib\socket.py", line 976, in getaddrinfo
+    for res in _socket.getaddrinfo(host, port, family, type, proto, flags):
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+socket.gaierror: [Errno 11001] getaddrinfo failed
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\User\AppData\Local\Programs\Python\Python312\Lib\site-packages\urllib3\connectionpool.py", line 789, in urlopen
+    response = self._make_request(
+               ^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\User\AppData\Local\Programs\Python\Python312\Lib\site-packages\urllib3\connectionpool.py", line 490, in _make_request
+    raise new_e
+  File "C:\Users\User\AppData\Local\Programs\Python\Python312\Lib\site-packages\urllib3\connectionpool.py", line 466, in _make_request
+    self._validate_conn(conn)
+  File "C:\Users\User\AppData\Local\Programs\Python\Python312\Lib\site-packages\urllib3\connectionpool.py", line 1095, in _validate_conn
+    conn.connect()
+  File "C:\Users\User\AppData\Local\Programs\Python\Python312\Lib\site-packages\urllib3\connection.py", line 615, in connect
+    self.sock = sock = self._new_conn()
+                       ^^^^^^^^^^^^^^^^
+  File "C:\Users\User\AppData\Local\Programs\Python\Python312\Lib\site-packages\urllib3\connection.py", line 203, in _new_conn
+    raise NameResolutionError(self.host, self, e) from e
+urllib3.exceptions.NameResolutionError: <urllib3.connection.HTTPSConnection object at 0x000001C2A1A71CD0>: Failed to resolve 'api.binance.com' ([Errno 11001] getaddrinfo failed)
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\User\AppData\Local\Programs\Python\Python312\Lib\site-packages\requests\adapters.py", line 667, in send
+    resp = conn.urlopen(
+           ^^^^^^^^^^^^^
+  File "C:\Users\User\AppData\Local\Programs\Python\Python312\Lib\site-packages\urllib3\connectionpool.py", line 843, in urlopen
+    retries = retries.increment(
+              ^^^^^^^^^^^^^^^^^^
+  File "C:\Users\User\AppData\Local\Programs\Python\Python312\Lib\site-packages\urllib3\util\retry.py", line 519, in increment
+    raise MaxRetryError(_pool, url, reason) from reason  # type: ignore[arg-type]
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+urllib3.exceptions.MaxRetryError: HTTPSConnectionPool(host='api.binance.com', port=443): Max retries exceeded with url: /api/v3/exchangeInfo (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x000001C2A1A71CD0>: Failed to resolve 'api.binance.com' ([Errno 11001] getaddrinfo failed)"))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\User\AppData\Local\Programs\Python\Python312\Lib\site-packages\ccxt\base\exchange.py", line 554, in fetch
+    response = self.session.request(
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\User\AppData\Local\Programs\Python\Python312\Lib\site-packages\requests\sessions.py", line 589, in request
+    resp = self.send(prep, **send_kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\User\AppData\Local\Programs\Python\Python312\Lib\site-packages\requests\sessions.py", line 703, in send
+    r = adapter.send(request, **kwargs)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\User\AppData\Local\Programs\Python\Python312\Lib\site-packages\requests\adapters.py", line 700, in send
+    raise ConnectionError(e, request=request)
+requests.exceptions.ConnectionError: HTTPSConnectionPool(host='api.binance.com', port=443): Max retries exceeded with url: /api/v3/exchangeInfo (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x000001C2A1A71CD0>: Failed to resolve 'api.binance.com' ([Errno 11001] getaddrinfo failed)"))
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\User\Projects\cbbot-corr-volatility\correlation_bot.py", line 208, in run_cycle
+    exchange = get_exchange()
+               ^^^^^^^^^^^^^^
+  File "C:\Users\User\Projects\cbbot-corr-volatility\correlation_bot.py", line 117, in get_exchange
+    ex.load_markets()
+  File "C:\Users\User\AppData\Local\Programs\Python\Python312\Lib\site-packages\ccxt\base\exchange.py", line 1516, in load_markets
+    markets = self.fetch_markets(params)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\User\AppData\Local\Programs\Python\Python312\Lib\site-packages\ccxt\binance.py", line 3087, in fetch_markets
+    promisesRaw.append(self.publicGetExchangeInfo(params))
+                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\User\AppData\Local\Programs\Python\Python312\Lib\site-packages\ccxt\base\types.py", line 35, in unbound_method
+    return _self.request(self.path, self.api, self.method, params, config=self.config)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\User\AppData\Local\Programs\Python\Python312\Lib\site-packages\ccxt\binance.py", line 11235, in request
+    response = self.fetch2(path, api, method, params, headers, body, config)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\User\AppData\Local\Programs\Python\Python312\Lib\site-packages\ccxt\base\exchange.py", line 4240, in fetch2
+    raise e
+  File "C:\Users\User\AppData\Local\Programs\Python\Python312\Lib\site-packages\ccxt\base\exchange.py", line 4231, in fetch2
+    return self.fetch(request['url'], request['method'], request['headers'], request['body'])
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\User\AppData\Local\Programs\Python\Python312\Lib\site-packages\ccxt\base\exchange.py", line 607, in fetch
+    raise NetworkError(details) from e
+ccxt.base.errors.NetworkError: binance GET https://api.binance.com/api/v3/exchangeInfo
+2025-08-29 14:00:04,571 | ERROR | Cycle failed: binance GET https://api.binance.com/api/v3/exchangeInfo
+Traceback (most recent call last):
+  File "C:\Users\User\AppData\Local\Programs\Python\Python312\Lib\site-packages\urllib3\connection.py", line 196, in _new_conn
+    sock = connection.create_connection(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\User\AppData\Local\Programs\Python\Python312\Lib\site-packages\urllib3\util\connection.py", line 60, in create_connection
+    for res in socket.getaddrinfo(host, port, family, socket.SOCK_STREAM):
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\User\AppData\Local\Programs\Python\Python312\Lib\socket.py", line 976, in getaddrinfo
+    for res in _socket.getaddrinfo(host, port, family, type, proto, flags):
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+socket.gaierror: [Errno 11001] getaddrinfo failed
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\User\AppData\Local\Programs\Python\Python312\Lib\site-packages\urllib3\connectionpool.py", line 789, in urlopen
+    response = self._make_request(
+               ^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\User\AppData\Local\Programs\Python\Python312\Lib\site-packages\urllib3\connectionpool.py", line 490, in _make_request
+    raise new_e
+  File "C:\Users\User\AppData\Local\Programs\Python\Python312\Lib\site-packages\urllib3\connectionpool.py", line 466, in _make_request
+    self._validate_conn(conn)
+  File "C:\Users\User\AppData\Local\Programs\Python\Python312\Lib\site-packages\urllib3\connectionpool.py", line 1095, in _validate_conn
+    conn.connect()
+  File "C:\Users\User\AppData\Local\Programs\Python\Python312\Lib\site-packages\urllib3\connection.py", line 615, in connect
+    self.sock = sock = self._new_conn()
+                       ^^^^^^^^^^^^^^^^
+  File "C:\Users\User\AppData\Local\Programs\Python\Python312\Lib\site-packages\urllib3\connection.py", line 203, in _new_conn
+    raise NameResolutionError(self.host, self, e) from e
+urllib3.exceptions.NameResolutionError: <urllib3.connection.HTTPSConnection object at 0x000001C2A1A70CE0>: Failed to resolve 'api.binance.com' ([Errno 11001] getaddrinfo failed)
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\User\AppData\Local\Programs\Python\Python312\Lib\site-packages\requests\adapters.py", line 667, in send
+    resp = conn.urlopen(
+           ^^^^^^^^^^^^^
+  File "C:\Users\User\AppData\Local\Programs\Python\Python312\Lib\site-packages\urllib3\connectionpool.py", line 843, in urlopen
+    retries = retries.increment(
+              ^^^^^^^^^^^^^^^^^^
+  File "C:\Users\User\AppData\Local\Programs\Python\Python312\Lib\site-packages\urllib3\util\retry.py", line 519, in increment
+    raise MaxRetryError(_pool, url, reason) from reason  # type: ignore[arg-type]
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+urllib3.exceptions.MaxRetryError: HTTPSConnectionPool(host='api.binance.com', port=443): Max retries exceeded with url: /api/v3/exchangeInfo (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x000001C2A1A70CE0>: Failed to resolve 'api.binance.com' ([Errno 11001] getaddrinfo failed)"))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\User\AppData\Local\Programs\Python\Python312\Lib\site-packages\ccxt\base\exchange.py", line 554, in fetch
+    response = self.session.request(
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\User\AppData\Local\Programs\Python\Python312\Lib\site-packages\requests\sessions.py", line 589, in request
+    resp = self.send(prep, **send_kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\User\AppData\Local\Programs\Python\Python312\Lib\site-packages\requests\sessions.py", line 703, in send
+    r = adapter.send(request, **kwargs)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\User\AppData\Local\Programs\Python\Python312\Lib\site-packages\requests\adapters.py", line 700, in send
+    raise ConnectionError(e, request=request)
+requests.exceptions.ConnectionError: HTTPSConnectionPool(host='api.binance.com', port=443): Max retries exceeded with url: /api/v3/exchangeInfo (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x000001C2A1A70CE0>: Failed to resolve 'api.binance.com' ([Errno 11001] getaddrinfo failed)"))
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\User\Projects\cbbot-corr-volatility\correlation_bot.py", line 208, in run_cycle
+    exchange = get_exchange()
+               ^^^^^^^^^^^^^^
+  File "C:\Users\User\Projects\cbbot-corr-volatility\correlation_bot.py", line 117, in get_exchange
+    ex.load_markets()
+  File "C:\Users\User\AppData\Local\Programs\Python\Python312\Lib\site-packages\ccxt\base\exchange.py", line 1516, in load_markets
+    markets = self.fetch_markets(params)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\User\AppData\Local\Programs\Python\Python312\Lib\site-packages\ccxt\binance.py", line 3087, in fetch_markets
+    promisesRaw.append(self.publicGetExchangeInfo(params))
+                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\User\AppData\Local\Programs\Python\Python312\Lib\site-packages\ccxt\base\types.py", line 35, in unbound_method
+    return _self.request(self.path, self.api, self.method, params, config=self.config)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\User\AppData\Local\Programs\Python\Python312\Lib\site-packages\ccxt\binance.py", line 11235, in request
+    response = self.fetch2(path, api, method, params, headers, body, config)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\User\AppData\Local\Programs\Python\Python312\Lib\site-packages\ccxt\base\exchange.py", line 4240, in fetch2
+    raise e
+  File "C:\Users\User\AppData\Local\Programs\Python\Python312\Lib\site-packages\ccxt\base\exchange.py", line 4231, in fetch2
+    return self.fetch(request['url'], request['method'], request['headers'], request['body'])
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\User\AppData\Local\Programs\Python\Python312\Lib\site-packages\ccxt\base\exchange.py", line 607, in fetch
+    raise NetworkError(details) from e
+ccxt.base.errors.NetworkError: binance GET https://api.binance.com/api/v3/exchangeInfo
+2025-08-29 14:01:24,108 | WARNING | RON/USDT: fetch_ohlcv failed: binance does not have market symbol RON/USDT
+2025-08-29 14:01:25,579 | WARNING | SATS/USDT: fetch_ohlcv failed: binance does not have market symbol SATS/USDT
+2025-08-29 14:01:27,313 | WARNING | ASI/USDT: fetch_ohlcv failed: binance does not have market symbol ASI/USDT
+2025-08-29 14:01:32,521 | WARNING | AIOZ/USDT: fetch_ohlcv failed: binance does not have market symbol AIOZ/USDT
+2025-08-29 14:01:33,100 | WARNING | BLAST/USDT: fetch_ohlcv failed: binance does not have market symbol BLAST/USDT
+2025-08-29 14:01:47,803 | INFO | Cycle 2025-08-29T11:01:47.803502+00:00 | timeframe=1h | lookback=500 | symbols=95 | pairs=3916
+2025-08-29 14:03:08,806 | WARNING | RON/USDT: fetch_ohlcv failed: binance does not have market symbol RON/USDT
+2025-08-29 14:03:10,270 | WARNING | SATS/USDT: fetch_ohlcv failed: binance does not have market symbol SATS/USDT
+2025-08-29 14:03:12,022 | WARNING | ASI/USDT: fetch_ohlcv failed: binance does not have market symbol ASI/USDT
+2025-08-29 14:03:17,315 | WARNING | AIOZ/USDT: fetch_ohlcv failed: binance does not have market symbol AIOZ/USDT
+2025-08-29 14:03:17,905 | WARNING | BLAST/USDT: fetch_ohlcv failed: binance does not have market symbol BLAST/USDT
+2025-08-29 14:03:31,133 | INFO | Cycle 2025-08-29T11:03:31.133217+00:00 | timeframe=1h | lookback=500 | symbols=95 | pairs=3916
+2025-08-29 14:41:45,110 | ERROR | Cycle failed: binance GET https://api.binance.com/api/v3/exchangeInfo
+Traceback (most recent call last):
+  File "C:\Users\User\AppData\Local\Programs\Python\Python312\Lib\site-packages\urllib3\connection.py", line 196, in _new_conn
+    sock = connection.create_connection(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\User\AppData\Local\Programs\Python\Python312\Lib\site-packages\urllib3\util\connection.py", line 60, in create_connection
+    for res in socket.getaddrinfo(host, port, family, socket.SOCK_STREAM):
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\User\AppData\Local\Programs\Python\Python312\Lib\socket.py", line 976, in getaddrinfo
+    for res in _socket.getaddrinfo(host, port, family, type, proto, flags):
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+socket.gaierror: [Errno 11001] getaddrinfo failed
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\User\AppData\Local\Programs\Python\Python312\Lib\site-packages\urllib3\connectionpool.py", line 789, in urlopen
+    response = self._make_request(
+               ^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\User\AppData\Local\Programs\Python\Python312\Lib\site-packages\urllib3\connectionpool.py", line 490, in _make_request
+    raise new_e
+  File "C:\Users\User\AppData\Local\Programs\Python\Python312\Lib\site-packages\urllib3\connectionpool.py", line 466, in _make_request
+    self._validate_conn(conn)
+  File "C:\Users\User\AppData\Local\Programs\Python\Python312\Lib\site-packages\urllib3\connectionpool.py", line 1095, in _validate_conn
+    conn.connect()
+  File "C:\Users\User\AppData\Local\Programs\Python\Python312\Lib\site-packages\urllib3\connection.py", line 615, in connect
+    self.sock = sock = self._new_conn()
+                       ^^^^^^^^^^^^^^^^
+  File "C:\Users\User\AppData\Local\Programs\Python\Python312\Lib\site-packages\urllib3\connection.py", line 203, in _new_conn
+    raise NameResolutionError(self.host, self, e) from e
+urllib3.exceptions.NameResolutionError: <urllib3.connection.HTTPSConnection object at 0x000001C29F5E14F0>: Failed to resolve 'api.binance.com' ([Errno 11001] getaddrinfo failed)
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\User\AppData\Local\Programs\Python\Python312\Lib\site-packages\requests\adapters.py", line 667, in send
+    resp = conn.urlopen(
+           ^^^^^^^^^^^^^
+  File "C:\Users\User\AppData\Local\Programs\Python\Python312\Lib\site-packages\urllib3\connectionpool.py", line 843, in urlopen
+    retries = retries.increment(
+              ^^^^^^^^^^^^^^^^^^
+  File "C:\Users\User\AppData\Local\Programs\Python\Python312\Lib\site-packages\urllib3\util\retry.py", line 519, in increment
+    raise MaxRetryError(_pool, url, reason) from reason  # type: ignore[arg-type]
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+urllib3.exceptions.MaxRetryError: HTTPSConnectionPool(host='api.binance.com', port=443): Max retries exceeded with url: /api/v3/exchangeInfo (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x000001C29F5E14F0>: Failed to resolve 'api.binance.com' ([Errno 11001] getaddrinfo failed)"))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\User\AppData\Local\Programs\Python\Python312\Lib\site-packages\ccxt\base\exchange.py", line 554, in fetch
+    response = self.session.request(
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\User\AppData\Local\Programs\Python\Python312\Lib\site-packages\requests\sessions.py", line 589, in request
+    resp = self.send(prep, **send_kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\User\AppData\Local\Programs\Python\Python312\Lib\site-packages\requests\sessions.py", line 703, in send
+    r = adapter.send(request, **kwargs)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\User\AppData\Local\Programs\Python\Python312\Lib\site-packages\requests\adapters.py", line 700, in send
+    raise ConnectionError(e, request=request)
+requests.exceptions.ConnectionError: HTTPSConnectionPool(host='api.binance.com', port=443): Max retries exceeded with url: /api/v3/exchangeInfo (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x000001C29F5E14F0>: Failed to resolve 'api.binance.com' ([Errno 11001] getaddrinfo failed)"))
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\User\Projects\cbbot-corr-volatility\correlation_bot.py", line 208, in run_cycle
+    exchange = get_exchange()
+               ^^^^^^^^^^^^^^
+  File "C:\Users\User\Projects\cbbot-corr-volatility\correlation_bot.py", line 117, in get_exchange
+    ex.load_markets()
+  File "C:\Users\User\AppData\Local\Programs\Python\Python312\Lib\site-packages\ccxt\base\exchange.py", line 1516, in load_markets
+    markets = self.fetch_markets(params)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\User\AppData\Local\Programs\Python\Python312\Lib\site-packages\ccxt\binance.py", line 3087, in fetch_markets
+    promisesRaw.append(self.publicGetExchangeInfo(params))
+                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\User\AppData\Local\Programs\Python\Python312\Lib\site-packages\ccxt\base\types.py", line 35, in unbound_method
+    return _self.request(self.path, self.api, self.method, params, config=self.config)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\User\AppData\Local\Programs\Python\Python312\Lib\site-packages\ccxt\binance.py", line 11235, in request
+    response = self.fetch2(path, api, method, params, headers, body, config)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\User\AppData\Local\Programs\Python\Python312\Lib\site-packages\ccxt\base\exchange.py", line 4240, in fetch2
+    raise e
+  File "C:\Users\User\AppData\Local\Programs\Python\Python312\Lib\site-packages\ccxt\base\exchange.py", line 4231, in fetch2
+    return self.fetch(request['url'], request['method'], request['headers'], request['body'])
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\User\AppData\Local\Programs\Python\Python312\Lib\site-packages\ccxt\base\exchange.py", line 607, in fetch
+    raise NetworkError(details) from e
+ccxt.base.errors.NetworkError: binance GET https://api.binance.com/api/v3/exchangeInfo
+2025-08-29 15:03:34,097 | ERROR | Cycle failed: binance GET https://api.binance.com/api/v3/exchangeInfo
+Traceback (most recent call last):
+  File "C:\Users\User\AppData\Local\Programs\Python\Python312\Lib\site-packages\urllib3\connection.py", line 196, in _new_conn
+    sock = connection.create_connection(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\User\AppData\Local\Programs\Python\Python312\Lib\site-packages\urllib3\util\connection.py", line 60, in create_connection
+    for res in socket.getaddrinfo(host, port, family, socket.SOCK_STREAM):
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\User\AppData\Local\Programs\Python\Python312\Lib\socket.py", line 976, in getaddrinfo
+    for res in _socket.getaddrinfo(host, port, family, type, proto, flags):
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+socket.gaierror: [Errno 11001] getaddrinfo failed
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\User\AppData\Local\Programs\Python\Python312\Lib\site-packages\urllib3\connectionpool.py", line 789, in urlopen
+    response = self._make_request(
+               ^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\User\AppData\Local\Programs\Python\Python312\Lib\site-packages\urllib3\connectionpool.py", line 490, in _make_request
+    raise new_e
+  File "C:\Users\User\AppData\Local\Programs\Python\Python312\Lib\site-packages\urllib3\connectionpool.py", line 466, in _make_request
+    self._validate_conn(conn)
+  File "C:\Users\User\AppData\Local\Programs\Python\Python312\Lib\site-packages\urllib3\connectionpool.py", line 1095, in _validate_conn
+    conn.connect()
+  File "C:\Users\User\AppData\Local\Programs\Python\Python312\Lib\site-packages\urllib3\connection.py", line 615, in connect
+    self.sock = sock = self._new_conn()
+                       ^^^^^^^^^^^^^^^^
+  File "C:\Users\User\AppData\Local\Programs\Python\Python312\Lib\site-packages\urllib3\connection.py", line 203, in _new_conn
+    raise NameResolutionError(self.host, self, e) from e
+urllib3.exceptions.NameResolutionError: <urllib3.connection.HTTPSConnection object at 0x000001C29F5E2F90>: Failed to resolve 'api.binance.com' ([Errno 11001] getaddrinfo failed)
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\User\AppData\Local\Programs\Python\Python312\Lib\site-packages\requests\adapters.py", line 667, in send
+    resp = conn.urlopen(
+           ^^^^^^^^^^^^^
+  File "C:\Users\User\AppData\Local\Programs\Python\Python312\Lib\site-packages\urllib3\connectionpool.py", line 843, in urlopen
+    retries = retries.increment(
+              ^^^^^^^^^^^^^^^^^^
+  File "C:\Users\User\AppData\Local\Programs\Python\Python312\Lib\site-packages\urllib3\util\retry.py", line 519, in increment
+    raise MaxRetryError(_pool, url, reason) from reason  # type: ignore[arg-type]
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+urllib3.exceptions.MaxRetryError: HTTPSConnectionPool(host='api.binance.com', port=443): Max retries exceeded with url: /api/v3/exchangeInfo (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x000001C29F5E2F90>: Failed to resolve 'api.binance.com' ([Errno 11001] getaddrinfo failed)"))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\User\AppData\Local\Programs\Python\Python312\Lib\site-packages\ccxt\base\exchange.py", line 554, in fetch
+    response = self.session.request(
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\User\AppData\Local\Programs\Python\Python312\Lib\site-packages\requests\sessions.py", line 589, in request
+    resp = self.send(prep, **send_kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\User\AppData\Local\Programs\Python\Python312\Lib\site-packages\requests\sessions.py", line 703, in send
+    r = adapter.send(request, **kwargs)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\User\AppData\Local\Programs\Python\Python312\Lib\site-packages\requests\adapters.py", line 700, in send
+    raise ConnectionError(e, request=request)
+requests.exceptions.ConnectionError: HTTPSConnectionPool(host='api.binance.com', port=443): Max retries exceeded with url: /api/v3/exchangeInfo (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x000001C29F5E2F90>: Failed to resolve 'api.binance.com' ([Errno 11001] getaddrinfo failed)"))
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\User\Projects\cbbot-corr-volatility\correlation_bot.py", line 208, in run_cycle
+    exchange = get_exchange()
+               ^^^^^^^^^^^^^^
+  File "C:\Users\User\Projects\cbbot-corr-volatility\correlation_bot.py", line 117, in get_exchange
+    ex.load_markets()
+  File "C:\Users\User\AppData\Local\Programs\Python\Python312\Lib\site-packages\ccxt\base\exchange.py", line 1516, in load_markets
+    markets = self.fetch_markets(params)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\User\AppData\Local\Programs\Python\Python312\Lib\site-packages\ccxt\binance.py", line 3087, in fetch_markets
+    promisesRaw.append(self.publicGetExchangeInfo(params))
+                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\User\AppData\Local\Programs\Python\Python312\Lib\site-packages\ccxt\base\types.py", line 35, in unbound_method
+    return _self.request(self.path, self.api, self.method, params, config=self.config)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\User\AppData\Local\Programs\Python\Python312\Lib\site-packages\ccxt\binance.py", line 11235, in request
+    response = self.fetch2(path, api, method, params, headers, body, config)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\User\AppData\Local\Programs\Python\Python312\Lib\site-packages\ccxt\base\exchange.py", line 4240, in fetch2
+    raise e
+  File "C:\Users\User\AppData\Local\Programs\Python\Python312\Lib\site-packages\ccxt\base\exchange.py", line 4231, in fetch2
+    return self.fetch(request['url'], request['method'], request['headers'], request['body'])
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\User\AppData\Local\Programs\Python\Python312\Lib\site-packages\ccxt\base\exchange.py", line 607, in fetch
+    raise NetworkError(details) from e
+ccxt.base.errors.NetworkError: binance GET https://api.binance.com/api/v3/exchangeInfo
+2025-08-29 17:30:17,075 | ERROR | Cycle failed: binance GET https://api.binance.com/api/v3/exchangeInfo
+Traceback (most recent call last):
+  File "C:\Users\User\AppData\Local\Programs\Python\Python312\Lib\site-packages\urllib3\connection.py", line 196, in _new_conn
+    sock = connection.create_connection(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\User\AppData\Local\Programs\Python\Python312\Lib\site-packages\urllib3\util\connection.py", line 60, in create_connection
+    for res in socket.getaddrinfo(host, port, family, socket.SOCK_STREAM):
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\User\AppData\Local\Programs\Python\Python312\Lib\socket.py", line 976, in getaddrinfo
+    for res in _socket.getaddrinfo(host, port, family, type, proto, flags):
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+socket.gaierror: [Errno 11001] getaddrinfo failed
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\User\AppData\Local\Programs\Python\Python312\Lib\site-packages\urllib3\connectionpool.py", line 789, in urlopen
+    response = self._make_request(
+               ^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\User\AppData\Local\Programs\Python\Python312\Lib\site-packages\urllib3\connectionpool.py", line 490, in _make_request
+    raise new_e
+  File "C:\Users\User\AppData\Local\Programs\Python\Python312\Lib\site-packages\urllib3\connectionpool.py", line 466, in _make_request
+    self._validate_conn(conn)
+  File "C:\Users\User\AppData\Local\Programs\Python\Python312\Lib\site-packages\urllib3\connectionpool.py", line 1095, in _validate_conn
+    conn.connect()
+  File "C:\Users\User\AppData\Local\Programs\Python\Python312\Lib\site-packages\urllib3\connection.py", line 615, in connect
+    self.sock = sock = self._new_conn()
+                       ^^^^^^^^^^^^^^^^
+  File "C:\Users\User\AppData\Local\Programs\Python\Python312\Lib\site-packages\urllib3\connection.py", line 203, in _new_conn
+    raise NameResolutionError(self.host, self, e) from e
+urllib3.exceptions.NameResolutionError: <urllib3.connection.HTTPSConnection object at 0x000001C29F5E1160>: Failed to resolve 'api.binance.com' ([Errno 11001] getaddrinfo failed)
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\User\AppData\Local\Programs\Python\Python312\Lib\site-packages\requests\adapters.py", line 667, in send
+    resp = conn.urlopen(
+           ^^^^^^^^^^^^^
+  File "C:\Users\User\AppData\Local\Programs\Python\Python312\Lib\site-packages\urllib3\connectionpool.py", line 843, in urlopen
+    retries = retries.increment(
+              ^^^^^^^^^^^^^^^^^^
+  File "C:\Users\User\AppData\Local\Programs\Python\Python312\Lib\site-packages\urllib3\util\retry.py", line 519, in increment
+    raise MaxRetryError(_pool, url, reason) from reason  # type: ignore[arg-type]
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+urllib3.exceptions.MaxRetryError: HTTPSConnectionPool(host='api.binance.com', port=443): Max retries exceeded with url: /api/v3/exchangeInfo (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x000001C29F5E1160>: Failed to resolve 'api.binance.com' ([Errno 11001] getaddrinfo failed)"))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\User\AppData\Local\Programs\Python\Python312\Lib\site-packages\ccxt\base\exchange.py", line 554, in fetch
+    response = self.session.request(
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\User\AppData\Local\Programs\Python\Python312\Lib\site-packages\requests\sessions.py", line 589, in request
+    resp = self.send(prep, **send_kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\User\AppData\Local\Programs\Python\Python312\Lib\site-packages\requests\sessions.py", line 703, in send
+    r = adapter.send(request, **kwargs)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\User\AppData\Local\Programs\Python\Python312\Lib\site-packages\requests\adapters.py", line 700, in send
+    raise ConnectionError(e, request=request)
+requests.exceptions.ConnectionError: HTTPSConnectionPool(host='api.binance.com', port=443): Max retries exceeded with url: /api/v3/exchangeInfo (Caused by NameResolutionError("<urllib3.connection.HTTPSConnection object at 0x000001C29F5E1160>: Failed to resolve 'api.binance.com' ([Errno 11001] getaddrinfo failed)"))
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\User\Projects\cbbot-corr-volatility\correlation_bot.py", line 208, in run_cycle
+    exchange = get_exchange()
+               ^^^^^^^^^^^^^^
+  File "C:\Users\User\Projects\cbbot-corr-volatility\correlation_bot.py", line 117, in get_exchange
+    ex.load_markets()
+  File "C:\Users\User\AppData\Local\Programs\Python\Python312\Lib\site-packages\ccxt\base\exchange.py", line 1516, in load_markets
+    markets = self.fetch_markets(params)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\User\AppData\Local\Programs\Python\Python312\Lib\site-packages\ccxt\binance.py", line 3087, in fetch_markets
+    promisesRaw.append(self.publicGetExchangeInfo(params))
+                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\User\AppData\Local\Programs\Python\Python312\Lib\site-packages\ccxt\base\types.py", line 35, in unbound_method
+    return _self.request(self.path, self.api, self.method, params, config=self.config)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\User\AppData\Local\Programs\Python\Python312\Lib\site-packages\ccxt\binance.py", line 11235, in request
+    response = self.fetch2(path, api, method, params, headers, body, config)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\User\AppData\Local\Programs\Python\Python312\Lib\site-packages\ccxt\base\exchange.py", line 4240, in fetch2
+    raise e
+  File "C:\Users\User\AppData\Local\Programs\Python\Python312\Lib\site-packages\ccxt\base\exchange.py", line 4231, in fetch2
+    return self.fetch(request['url'], request['method'], request['headers'], request['body'])
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\User\AppData\Local\Programs\Python\Python312\Lib\site-packages\ccxt\base\exchange.py", line 607, in fetch
+    raise NetworkError(details) from e
+ccxt.base.errors.NetworkError: binance GET https://api.binance.com/api/v3/exchangeInfo
+2025-08-29 17:31:44,639 | WARNING | RON/USDT: fetch_ohlcv failed: binance does not have market symbol RON/USDT
+2025-08-29 17:31:46,096 | WARNING | SATS/USDT: fetch_ohlcv failed: binance does not have market symbol SATS/USDT
+2025-08-29 17:31:47,849 | WARNING | ASI/USDT: fetch_ohlcv failed: binance does not have market symbol ASI/USDT
+2025-08-29 17:31:53,306 | WARNING | AIOZ/USDT: fetch_ohlcv failed: binance does not have market symbol AIOZ/USDT
+2025-08-29 17:31:53,891 | WARNING | BLAST/USDT: fetch_ohlcv failed: binance does not have market symbol BLAST/USDT
+2025-08-29 17:32:04,371 | INFO | Cycle 2025-08-29T14:32:04.371585+00:00 | timeframe=1h | lookback=500 | symbols=95 | pairs=3916
+2025-08-29 17:33:24,328 | WARNING | RON/USDT: fetch_ohlcv failed: binance does not have market symbol RON/USDT
+2025-08-29 17:33:25,791 | WARNING | SATS/USDT: fetch_ohlcv failed: binance does not have market symbol SATS/USDT
+2025-08-29 17:33:28,491 | WARNING | ASI/USDT: fetch_ohlcv failed: binance does not have market symbol ASI/USDT
+2025-08-29 17:33:37,089 | WARNING | AIOZ/USDT: fetch_ohlcv failed: binance does not have market symbol AIOZ/USDT
+2025-08-29 17:33:37,673 | WARNING | BLAST/USDT: fetch_ohlcv failed: binance does not have market symbol BLAST/USDT
+2025-08-29 17:33:48,808 | INFO | Cycle 2025-08-29T14:33:48.808727+00:00 | timeframe=1h | lookback=500 | symbols=95 | pairs=3916
+2025-08-29 17:35:09,541 | WARNING | RON/USDT: fetch_ohlcv failed: binance does not have market symbol RON/USDT
+2025-08-29 17:35:10,991 | WARNING | SATS/USDT: fetch_ohlcv failed: binance does not have market symbol SATS/USDT
+2025-08-29 17:35:12,740 | WARNING | ASI/USDT: fetch_ohlcv failed: binance does not have market symbol ASI/USDT
+2025-08-29 17:35:17,971 | WARNING | AIOZ/USDT: fetch_ohlcv failed: binance does not have market symbol AIOZ/USDT
+2025-08-29 17:35:18,559 | WARNING | BLAST/USDT: fetch_ohlcv failed: binance does not have market symbol BLAST/USDT
+2025-08-29 17:35:29,206 | INFO | Cycle 2025-08-29T14:35:29.206001+00:00 | timeframe=1h | lookback=500 | symbols=95 | pairs=3916
+2025-08-29 17:36:50,413 | WARNING | RON/USDT: fetch_ohlcv failed: binance does not have market symbol RON/USDT
+2025-08-29 17:36:52,081 | WARNING | SATS/USDT: fetch_ohlcv failed: binance does not have market symbol SATS/USDT
+2025-08-29 17:36:53,797 | WARNING | ASI/USDT: fetch_ohlcv failed: binance does not have market symbol ASI/USDT
+2025-08-29 17:36:58,934 | WARNING | AIOZ/USDT: fetch_ohlcv failed: binance does not have market symbol AIOZ/USDT
+2025-08-29 17:36:59,507 | WARNING | BLAST/USDT: fetch_ohlcv failed: binance does not have market symbol BLAST/USDT
+2025-08-29 17:37:10,776 | INFO | Cycle 2025-08-29T14:37:10.776472+00:00 | timeframe=1h | lookback=500 | symbols=95 | pairs=3916
+2025-08-29 17:38:29,967 | WARNING | RON/USDT: fetch_ohlcv failed: binance does not have market symbol RON/USDT
+2025-08-29 17:38:31,409 | WARNING | SATS/USDT: fetch_ohlcv failed: binance does not have market symbol SATS/USDT
+2025-08-29 17:38:33,132 | WARNING | ASI/USDT: fetch_ohlcv failed: binance does not have market symbol ASI/USDT
+2025-08-29 17:38:39,271 | WARNING | AIOZ/USDT: fetch_ohlcv failed: binance does not have market symbol AIOZ/USDT
+2025-08-29 17:38:39,844 | WARNING | BLAST/USDT: fetch_ohlcv failed: binance does not have market symbol BLAST/USDT
+2025-08-29 17:38:50,064 | INFO | Cycle 2025-08-29T14:38:50.064879+00:00 | timeframe=1h | lookback=500 | symbols=95 | pairs=3916
+2025-08-29 17:40:11,790 | WARNING | RON/USDT: fetch_ohlcv failed: binance does not have market symbol RON/USDT
+2025-08-29 17:40:13,958 | WARNING | SATS/USDT: fetch_ohlcv failed: binance does not have market symbol SATS/USDT
+2025-08-29 17:40:15,688 | WARNING | ASI/USDT: fetch_ohlcv failed: binance does not have market symbol ASI/USDT
+2025-08-29 17:40:21,595 | WARNING | AIOZ/USDT: fetch_ohlcv failed: binance does not have market symbol AIOZ/USDT
+2025-08-29 17:40:22,170 | WARNING | BLAST/USDT: fetch_ohlcv failed: binance does not have market symbol BLAST/USDT
+2025-08-29 17:40:32,899 | INFO | Cycle 2025-08-29T14:40:32.899739+00:00 | timeframe=1h | lookback=500 | symbols=95 | pairs=3916
+2025-08-29 17:41:52,654 | WARNING | RON/USDT: fetch_ohlcv failed: binance does not have market symbol RON/USDT
+2025-08-29 17:41:54,113 | WARNING | SATS/USDT: fetch_ohlcv failed: binance does not have market symbol SATS/USDT
+2025-08-29 17:41:55,855 | WARNING | ASI/USDT: fetch_ohlcv failed: binance does not have market symbol ASI/USDT
+2025-08-29 17:42:01,111 | WARNING | AIOZ/USDT: fetch_ohlcv failed: binance does not have market symbol AIOZ/USDT
+2025-08-29 17:42:01,691 | WARNING | BLAST/USDT: fetch_ohlcv failed: binance does not have market symbol BLAST/USDT
+2025-08-29 17:42:13,041 | INFO | Cycle 2025-08-29T14:42:13.041525+00:00 | timeframe=1h | lookback=500 | symbols=95 | pairs=3916
+2025-08-29 17:43:32,592 | WARNING | RON/USDT: fetch_ohlcv failed: binance does not have market symbol RON/USDT
+2025-08-29 17:43:34,038 | WARNING | SATS/USDT: fetch_ohlcv failed: binance does not have market symbol SATS/USDT
+2025-08-29 17:43:35,777 | WARNING | ASI/USDT: fetch_ohlcv failed: binance does not have market symbol ASI/USDT
+2025-08-29 17:43:40,993 | WARNING | AIOZ/USDT: fetch_ohlcv failed: binance does not have market symbol AIOZ/USDT
+2025-08-29 17:43:41,571 | WARNING | BLAST/USDT: fetch_ohlcv failed: binance does not have market symbol BLAST/USDT
+2025-08-29 17:43:52,609 | INFO | Cycle 2025-08-29T14:43:52.609842+00:00 | timeframe=1h | lookback=500 | symbols=95 | pairs=3916
+2025-08-29 17:45:19,392 | WARNING | RON/USDT: fetch_ohlcv failed: binance does not have market symbol RON/USDT
+2025-08-29 17:45:21,313 | WARNING | SATS/USDT: fetch_ohlcv failed: binance does not have market symbol SATS/USDT
+2025-08-29 17:45:24,252 | WARNING | ASI/USDT: fetch_ohlcv failed: binance does not have market symbol ASI/USDT
+2025-08-29 17:45:30,139 | WARNING | AIOZ/USDT: fetch_ohlcv failed: binance does not have market symbol AIOZ/USDT
+2025-08-29 17:45:30,715 | WARNING | BLAST/USDT: fetch_ohlcv failed: binance does not have market symbol BLAST/USDT
+2025-08-29 17:45:41,674 | INFO | Cycle 2025-08-29T14:45:41.674757+00:00 | timeframe=1h | lookback=500 | symbols=95 | pairs=3916
+2025-08-29 17:47:05,353 | WARNING | RON/USDT: fetch_ohlcv failed: binance does not have market symbol RON/USDT
+2025-08-29 17:47:06,790 | WARNING | SATS/USDT: fetch_ohlcv failed: binance does not have market symbol SATS/USDT
+2025-08-29 17:47:09,477 | WARNING | ASI/USDT: fetch_ohlcv failed: binance does not have market symbol ASI/USDT
+2025-08-29 17:47:15,618 | WARNING | AIOZ/USDT: fetch_ohlcv failed: binance does not have market symbol AIOZ/USDT
+2025-08-29 17:47:16,431 | WARNING | BLAST/USDT: fetch_ohlcv failed: binance does not have market symbol BLAST/USDT
+2025-08-29 17:47:26,620 | INFO | Cycle 2025-08-29T14:47:26.620634+00:00 | timeframe=1h | lookback=500 | symbols=95 | pairs=3916
+2025-08-29 17:48:46,059 | WARNING | RON/USDT: fetch_ohlcv failed: binance does not have market symbol RON/USDT
+2025-08-29 17:48:47,504 | WARNING | SATS/USDT: fetch_ohlcv failed: binance does not have market symbol SATS/USDT
+2025-08-29 17:48:49,967 | WARNING | ASI/USDT: fetch_ohlcv failed: binance does not have market symbol ASI/USDT
+2025-08-29 17:48:55,879 | WARNING | AIOZ/USDT: fetch_ohlcv failed: binance does not have market symbol AIOZ/USDT
+2025-08-29 17:48:56,454 | WARNING | BLAST/USDT: fetch_ohlcv failed: binance does not have market symbol BLAST/USDT
+2025-08-29 17:49:07,549 | INFO | Cycle 2025-08-29T14:49:07.549354+00:00 | timeframe=1h | lookback=500 | symbols=95 | pairs=3916
+2025-08-29 17:50:30,203 | WARNING | RON/USDT: fetch_ohlcv failed: binance does not have market symbol RON/USDT
+2025-08-29 17:50:33,084 | WARNING | SATS/USDT: fetch_ohlcv failed: binance does not have market symbol SATS/USDT
+2025-08-29 17:50:34,811 | WARNING | ASI/USDT: fetch_ohlcv failed: binance does not have market symbol ASI/USDT
+2025-08-29 17:50:40,473 | WARNING | AIOZ/USDT: fetch_ohlcv failed: binance does not have market symbol AIOZ/USDT
+2025-08-29 17:50:41,046 | WARNING | BLAST/USDT: fetch_ohlcv failed: binance does not have market symbol BLAST/USDT
+2025-08-29 17:50:51,412 | INFO | Cycle 2025-08-29T14:50:51.412351+00:00 | timeframe=1h | lookback=500 | symbols=95 | pairs=3916
+2025-08-29 18:00:21,827 | WARNING | RON/USDT: fetch_ohlcv failed: binance does not have market symbol RON/USDT
+2025-08-29 18:00:23,270 | WARNING | SATS/USDT: fetch_ohlcv failed: binance does not have market symbol SATS/USDT
+2025-08-29 18:00:26,449 | WARNING | ASI/USDT: fetch_ohlcv failed: binance does not have market symbol ASI/USDT
+2025-08-29 18:00:33,069 | WARNING | AIOZ/USDT: fetch_ohlcv failed: binance does not have market symbol AIOZ/USDT
+2025-08-29 18:00:33,642 | WARNING | BLAST/USDT: fetch_ohlcv failed: binance does not have market symbol BLAST/USDT
+2025-08-29 18:00:43,985 | INFO | Cycle 2025-08-29T15:00:43.985725+00:00 | timeframe=1h | lookback=500 | symbols=95 | pairs=3916
+2025-08-29 18:01:43,842 | INFO | Shutting down by user request.
