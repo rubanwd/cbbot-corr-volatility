@@ -1,5 +1,7 @@
-ccxt
-pandas
-numpy
-scipy
-schedule
+ccxt>=4.3
+pandas>=2.2
+numpy>=1.26
+scipy>=1.11
+schedule>=1.2
+requests>=2.31
+python-dotenv>=1.0

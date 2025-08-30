@@ -1,16 +1,11 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """
-Correlation Scanner Bot for Binance via CCXT
-- Корреляции доходностей, weak-пары, RSI для обеих legs
-- position_candidates: RSI одного > 70 и другого < 30
-- Логи в JSON/JSONL, расписание через schedule
-- position_entry_cases.json теперь накапливает записи и дедуплицирует по паре в окне 24h
-
-Запуск (примеры):
-    python correlation_bot.py --timeframe 1h --hourly-at ":01"
-    python correlation_bot.py --timeframe 15m --run-every-minutes 1
-    python correlation_bot.py --once
+Correlation Scanner Bot for Binance via CCXT (ENV-only)
+- читает ВСЕ настройки из .env (или переменных окружения)
+- считает корреляции/RSI, формирует weak_corr_pairs, position_candidates
+- ведёт json/jsonl-логи + dedup 24h для position_entry_cases.json
+- и, при TELEGRAM_ENABLED=true, каждый час шлёт отчёт в Telegram
 """
 
 from __future__ import annotations
@@ -18,7 +13,6 @@ from __future__ import annotations
 import os
 import json
 import time
-import argparse
 import logging
 import warnings
 from dataclasses import dataclass
@@ -29,12 +23,29 @@ import numpy as np
 import pandas as pd
 import schedule
 
+# ── .env загрузка (необязательно; если нет python-dotenv, просто пропустим)
+def _load_dotenv_if_available() -> None:
+    try:
+        from dotenv import load_dotenv
+        if os.path.exists(".env"):
+            load_dotenv()
+    except Exception:
+        pass
+
+_load_dotenv_if_available()
+
 try:
     import ccxt
 except Exception as e:
     raise SystemExit("ccxt is required. Install with: pip install ccxt") from e
 
-# Мягко приглушаем только спец-предупреждение SciPy
+# Telegram-компонент (лежит рядом в telegram_report.py)
+try:
+    from telegram_report import send_report_once as tg_send_report_once
+except Exception:
+    tg_send_report_once = None
+
+# SciPy (не обязателен; если нет — используем pandas corr)
 try:
     from scipy.stats import pearsonr, ConstantInputWarning  # type: ignore
     warnings.filterwarnings("ignore", category=ConstantInputWarning)
@@ -44,47 +55,76 @@ except Exception:
     SCIPY_OK = False
 
 
-# ========================== CONFIG (переопределяется из CLI) ==========================
+# ───────────────────────── Helpers: env parsing ─────────────────────────
 
-SYMBOLS: List[str] = []
-SYMBOLS_FILE: Optional[str] = "symbols.txt"
+def _get_str(name: str, default: Optional[str] = None) -> Optional[str]:
+    v = os.getenv(name)
+    return v if (v is not None and v != "") else default
 
-USE_FUTURES: bool = False               # False=spot, True=futures
-TIMEFRAME: str = "1h"
-LOOKBACK_BARS: int = 500
+def _get_int(name: str, default: int) -> int:
+    v = os.getenv(name)
+    try:
+        return int(v) if v not in (None, "") else default
+    except Exception:
+        return default
 
-MIN_OBS_PER_SYMBOL: int = 50
-MIN_OBS_PER_PAIR: int = 30
+def _get_float(name: str, default: float) -> float:
+    v = os.getenv(name)
+    try:
+        return float(v) if v not in (None, "") else default
+    except Exception:
+        return default
 
-# RSI
-RSI_PERIOD: int = 14
+def _get_bool(name: str, default: bool) -> bool:
+    v = os.getenv(name)
+    if v is None:
+        return default
+    v2 = str(v).strip().lower()
+    return v2 in ("1", "true", "t", "yes", "y", "on")
 
-# слабая корреляция: близко к нулю
-WEAK_CORR_ABS_THRESH: float = 0.30
+# ───────────────────────── Config from ENV ─────────────────────────
 
-# Вывод
-OUTPUT_DIR: str = "./data"
+SYMBOLS: List[str] = []  # можно игнорировать, используем файл
+
+SYMBOLS_FILE: Optional[str] = _get_str("SYMBOLS_FILE", "symbols.txt")
+USE_FUTURES: bool = _get_bool("USE_FUTURES", False)
+TIMEFRAME: str = _get_str("TIMEFRAME", "1h") or "1h"
+LOOKBACK_BARS: int = _get_int("LOOKBACK_BARS", 500)
+
+MIN_OBS_PER_SYMBOL: int = _get_int("MIN_OBS_PER_SYMBOL", 50)
+MIN_OBS_PER_PAIR: int = _get_int("MIN_OBS_PER_PAIR", 30)
+
+RSI_PERIOD: int = _get_int("RSI_PERIOD", 14)
+WEAK_CORR_ABS_THRESH: float = _get_float("WEAK_CORR_ABS_THRESH", 0.30)
+
+OUTPUT_DIR: str = _get_str("OUTPUT_DIR", "./data") or "./data"
 JSON_SNAPSHOTS_FILE: str = os.path.join(OUTPUT_DIR, "correlation_snapshots.jsonl")
 LATEST_JSON_FILE: str = os.path.join(OUTPUT_DIR, "latest_correlation.json")
 LOG_FILE: str = os.path.join(OUTPUT_DIR, "correlation_bot.log")
 
-# Доп. лог по кандидатам входа (RSI >70 / <30)
 POSITION_CASES_JSONL: str = os.path.join(OUTPUT_DIR, "position_entry_cases.jsonl")
 POSITION_CASES_JSON: str  = os.path.join(OUTPUT_DIR, "position_entry_cases.json")
 
-# Алерты/сортировки
-ALERT_NEGATIVE_THRESH: float = -0.30
-ALERT_NEAR_ZERO_ABS: float = 0.10
-TOP_N_TO_LOG: int = 50
-TOP_N_TO_PERSIST: Optional[int] = 200
+ALERT_NEGATIVE_THRESH: float = _get_float("ALERT_NEGATIVE_THRESH", -0.30)
+ALERT_NEAR_ZERO_ABS: float = _get_float("ALERT_NEAR_ZERO_ABS", 0.10)
+TOP_N_TO_LOG: int = _get_int("TOP_N_TO_LOG", 50)
+TOP_N_TO_PERSIST_RAW: int = _get_int("TOP_N_TO_PERSIST", 200)
+TOP_N_TO_PERSIST: Optional[int] = None if TOP_N_TO_PERSIST_RAW <= 0 else TOP_N_TO_PERSIST_RAW
 
-# Расписание
-RUN_EVERY_MINUTES: int = 1
-HOURLY_AT: Optional[str] = None
-RUN_ONCE: bool = False
+RUN_EVERY_MINUTES: int = _get_int("RUN_EVERY_MINUTES", 1)
+HOURLY_AT: Optional[str] = _get_str("HOURLY_AT", ":01")
+HOURLY_AT = None if (HOURLY_AT or "").strip() == "" else HOURLY_AT
+RUN_ONCE: bool = _get_bool("RUN_ONCE", False)
+
+TELEGRAM_ENABLED: bool = _get_bool("TELEGRAM_ENABLED", False)
+TELEGRAM_HOURLY_AT: str = _get_str("TELEGRAM_HOURLY_AT", ":05") or ":05"
+TELEGRAM_MAX_ROWS: int = _get_int("TELEGRAM_MAX_ROWS", 30)
+TELEGRAM_SEND_ON_START: bool = _get_bool("TELEGRAM_SEND_ON_START", True)
+TELEGRAM_BOT_TOKEN: Optional[str] = _get_str("TELEGRAM_BOT_TOKEN", None)
+TELEGRAM_CHAT_ID: Optional[str] = _get_str("TELEGRAM_CHAT_ID", None)
 
 
-# ========================== HELPERS ==========================
+# ───────────────────────── Core helpers ─────────────────────────
 
 def setup_logger(log_file: str) -> logging.Logger:
     os.makedirs(os.path.dirname(log_file), exist_ok=True)
@@ -99,22 +139,19 @@ def setup_logger(log_file: str) -> logging.Logger:
     logger.addHandler(sh)
     return logger
 
-
 def utc_now_iso() -> str:
     return datetime.now(timezone.utc).isoformat()
 
-
 def load_symbols(symbols_file: Optional[str]) -> List[str]:
-    if SYMBOLS and len(SYMBOLS) > 0:
+    if SYMBOLS:
         return SYMBOLS
     if symbols_file and os.path.exists(symbols_file):
         with open(symbols_file, "r", encoding="utf-8") as f:
             syms = [line.strip() for line in f if line.strip() and not line.strip().startswith("#")]
         if not syms:
-            raise SystemExit("symbols.txt пуст. Заполни символы по одному в строке, например BTC/USDT")
+            raise SystemExit("symbols.txt пуст. Добавь символы (BTC/USDT и т.д.).")
         return syms
-    raise SystemExit("Не заданы символы. Укажи их в SYMBOLS или создай symbols.txt.")
-
+    raise SystemExit("Не заданы символы. Создай symbols.txt или задай SYMBOLS_FILE.")
 
 def get_exchange():
     cfg = dict(enableRateLimit=True, options={"defaultType": "future" if USE_FUTURES else "spot"})
@@ -122,32 +159,24 @@ def get_exchange():
     ex.load_markets()
     return ex
 
-
 def fetch_closes(exchange, symbols: List[str], timeframe: str, limit: int, logger: logging.Logger) -> pd.DataFrame:
     all_series: Dict[str, pd.Series] = {}
     for sym in symbols:
         try:
             ohlcv = exchange.fetch_ohlcv(sym, timeframe=timeframe, limit=limit)
             if not ohlcv:
-                logger.warning("%s: empty OHLCV", sym)
-                continue
-            df = pd.DataFrame(ohlcv, columns=["ts", "open", "high", "low", "close", "volume"])
+                logger.warning("%s: empty OHLCV", sym); continue
+            df = pd.DataFrame(ohlcv, columns=["ts","open","high","low","close","volume"])
             df["ts"] = pd.to_datetime(df["ts"], unit="ms", utc=True)
             df.set_index("ts", inplace=True)
-            s = df["close"].astype(float)
-            all_series[sym] = s
+            all_series[sym] = df["close"].astype(float)
         except Exception as e:
-            logger.warning("%s: fetch_ohlcv failed: %s", sym, e)
-            continue
-
+            logger.warning("%s: fetch_ohlcv failed: %s", sym, e); continue
     if not all_series:
-        raise RuntimeError("Не удалось получить OHLCV ни для одного символа. Проверь список/таймфрейм.")
-    closes = pd.concat(all_series, axis=1).sort_index()
-    return closes
-
+        raise RuntimeError("Нет OHLCV ни по одному символу.")
+    return pd.concat(all_series, axis=1).sort_index()
 
 def compute_rsi_series(close: pd.Series, period: int = 14) -> pd.Series:
-    """Wilder RSI через EWM(alpha=1/period)."""
     delta = close.diff()
     gain = delta.where(delta > 0, 0.0)
     loss = -delta.where(delta < 0, 0.0)
@@ -157,18 +186,16 @@ def compute_rsi_series(close: pd.Series, period: int = 14) -> pd.Series:
     rsi = 100 - (100 / (1 + rs))
     return rsi
 
-
 def compute_rsi_last_map(closes: pd.DataFrame, period: int) -> Dict[str, float]:
-    rsi_last: Dict[str, float] = {}
+    out: Dict[str, float] = {}
     for col in closes.columns:
         try:
             rsi = compute_rsi_series(closes[col], period=period)
             val = rsi.iloc[-1]
-            rsi_last[col] = float(val) if pd.notna(val) else float("nan")
+            out[col] = float(val) if pd.notna(val) else float("nan")
         except Exception:
-            rsi_last[col] = float("nan")
-    return rsi_last
-
+            out[col] = float("nan")
+    return out
 
 @dataclass
 class PairStat:
@@ -177,7 +204,6 @@ class PairStat:
     corr: float
     p_value: Optional[float]
     n_obs: int
-
     def as_dict(self) -> Dict[str, Any]:
         return {
             "pair": f"{self.symbol_1}~{self.symbol_2}",
@@ -188,12 +214,7 @@ class PairStat:
             "n_obs": int(self.n_obs),
         }
 
-
-def compute_pairwise_correlations(
-    returns: pd.DataFrame,
-    min_obs_pair: int,
-    use_scipy: bool = True
-) -> List[PairStat]:
+def compute_pairwise_correlations(returns: pd.DataFrame, min_obs_pair: int, use_scipy: bool = True) -> List[PairStat]:
     cols = list(returns.columns)
     pairs: List[PairStat] = []
     for i in range(len(cols)):
@@ -201,10 +222,8 @@ def compute_pairwise_correlations(
             s1, s2 = cols[i], cols[j]
             sub = returns[[s1, s2]].dropna()
             n = len(sub)
-            if n < min_obs_pair:
-                continue
-            if sub[s1].std(skipna=True) == 0 or sub[s2].std(skipna=True) == 0:
-                continue
+            if n < min_obs_pair: continue
+            if sub[s1].std(skipna=True) == 0 or sub[s2].std(skipna=True) == 0: continue
             r = sub[s1].corr(sub[s2])
             p_val: Optional[float] = None
             if use_scipy and SCIPY_OK:
@@ -216,15 +235,12 @@ def compute_pairwise_correlations(
             pairs.append(PairStat(s1, s2, float(r), p_val, n))
     return pairs
 
-
 def attach_rsi_to_pairs(pair_dicts: List[Dict[str, Any]], rsi_last: Dict[str, float]) -> None:
     for d in pair_dicts:
         s1, s2 = d.get("symbol_1"), d.get("symbol_2")
-        v1 = rsi_last.get(s1, float("nan"))
-        v2 = rsi_last.get(s2, float("nan"))
-        d["symbol_1_rsi"] = None if (v1 is None or (isinstance(v1, float) and np.isnan(v1))) else float(v1)
-        d["symbol_2_rsi"] = None if (v2 is None or (isinstance(v2, float) and np.isnan(v2))) else float(v2)
-
+        v1 = rsi_last.get(s1, float("nan")); v2 = rsi_last.get(s2, float("nan"))
+        d["symbol_1_rsi"] = None if (isinstance(v1, float) and np.isnan(v1)) else float(v1)
+        d["symbol_2_rsi"] = None if (isinstance(v2, float) and np.isnan(v2)) else float(v2)
 
 def persist_snapshot(snapshot: Dict[str, Any]) -> None:
     os.makedirs(os.path.dirname(JSON_SNAPSHOTS_FILE), exist_ok=True)
@@ -233,94 +249,59 @@ def persist_snapshot(snapshot: Dict[str, Any]) -> None:
     with open(LATEST_JSON_FILE, "w", encoding="utf-8") as f:
         json.dump(snapshot, f, ensure_ascii=False, indent=2)
 
-
-# ----------------------- Position cases accumulation -----------------------
-
+# ── position_entry_cases (24h dedup) ────────────────────────────
 def _canonical_pair_key(sym1: str, sym2: str) -> Tuple[str, str]:
-    """Не зависит от порядка: ('BTC/USDT','ETH/USDT') == ('ETH/USDT','BTC/USDT')."""
     return tuple(sorted((sym1, sym2)))
 
 def _parse_iso(ts: str) -> datetime:
     try:
-        # Python 3.11+ читает ISO с оффсетом
         return datetime.fromisoformat(ts)
     except Exception:
-        # На всякий случай — принудительно к UTC
         return datetime.strptime(ts.replace("Z", "+00:00"), "%Y-%m-%dT%H:%M:%S%z").astimezone(timezone.utc)
 
 def _load_position_json_history(path: str) -> List[Dict[str, Any]]:
-    """
-    Грузим массив объектов из position_entry_cases.json.
-    Совместимость: если там старый формат { "timestamp_utc": ..., "position_candidates": [...] } — расплющим.
-    """
-    if not os.path.exists(path):
-        return []
+    if not os.path.exists(path): return []
     try:
         with open(path, "r", encoding="utf-8") as f:
             data = json.load(f)
-        if isinstance(data, list):
-            return data
+        if isinstance(data, list): return data
         if isinstance(data, dict) and "position_candidates" in data:
             pcs = data.get("position_candidates") or []
-            if isinstance(pcs, list):
-                return pcs
-        # если что-то иное — начнем новую историю
+            return pcs if isinstance(pcs, list) else []
         return []
     except Exception:
         return []
 
 def _should_append(case: Dict[str, Any], history: List[Dict[str, Any]], now_dt: datetime) -> bool:
-    """
-    True если в истории НЕТ записи с той же парой за последние 24 часа.
-    """
-    s1 = case.get("symbol_1")
-    s2 = case.get("symbol_2")
-    if not s1 or not s2:
-        return False
+    s1 = case.get("symbol_1"); s2 = case.get("symbol_2")
+    if not s1 or not s2: return False
     key = _canonical_pair_key(s1, s2)
     day_ago = now_dt - timedelta(hours=24)
-
     for prev in history:
         p1, p2 = prev.get("symbol_1"), prev.get("symbol_2")
-        if not p1 or not p2:
-            continue
-        if _canonical_pair_key(p1, p2) != key:
-            continue
-        pts = prev.get("timestamp_utc") or prev.get("date")  # на случай другого поля
-        if not pts:
-            continue
-        try:
-            pts_dt = _parse_iso(pts)
-        except Exception:
-            continue
-        if pts_dt.tzinfo is None:
-            pts_dt = pts_dt.replace(tzinfo=timezone.utc)
+        if not p1 or not p2: continue
+        if _canonical_pair_key(p1, p2) != key: continue
+        pts = prev.get("timestamp_utc") or prev.get("date")
+        if not pts: continue
+        try: pts_dt = _parse_iso(pts)
+        except Exception: continue
+        if pts_dt.tzinfo is None: pts_dt = pts_dt.replace(tzinfo=timezone.utc)
         if pts_dt >= day_ago:
-            return False  # уже есть свежая запись этой пары
+            return False
     return True
 
 def log_position_cases(candidates: List[Dict[str, Any]], ts: str, logger: Optional[logging.Logger] = None) -> None:
-    """
-    - Всегда аппендим сырые кандидаты в JSONL (построчно).
-    - В position_entry_cases.json накапливаем массив, но дедуплицируем по паре в окне 24h.
-    """
-    if not candidates:
-        return
-
+    if not candidates: return
     os.makedirs(os.path.dirname(POSITION_CASES_JSONL), exist_ok=True)
-
-    # 1) JSONL — просто дописываем строки
+    # JSONL append
     with open(POSITION_CASES_JSONL, "a", encoding="utf-8") as f:
         for c in candidates:
             out = {"timestamp_utc": ts, **c}
             f.write(json.dumps(out, ensure_ascii=False) + "\n")
-
-    # 2) JSON — накапливаем уникальные по паре за 24h
+    # JSON dedup 24h
     history = _load_position_json_history(POSITION_CASES_JSON)
     now_dt = _parse_iso(ts)
-    if now_dt.tzinfo is None:
-        now_dt = now_dt.replace(tzinfo=timezone.utc)
-
+    if now_dt.tzinfo is None: now_dt = now_dt.replace(tzinfo=timezone.utc)
     appended = 0
     for c in candidates:
         entry = {
@@ -333,17 +314,13 @@ def log_position_cases(candidates: List[Dict[str, Any]], ts: str, logger: Option
             "corr": c.get("corr"),
         }
         if _should_append(entry, history, now_dt):
-            history.append(entry)
-            appended += 1
-
+            history.append(entry); appended += 1
     with open(POSITION_CASES_JSON, "w", encoding="utf-8") as f:
         json.dump(history, f, ensure_ascii=False, indent=2)
-
     if logger:
         logger.info("Position cases saved: appended %d new unique entries (24h window).", appended)
 
-
-# ----------------------- CORE -----------------------
+# ───────────────────────── Core cycle ─────────────────────────
 
 def run_cycle(logger: logging.Logger) -> None:
     try:
@@ -352,10 +329,10 @@ def run_cycle(logger: logging.Logger) -> None:
 
         closes = fetch_closes(exchange, symbols, TIMEFRAME, LOOKBACK_BARS, logger)
 
-        # ---- RSI по последним значениям ----
+        # RSI last
         rsi_last_all = compute_rsi_last_map(closes, period=RSI_PERIOD)
 
-        # ---- Доходности + чистка ----
+        # returns + cleaning
         returns = closes.pct_change(fill_method=None)
         returns = returns.replace([np.inf, -np.inf], np.nan)
         returns = returns.dropna(how="all")
@@ -368,12 +345,11 @@ def run_cycle(logger: logging.Logger) -> None:
 
         if dropped:
             logger.info("Dropped %d symbols (insufficient data or zero variance): %s",
-                        len(dropped),
-                        ", ".join(dropped[:20]) + ("..." if len(dropped) > 20 else ""))
+                        len(dropped), ", ".join(dropped[:20]) + ("..." if len(dropped) > 20 else ""))
 
         if returns.shape[1] < 2:
             ts = utc_now_iso()
-            logger.info("Недостаточно валидных символов после фильтрации. Пропускаем корреляции.")
+            logger.info("Недостаточно валидных символов. Пропускаем корреляции.")
             snapshot = {
                 "timestamp_utc": ts,
                 "exchange": "binanceusdm" if USE_FUTURES else "binance",
@@ -392,43 +368,37 @@ def run_cycle(logger: logging.Logger) -> None:
 
         _ = returns.corr(min_periods=MIN_OBS_PER_PAIR)
 
-        # ---- Попарные корреляции ----
+        # pairwise
         pair_stats = compute_pairwise_correlations(returns, min_obs_pair=MIN_OBS_PER_PAIR, use_scipy=True)
-        pair_stats_sorted = sorted(pair_stats, key=lambda x: x.corr)      # возрастание (сильнее отрицательные сверху)
-        pair_stats_by_abs = sorted(pair_stats, key=lambda x: abs(x.corr)) # ближе к нулю сверху
+        pair_stats_sorted = sorted(pair_stats, key=lambda x: x.corr)
+        pair_stats_by_abs = sorted(pair_stats, key=lambda x: abs(x.corr))
 
         ts = utc_now_iso()
         logger.info("Cycle %s | timeframe=%s | lookback=%d | symbols=%d | pairs=%d",
                     ts, TIMEFRAME, LOOKBACK_BARS, returns.shape[1], len(pair_stats_sorted))
 
-        # ---- Преобразуем в dict и приклеим RSI ----
         pairs_sorted_dicts = [p.as_dict() for p in pair_stats_sorted]
         pairs_abs_dicts    = [p.as_dict() for p in pair_stats_by_abs]
         attach_rsi_to_pairs(pairs_sorted_dicts, rsi_last_all)
         attach_rsi_to_pairs(pairs_abs_dicts,    rsi_last_all)
 
-        # ---- weak_corr_pairs: |corr| < WEAK_CORR_ABS_THRESH, сортировка по разрыву RSI (по убыванию) ----
+        # weak pairs: abs(corr) < threshold, sort by RSI gap desc
         weak_pairs = [p.as_dict() for p in pair_stats if abs(p.corr) < WEAK_CORR_ABS_THRESH]
         attach_rsi_to_pairs(weak_pairs, rsi_last_all)
         def rsi_gap(d: Dict[str, Any]) -> float:
-            r1 = d.get("symbol_1_rsi")
-            r2 = d.get("symbol_2_rsi")
-            if r1 is None or r2 is None:
-                return -1.0
+            r1 = d.get("symbol_1_rsi"); r2 = d.get("symbol_2_rsi")
+            if r1 is None or r2 is None: return -1.0
             return abs(float(r1) - float(r2))
         weak_pairs.sort(key=rsi_gap, reverse=True)
 
-        # ---- position_candidates: один RSI > 70, другой < 30 ----
+        # position candidates: one RSI>70 and other<30
         def is_position_candidate(d: Dict[str, Any]) -> bool:
-            r1 = d.get("symbol_1_rsi")
-            r2 = d.get("symbol_2_rsi")
-            if r1 is None or r2 is None:
-                return False
+            r1 = d.get("symbol_1_rsi"); r2 = d.get("symbol_2_rsi")
+            if r1 is None or r2 is None: return False
             return (r1 > 70 and r2 < 30) or (r2 > 70 and r1 < 30)
-
         position_candidates = [d for d in pairs_sorted_dicts if is_position_candidate(d)]
 
-        # ---- Логи-алерты в stdout ----
+        # alerts (logs)
         negative_alerts = [d for d in pairs_sorted_dicts if d["corr"] <= ALERT_NEGATIVE_THRESH][:TOP_N_TO_LOG]
         near_zero_alerts = [d for d in pairs_abs_dicts if abs(d["corr"]) <= ALERT_NEAR_ZERO_ABS][:TOP_N_TO_LOG]
 
@@ -459,11 +429,9 @@ def run_cycle(logger: logging.Logger) -> None:
                             c.get("symbol_2_rsi") if c.get("symbol_2_rsi") is not None else float("nan"),
                             c["corr"])
 
-        # ---- Ограничение объёма в снапшоте ----
+        # snapshot (limit size)
         to_persist_sorted = pairs_sorted_dicts[:TOP_N_TO_PERSIST] if TOP_N_TO_PERSIST else pairs_sorted_dicts
         to_persist_abs    = pairs_abs_dicts[:TOP_N_TO_PERSIST]    if TOP_N_TO_PERSIST else pairs_abs_dicts
-        to_persist_weak   = weak_pairs
-        to_persist_pos    = position_candidates
 
         snapshot = {
             "timestamp_utc": ts,
@@ -475,61 +443,24 @@ def run_cycle(logger: logging.Logger) -> None:
             "alerts": {"negative": negative_alerts, "near_zero": near_zero_alerts},
             "pairs_sorted_by_corr": to_persist_sorted,
             "pairs_closest_to_zero": to_persist_abs,
-            "weak_corr_pairs": to_persist_weak,
-            "position_candidates": to_persist_pos,
+            "weak_corr_pairs": weak_pairs,
+            "position_candidates": position_candidates,
         }
         persist_snapshot(snapshot)
 
-        # ---- Отдельный лог кандидатов входа: JSONL + JSON (накапливающий с дедупликацией 24h) ----
+        # separate log for position candidates with 24h dedup
         log_position_cases(position_candidates, ts, logger=logger)
 
     except Exception as e:
         logger.exception("Cycle failed: %s", e)
 
-
-def apply_cli_overrides():
-    global SYMBOLS_FILE, USE_FUTURES, TIMEFRAME, LOOKBACK_BARS
-    global RUN_EVERY_MINUTES, HOURLY_AT, RUN_ONCE
-    global MIN_OBS_PER_SYMBOL, MIN_OBS_PER_PAIR
-    global ALERT_NEGATIVE_THRESH, ALERT_NEAR_ZERO_ABS
-    global RSI_PERIOD, WEAK_CORR_ABS_THRESH
-
-    parser = argparse.ArgumentParser(description="Correlation Scanner Bot")
-    parser.add_argument("--symbols-file", type=str, default=SYMBOLS_FILE)
-    parser.add_argument("--use-futures", action="store_true", help="Use USDⓈ-M futures instead of spot")
-    parser.add_argument("--timeframe", type=str, default=TIMEFRAME)
-    parser.add_argument("--lookback", type=int, default=LOOKBACK_BARS)
-    parser.add_argument("--run-every-minutes", type=int, default=RUN_EVERY_MINUTES)
-    parser.add_argument("--hourly-at", type=str, default=HOURLY_AT, help='e.g. ":01" to run once per hour')
-    parser.add_argument("--once", action="store_true", help="Run a single cycle and exit")
-    parser.add_argument("--min-obs-symbol", type=int, default=MIN_OBS_PER_SYMBOL)
-    parser.add_argument("--min-obs-pair", type=int, default=MIN_OBS_PER_PAIR)
-    parser.add_argument("--negative-thresh", type=float, default=ALERT_NEGATIVE_THRESH)
-    parser.add_argument("--near-zero-abs", type=float, default=ALERT_NEAR_ZERO_ABS)
-    parser.add_argument("--rsi-period", type=int, default=RSI_PERIOD)
-    parser.add_argument("--weak-abs", type=float, default=WEAK_CORR_ABS_THRESH, help="abs(corr) < this is WEAK")
-    args = parser.parse_args()
-
-    SYMBOLS_FILE = args.symbols_file
-    USE_FUTURES = args.use_futures
-    TIMEFRAME = args.timeframe
-    LOOKBACK_BARS = args.lookback
-    RUN_EVERY_MINUTES = args.run_every_minutes
-    HOURLY_AT = args.hourly_at
-    RUN_ONCE = args.once
-    MIN_OBS_PER_SYMBOL = args.min_obs_symbol
-    MIN_OBS_PER_PAIR = args.min_obs_pair
-    ALERT_NEGATIVE_THRESH = args.negative_thresh
-    ALERT_NEAR_ZERO_ABS = args.near_zero_abs
-    RSI_PERIOD = args.rsi_period
-    WEAK_CORR_ABS_THRESH = args.weak_abs
-
+# ───────────────────────── Main (scheduler) ─────────────────────────
 
 def main():
-    apply_cli_overrides()
     logger = setup_logger(LOG_FILE)
-    logger.info("Starting Correlation Scanner Bot")
+    logger.info("Starting Correlation Scanner Bot (ENV mode)")
 
+    # первый прогон сразу
     run_cycle(logger)
 
     if RUN_ONCE:
@@ -537,12 +468,33 @@ def main():
         return
 
     schedule.clear()
+
+    # основной цикл
     if HOURLY_AT:
         schedule.every().hour.at(HOURLY_AT).do(run_cycle, logger=logger)
-        logger.info("Scheduled hourly at %s", HOURLY_AT)
+        logger.info("Scheduled main cycle hourly at %s", HOURLY_AT)
     else:
         schedule.every(RUN_EVERY_MINUTES).minutes.do(run_cycle, logger=logger)
-        logger.info("Scheduled every %d minute(s)", RUN_EVERY_MINUTES)
+        logger.info("Scheduled main cycle every %d minute(s)", RUN_EVERY_MINUTES)
+
+    # telegram отчёт
+    if TELEGRAM_ENABLED:
+        if tg_send_report_once is None:
+            logger.error("Telegram enabled but telegram_report.py not importable")
+        elif not TELEGRAM_BOT_TOKEN or not TELEGRAM_CHAT_ID:
+            logger.error("Telegram enabled but TELEGRAM_BOT_TOKEN/TELEGRAM_CHAT_ID not set")
+        else:
+            def telegram_job():
+                try:
+                    tg_send_report_once(LATEST_JSON_FILE, TELEGRAM_BOT_TOKEN, TELEGRAM_CHAT_ID, TELEGRAM_MAX_ROWS)
+                except Exception as e:
+                    logger.exception("Telegram report failed: %s", e)
+
+            schedule.every().hour.at(TELEGRAM_HOURLY_AT).do(telegram_job)
+            logger.info("Telegram report scheduled hourly at %s (max_rows=%d)", TELEGRAM_HOURLY_AT, TELEGRAM_MAX_ROWS)
+
+            if TELEGRAM_SEND_ON_START:
+                telegram_job()
 
     while True:
         try:
@@ -554,7 +506,6 @@ def main():
         except Exception as e:
             logger.exception("Scheduler loop error: %s", e)
             time.sleep(2)
-
 
 if __name__ == "__main__":
     main()
