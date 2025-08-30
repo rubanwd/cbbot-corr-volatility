@@ -1041,3 +1041,138 @@ ccxt.base.errors.NetworkError: binance GET https://api.binance.com/api/v3/exchan
 2025-08-29 18:00:33,642 | WARNING | BLAST/USDT: fetch_ohlcv failed: binance does not have market symbol BLAST/USDT
 2025-08-29 18:00:43,985 | INFO | Cycle 2025-08-29T15:00:43.985725+00:00 | timeframe=1h | lookback=500 | symbols=95 | pairs=3916
 2025-08-29 18:01:43,842 | INFO | Shutting down by user request.
+2025-08-29 18:05:55,996 | INFO | Starting Correlation Scanner Bot
+2025-08-29 18:06:21,775 | WARNING | RON/USDT: fetch_ohlcv failed: binance does not have market symbol RON/USDT
+2025-08-29 18:06:23,945 | WARNING | SATS/USDT: fetch_ohlcv failed: binance does not have market symbol SATS/USDT
+2025-08-29 18:06:26,414 | WARNING | ASI/USDT: fetch_ohlcv failed: binance does not have market symbol ASI/USDT
+2025-08-29 18:06:33,558 | WARNING | AIOZ/USDT: fetch_ohlcv failed: binance does not have market symbol AIOZ/USDT
+2025-08-29 18:06:34,136 | WARNING | BLAST/USDT: fetch_ohlcv failed: binance does not have market symbol BLAST/USDT
+2025-08-29 18:06:44,639 | INFO | Cycle 2025-08-29T15:06:44.639933+00:00 | timeframe=1h | lookback=500 | symbols=95 | pairs=3916
+2025-08-29 18:06:44,713 | INFO | Scheduled every 1 minute(s)
+2025-08-29 18:08:06,040 | WARNING | RON/USDT: fetch_ohlcv failed: binance does not have market symbol RON/USDT
+2025-08-29 18:08:09,916 | WARNING | SATS/USDT: fetch_ohlcv failed: binance does not have market symbol SATS/USDT
+2025-08-29 18:08:11,903 | WARNING | ASI/USDT: fetch_ohlcv failed: binance does not have market symbol ASI/USDT
+2025-08-29 18:08:18,348 | WARNING | AIOZ/USDT: fetch_ohlcv failed: binance does not have market symbol AIOZ/USDT
+2025-08-29 18:08:18,928 | WARNING | BLAST/USDT: fetch_ohlcv failed: binance does not have market symbol BLAST/USDT
+2025-08-29 18:08:29,634 | INFO | Cycle 2025-08-29T15:08:29.634631+00:00 | timeframe=1h | lookback=500 | symbols=95 | pairs=3916
+2025-08-29 18:09:50,065 | WARNING | RON/USDT: fetch_ohlcv failed: binance does not have market symbol RON/USDT
+2025-08-29 18:09:51,728 | WARNING | SATS/USDT: fetch_ohlcv failed: binance does not have market symbol SATS/USDT
+2025-08-29 18:09:54,401 | WARNING | ASI/USDT: fetch_ohlcv failed: binance does not have market symbol ASI/USDT
+2025-08-29 18:10:00,984 | WARNING | AIOZ/USDT: fetch_ohlcv failed: binance does not have market symbol AIOZ/USDT
+2025-08-29 18:10:01,562 | WARNING | BLAST/USDT: fetch_ohlcv failed: binance does not have market symbol BLAST/USDT
+2025-08-29 18:10:13,511 | INFO | Cycle 2025-08-29T15:10:13.511340+00:00 | timeframe=1h | lookback=500 | symbols=95 | pairs=3916
+2025-08-29 18:11:36,790 | WARNING | RON/USDT: fetch_ohlcv failed: binance does not have market symbol RON/USDT
+2025-08-29 18:11:38,213 | WARNING | SATS/USDT: fetch_ohlcv failed: binance does not have market symbol SATS/USDT
+2025-08-29 18:11:40,409 | WARNING | ASI/USDT: fetch_ohlcv failed: binance does not have market symbol ASI/USDT
+2025-08-29 18:11:46,233 | WARNING | AIOZ/USDT: fetch_ohlcv failed: binance does not have market symbol AIOZ/USDT
+2025-08-29 18:11:46,802 | WARNING | BLAST/USDT: fetch_ohlcv failed: binance does not have market symbol BLAST/USDT
+2025-08-29 18:11:57,853 | INFO | Cycle 2025-08-29T15:11:57.853863+00:00 | timeframe=1h | lookback=500 | symbols=95 | pairs=3916
+2025-08-29 18:13:19,730 | WARNING | RON/USDT: fetch_ohlcv failed: binance does not have market symbol RON/USDT
+2025-08-29 18:13:21,204 | WARNING | SATS/USDT: fetch_ohlcv failed: binance does not have market symbol SATS/USDT
+2025-08-29 18:13:22,963 | WARNING | ASI/USDT: fetch_ohlcv failed: binance does not have market symbol ASI/USDT
+2025-08-29 18:13:28,238 | WARNING | AIOZ/USDT: fetch_ohlcv failed: binance does not have market symbol AIOZ/USDT
+2025-08-29 18:13:28,827 | WARNING | BLAST/USDT: fetch_ohlcv failed: binance does not have market symbol BLAST/USDT
+2025-08-29 18:13:42,305 | INFO | Cycle 2025-08-29T15:13:42.305214+00:00 | timeframe=1h | lookback=500 | symbols=95 | pairs=3916
+2025-08-29 18:15:03,284 | WARNING | RON/USDT: fetch_ohlcv failed: binance does not have market symbol RON/USDT
+2025-08-29 18:15:04,882 | WARNING | SATS/USDT: fetch_ohlcv failed: binance does not have market symbol SATS/USDT
+2025-08-29 18:15:06,669 | WARNING | ASI/USDT: fetch_ohlcv failed: binance does not have market symbol ASI/USDT
+2025-08-29 18:15:11,969 | WARNING | AIOZ/USDT: fetch_ohlcv failed: binance does not have market symbol AIOZ/USDT
+2025-08-29 18:15:12,557 | WARNING | BLAST/USDT: fetch_ohlcv failed: binance does not have market symbol BLAST/USDT
+2025-08-29 18:15:26,378 | INFO | Cycle 2025-08-29T15:15:26.378635+00:00 | timeframe=1h | lookback=500 | symbols=95 | pairs=3916
+2025-08-29 18:55:13,337 | WARNING | ADA/USDT: fetch_ohlcv failed: binance GET https://api.binance.com/api/v3/klines?interval=1h&limit=500&symbol=ADAUSDT
+2025-08-29 18:55:13,359 | WARNING | DOGE/USDT: fetch_ohlcv failed: binance GET https://api.binance.com/api/v3/klines?interval=1h&limit=500&symbol=DOGEUSDT
+2025-08-29 18:55:13,382 | WARNING | AVAX/USDT: fetch_ohlcv failed: binance GET https://api.binance.com/api/v3/klines?interval=1h&limit=500&symbol=AVAXUSDT
+2025-08-29 18:55:13,403 | WARNING | LINK/USDT: fetch_ohlcv failed: binance GET https://api.binance.com/api/v3/klines?interval=1h&limit=500&symbol=LINKUSDT
+2025-08-29 18:55:13,422 | WARNING | MATIC/USDT: fetch_ohlcv failed: binance GET https://api.binance.com/api/v3/klines?interval=1h&limit=500&symbol=MATICUSDT
+2025-08-29 18:55:13,443 | WARNING | TRX/USDT: fetch_ohlcv failed: binance GET https://api.binance.com/api/v3/klines?interval=1h&limit=500&symbol=TRXUSDT
+2025-08-29 18:55:13,465 | WARNING | TON/USDT: fetch_ohlcv failed: binance GET https://api.binance.com/api/v3/klines?interval=1h&limit=500&symbol=TONUSDT
+2025-08-29 18:55:13,488 | WARNING | DOT/USDT: fetch_ohlcv failed: binance GET https://api.binance.com/api/v3/klines?interval=1h&limit=500&symbol=DOTUSDT
+2025-08-29 18:55:13,532 | WARNING | LTC/USDT: fetch_ohlcv failed: binance GET https://api.binance.com/api/v3/klines?interval=1h&limit=500&symbol=LTCUSDT
+2025-08-29 18:55:13,532 | WARNING | BCH/USDT: fetch_ohlcv failed: binance GET https://api.binance.com/api/v3/klines?interval=1h&limit=500&symbol=BCHUSDT
+2025-08-29 18:55:13,557 | WARNING | ICP/USDT: fetch_ohlcv failed: binance GET https://api.binance.com/api/v3/klines?interval=1h&limit=500&symbol=ICPUSDT
+2025-08-29 18:55:13,596 | WARNING | ATOM/USDT: fetch_ohlcv failed: binance GET https://api.binance.com/api/v3/klines?interval=1h&limit=500&symbol=ATOMUSDT
+2025-08-29 18:55:13,599 | WARNING | NEAR/USDT: fetch_ohlcv failed: binance GET https://api.binance.com/api/v3/klines?interval=1h&limit=500&symbol=NEARUSDT
+2025-08-29 18:55:13,639 | WARNING | APT/USDT: fetch_ohlcv failed: binance GET https://api.binance.com/api/v3/klines?interval=1h&limit=500&symbol=APTUSDT
+2025-08-29 18:55:13,643 | WARNING | SUI/USDT: fetch_ohlcv failed: binance GET https://api.binance.com/api/v3/klines?interval=1h&limit=500&symbol=SUIUSDT
+2025-08-29 18:55:13,684 | WARNING | ARB/USDT: fetch_ohlcv failed: binance GET https://api.binance.com/api/v3/klines?interval=1h&limit=500&symbol=ARBUSDT
+2025-08-29 18:55:13,684 | WARNING | OP/USDT: fetch_ohlcv failed: binance GET https://api.binance.com/api/v3/klines?interval=1h&limit=500&symbol=OPUSDT
+2025-08-29 18:55:13,937 | WARNING | KAS/USDT: fetch_ohlcv failed: binance GET https://fapi.binance.com/fapi/v1/klines?interval=1h&limit=500&symbol=KASUSDT
+2025-08-29 18:55:13,970 | WARNING | STX/USDT: fetch_ohlcv failed: binance GET https://api.binance.com/api/v3/klines?interval=1h&limit=500&symbol=STXUSDT
+2025-08-29 18:55:13,980 | WARNING | FIL/USDT: fetch_ohlcv failed: binance GET https://api.binance.com/api/v3/klines?interval=1h&limit=500&symbol=FILUSDT
+2025-08-29 18:55:14,027 | WARNING | IMX/USDT: fetch_ohlcv failed: binance GET https://api.binance.com/api/v3/klines?interval=1h&limit=500&symbol=IMXUSDT
+2025-08-29 18:55:14,027 | WARNING | INJ/USDT: fetch_ohlcv failed: binance GET https://api.binance.com/api/v3/klines?interval=1h&limit=500&symbol=INJUSDT
+2025-08-29 18:55:14,068 | WARNING | RNDR/USDT: fetch_ohlcv failed: binance GET https://api.binance.com/api/v3/klines?interval=1h&limit=500&symbol=RNDRUSDT
+2025-08-29 18:55:14,094 | WARNING | TIA/USDT: fetch_ohlcv failed: binance GET https://api.binance.com/api/v3/klines?interval=1h&limit=500&symbol=TIAUSDT
+2025-08-29 18:55:14,107 | WARNING | RUNE/USDT: fetch_ohlcv failed: binance GET https://api.binance.com/api/v3/klines?interval=1h&limit=500&symbol=RUNEUSDT
+2025-08-29 18:55:14,134 | WARNING | LDO/USDT: fetch_ohlcv failed: binance GET https://api.binance.com/api/v3/klines?interval=1h&limit=500&symbol=LDOUSDT
+2025-08-29 18:55:14,151 | WARNING | AAVE/USDT: fetch_ohlcv failed: binance GET https://api.binance.com/api/v3/klines?interval=1h&limit=500&symbol=AAVEUSDT
+2025-08-29 18:55:14,155 | WARNING | UNI/USDT: fetch_ohlcv failed: binance GET https://api.binance.com/api/v3/klines?interval=1h&limit=500&symbol=UNIUSDT
+2025-08-29 18:55:14,195 | WARNING | MKR/USDT: fetch_ohlcv failed: binance GET https://api.binance.com/api/v3/klines?interval=1h&limit=500&symbol=MKRUSDT
+2025-08-29 18:55:14,223 | WARNING | PENDLE/USDT: fetch_ohlcv failed: binance GET https://api.binance.com/api/v3/klines?interval=1h&limit=500&symbol=PENDLEUSDT
+2025-08-29 18:55:14,224 | WARNING | DYDX/USDT: fetch_ohlcv failed: binance GET https://api.binance.com/api/v3/klines?interval=1h&limit=500&symbol=DYDXUSDT
+2025-08-29 18:55:14,245 | WARNING | GMX/USDT: fetch_ohlcv failed: binance GET https://api.binance.com/api/v3/klines?interval=1h&limit=500&symbol=GMXUSDT
+2025-08-29 18:55:14,268 | WARNING | CRV/USDT: fetch_ohlcv failed: binance GET https://api.binance.com/api/v3/klines?interval=1h&limit=500&symbol=CRVUSDT
+2025-08-29 18:55:14,309 | WARNING | COMP/USDT: fetch_ohlcv failed: binance GET https://api.binance.com/api/v3/klines?interval=1h&limit=500&symbol=COMPUSDT
+2025-08-29 18:55:14,321 | WARNING | CAKE/USDT: fetch_ohlcv failed: binance GET https://api.binance.com/api/v3/klines?interval=1h&limit=500&symbol=CAKEUSDT
+2025-08-29 18:55:14,352 | WARNING | GRT/USDT: fetch_ohlcv failed: binance GET https://api.binance.com/api/v3/klines?interval=1h&limit=500&symbol=GRTUSDT
+2025-08-29 18:55:14,366 | WARNING | HBAR/USDT: fetch_ohlcv failed: binance GET https://api.binance.com/api/v3/klines?interval=1h&limit=500&symbol=HBARUSDT
+2025-08-29 18:55:14,375 | WARNING | QNT/USDT: fetch_ohlcv failed: binance GET https://api.binance.com/api/v3/klines?interval=1h&limit=500&symbol=QNTUSDT
+2025-08-29 18:55:14,407 | WARNING | VET/USDT: fetch_ohlcv failed: binance GET https://api.binance.com/api/v3/klines?interval=1h&limit=500&symbol=VETUSDT
+2025-08-29 18:55:14,439 | WARNING | ALGO/USDT: fetch_ohlcv failed: binance GET https://api.binance.com/api/v3/klines?interval=1h&limit=500&symbol=ALGOUSDT
+2025-08-29 18:55:14,439 | WARNING | XLM/USDT: fetch_ohlcv failed: binance GET https://api.binance.com/api/v3/klines?interval=1h&limit=500&symbol=XLMUSDT
+2025-08-29 18:55:14,488 | WARNING | XMR/USDT: fetch_ohlcv failed: binance GET https://api.binance.com/api/v3/klines?interval=1h&limit=500&symbol=XMRUSDT
+2025-08-29 18:55:14,488 | WARNING | WLD/USDT: fetch_ohlcv failed: binance GET https://api.binance.com/api/v3/klines?interval=1h&limit=500&symbol=WLDUSDT
+2025-08-29 18:55:14,532 | WARNING | ONDO/USDT: fetch_ohlcv failed: binance GET https://api.binance.com/api/v3/klines?interval=1h&limit=500&symbol=ONDOUSDT
+2025-08-29 18:55:14,545 | WARNING | AR/USDT: fetch_ohlcv failed: binance GET https://api.binance.com/api/v3/klines?interval=1h&limit=500&symbol=ARUSDT
+2025-08-29 18:55:14,577 | WARNING | EGLD/USDT: fetch_ohlcv failed: binance GET https://api.binance.com/api/v3/klines?interval=1h&limit=500&symbol=EGLDUSDT
+2025-08-29 18:55:14,578 | WARNING | THETA/USDT: fetch_ohlcv failed: binance GET https://api.binance.com/api/v3/klines?interval=1h&limit=500&symbol=THETAUSDT
+2025-08-29 18:55:14,600 | WARNING | KAVA/USDT: fetch_ohlcv failed: binance GET https://api.binance.com/api/v3/klines?interval=1h&limit=500&symbol=KAVAUSDT
+2025-08-29 18:55:14,622 | WARNING | CHZ/USDT: fetch_ohlcv failed: binance GET https://api.binance.com/api/v3/klines?interval=1h&limit=500&symbol=CHZUSDT
+2025-08-29 18:55:14,642 | WARNING | ENJ/USDT: fetch_ohlcv failed: binance GET https://api.binance.com/api/v3/klines?interval=1h&limit=500&symbol=ENJUSDT
+2025-08-29 18:55:14,680 | WARNING | AXS/USDT: fetch_ohlcv failed: binance GET https://api.binance.com/api/v3/klines?interval=1h&limit=500&symbol=AXSUSDT
+2025-08-29 18:55:14,707 | WARNING | SAND/USDT: fetch_ohlcv failed: binance GET https://api.binance.com/api/v3/klines?interval=1h&limit=500&symbol=SANDUSDT
+2025-08-29 18:55:14,707 | WARNING | MANA/USDT: fetch_ohlcv failed: binance GET https://api.binance.com/api/v3/klines?interval=1h&limit=500&symbol=MANAUSDT
+2025-08-29 18:55:14,707 | WARNING | RON/USDT: fetch_ohlcv failed: binance does not have market symbol RON/USDT
+2025-08-29 18:55:14,751 | WARNING | GALA/USDT: fetch_ohlcv failed: binance GET https://api.binance.com/api/v3/klines?interval=1h&limit=500&symbol=GALAUSDT
+2025-08-29 18:55:14,767 | WARNING | PYTH/USDT: fetch_ohlcv failed: binance GET https://api.binance.com/api/v3/klines?interval=1h&limit=500&symbol=PYTHUSDT
+2025-08-29 18:55:14,772 | WARNING | STRK/USDT: fetch_ohlcv failed: binance GET https://api.binance.com/api/v3/klines?interval=1h&limit=500&symbol=STRKUSDT
+2025-08-29 18:55:14,815 | WARNING | ZK/USDT: fetch_ohlcv failed: binance GET https://api.binance.com/api/v3/klines?interval=1h&limit=500&symbol=ZKUSDT
+2025-08-29 18:55:14,832 | WARNING | ORDI/USDT: fetch_ohlcv failed: binance GET https://api.binance.com/api/v3/klines?interval=1h&limit=500&symbol=ORDIUSDT
+2025-08-29 18:55:14,832 | WARNING | SATS/USDT: fetch_ohlcv failed: binance does not have market symbol SATS/USDT
+2025-08-29 18:55:14,848 | WARNING | JUP/USDT: fetch_ohlcv failed: binance GET https://api.binance.com/api/v3/klines?interval=1h&limit=500&symbol=JUPUSDT
+2025-08-29 18:55:14,881 | WARNING | BONK/USDT: fetch_ohlcv failed: binance GET https://api.binance.com/api/v3/klines?interval=1h&limit=500&symbol=BONKUSDT
+2025-08-29 18:55:14,881 | WARNING | WIF/USDT: fetch_ohlcv failed: binance GET https://api.binance.com/api/v3/klines?interval=1h&limit=500&symbol=WIFUSDT
+2025-08-29 18:55:14,925 | WARNING | PEPE/USDT: fetch_ohlcv failed: binance GET https://api.binance.com/api/v3/klines?interval=1h&limit=500&symbol=PEPEUSDT
+2025-08-29 18:55:14,927 | WARNING | FLOKI/USDT: fetch_ohlcv failed: binance GET https://api.binance.com/api/v3/klines?interval=1h&limit=500&symbol=FLOKIUSDT
+2025-08-29 18:55:14,958 | WARNING | TAO/USDT: fetch_ohlcv failed: binance GET https://api.binance.com/api/v3/klines?interval=1h&limit=500&symbol=TAOUSDT
+2025-08-29 18:55:14,959 | WARNING | ASI/USDT: fetch_ohlcv failed: binance does not have market symbol ASI/USDT
+2025-08-29 18:55:14,968 | WARNING | TWT/USDT: fetch_ohlcv failed: binance GET https://api.binance.com/api/v3/klines?interval=1h&limit=500&symbol=TWTUSDT
+2025-08-29 18:55:15,006 | WARNING | 1INCH/USDT: fetch_ohlcv failed: binance GET https://api.binance.com/api/v3/klines?interval=1h&limit=500&symbol=1INCHUSDT
+2025-08-29 18:55:15,022 | WARNING | RPL/USDT: fetch_ohlcv failed: binance GET https://api.binance.com/api/v3/klines?interval=1h&limit=500&symbol=RPLUSDT
+2025-08-29 18:55:15,047 | WARNING | HNT/USDT: fetch_ohlcv failed: binance GET https://api.binance.com/api/v3/klines?interval=1h&limit=500&symbol=HNTUSDT
+2025-08-29 18:55:15,055 | WARNING | IOTX/USDT: fetch_ohlcv failed: binance GET https://api.binance.com/api/v3/klines?interval=1h&limit=500&symbol=IOTXUSDT
+2025-08-29 18:55:15,084 | WARNING | MINA/USDT: fetch_ohlcv failed: binance GET https://api.binance.com/api/v3/klines?interval=1h&limit=500&symbol=MINAUSDT
+2025-08-29 18:55:15,109 | WARNING | SC/USDT: fetch_ohlcv failed: binance GET https://api.binance.com/api/v3/klines?interval=1h&limit=500&symbol=SCUSDT
+2025-08-29 18:55:15,125 | WARNING | FTM/USDT: fetch_ohlcv failed: binance GET https://api.binance.com/api/v3/klines?interval=1h&limit=500&symbol=FTMUSDT
+2025-08-29 18:55:15,150 | WARNING | ROSE/USDT: fetch_ohlcv failed: binance GET https://api.binance.com/api/v3/klines?interval=1h&limit=500&symbol=ROSEUSDT
+2025-08-29 18:55:15,175 | WARNING | KLAY/USDT: fetch_ohlcv failed: binance GET https://api.binance.com/api/v3/klines?interval=1h&limit=500&symbol=KLAYUSDT
+2025-08-29 18:55:15,199 | WARNING | CFX/USDT: fetch_ohlcv failed: binance GET https://api.binance.com/api/v3/klines?interval=1h&limit=500&symbol=CFXUSDT
+2025-08-29 18:55:15,211 | WARNING | NEO/USDT: fetch_ohlcv failed: binance GET https://api.binance.com/api/v3/klines?interval=1h&limit=500&symbol=NEOUSDT
+2025-08-29 18:55:15,236 | WARNING | XTZ/USDT: fetch_ohlcv failed: binance GET https://api.binance.com/api/v3/klines?interval=1h&limit=500&symbol=XTZUSDT
+2025-08-29 18:55:15,262 | WARNING | DYM/USDT: fetch_ohlcv failed: binance GET https://api.binance.com/api/v3/klines?interval=1h&limit=500&symbol=DYMUSDT
+2025-08-29 18:55:15,275 | WARNING | JTO/USDT: fetch_ohlcv failed: binance GET https://api.binance.com/api/v3/klines?interval=1h&limit=500&symbol=JTOUSDT
+2025-08-29 18:55:15,301 | WARNING | TNSR/USDT: fetch_ohlcv failed: binance GET https://api.binance.com/api/v3/klines?interval=1h&limit=500&symbol=TNSRUSDT
+2025-08-29 18:55:15,327 | WARNING | RAY/USDT: fetch_ohlcv failed: binance GET https://api.binance.com/api/v3/klines?interval=1h&limit=500&symbol=RAYUSDT
+2025-08-29 18:55:15,340 | WARNING | SEI/USDT: fetch_ohlcv failed: binance GET https://api.binance.com/api/v3/klines?interval=1h&limit=500&symbol=SEIUSDT
+2025-08-29 18:55:15,340 | WARNING | AIOZ/USDT: fetch_ohlcv failed: binance does not have market symbol AIOZ/USDT
+2025-08-29 18:55:15,351 | WARNING | OSMO/USDT: fetch_ohlcv failed: binance GET https://api.binance.com/api/v3/klines?interval=1h&limit=500&symbol=OSMOUSDT
+2025-08-29 18:55:15,381 | WARNING | POLYX/USDT: fetch_ohlcv failed: binance GET https://api.binance.com/api/v3/klines?interval=1h&limit=500&symbol=POLYXUSDT
+2025-08-29 18:55:15,381 | WARNING | BLAST/USDT: fetch_ohlcv failed: binance does not have market symbol BLAST/USDT
+2025-08-29 18:55:15,411 | WARNING | ZRO/USDT: fetch_ohlcv failed: binance GET https://api.binance.com/api/v3/klines?interval=1h&limit=500&symbol=ZROUSDT
+2025-08-29 18:55:15,428 | WARNING | AEVO/USDT: fetch_ohlcv failed: binance GET https://api.binance.com/api/v3/klines?interval=1h&limit=500&symbol=AEVOUSDT
+2025-08-29 18:55:15,462 | WARNING | ALT/USDT: fetch_ohlcv failed: binance GET https://api.binance.com/api/v3/klines?interval=1h&limit=500&symbol=ALTUSDT
+2025-08-29 18:55:15,700 | WARNING | BRETT/USDT: fetch_ohlcv failed: binance GET https://fapi.binance.com/fapi/v1/klines?interval=1h&limit=500&symbol=BRETTUSDT
+2025-08-30 11:53:51,500 | WARNING | W/USDT: fetch_ohlcv failed: binance GET https://api.binance.com/api/v3/klines?interval=1h&limit=500&symbol=WUSDT
+2025-08-30 11:53:51,506 | WARNING | ENS/USDT: fetch_ohlcv failed: binance GET https://api.binance.com/api/v3/klines?interval=1h&limit=500&symbol=ENSUSDT
+2025-08-30 11:53:51,534 | INFO | Cycle 2025-08-30T08:53:51.534122+00:00 | timeframe=1h | lookback=500 | symbols=5 | pairs=10
+2025-08-30 11:54:15,493 | INFO | Shutting down by user request.

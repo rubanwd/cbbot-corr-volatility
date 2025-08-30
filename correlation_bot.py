@@ -1,20 +1,17 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """
-Correlation Scanner Bot for Binance via CCXT (updated & hardened)
+Correlation Scanner Bot for Binance via CCXT (updated with weak pairs + RSI)
 
-Обновления:
-- pct_change(fill_method=None) → без FutureWarning
-- Чистка данных: замена inf на NaN, dropna(how="all")
-- Фильтрация символов с малым числом наблюдений и/или нулевой дисперсией
-- Отсев пар с константными рядами перед pearsonr → нет ConstantInputWarning
-- min_periods для corr-матрицы
-- CLI-параметры: --timeframe, --lookback, --use-futures, --symbols-file,
-  --run-every-minutes, --hourly-at ":01", --once, --min-obs-symbol, --min-obs-pair, пороги алертов
+Новое:
+- В snapshot добавлен массив week_corr_pairs: пары с "слабой" корреляцией (|corr| < 0.30).
+- В объекты пар добавлены поля symbol_1_rsi и symbol_2_rsi (RSI(14) по ценам закрытия).
+- Остальные улучшения по чистке данных и фильтрации оставлены.
 
-Запуск:
+Запуск (примеры):
     python correlation_bot.py --timeframe 1h --hourly-at ":01"
-    # или каждую минуту (по умолчанию): python correlation_bot.py
+    python correlation_bot.py --timeframe 15m --run-every-minutes 1
+    python correlation_bot.py --once
 """
 
 from __future__ import annotations
@@ -60,6 +57,12 @@ LOOKBACK_BARS: int = 500
 # Минимальные требования по данным
 MIN_OBS_PER_SYMBOL: int = 50            # минимум ненулевых наблюдений у символа
 MIN_OBS_PER_PAIR: int = 30              # минимум наблюдений для расчёта корреляции пары
+
+# RSI
+RSI_PERIOD: int = 14
+
+# Порог «слабой» корреляции (используем модуль — ближе к нулю считается слабой)
+WEAK_CORR_ABS_THRESH: float = 0.30
 
 # Вывод
 OUTPUT_DIR: str = "./data"
@@ -145,6 +148,31 @@ def fetch_closes(exchange, symbols: List[str], timeframe: str, limit: int, logge
     return closes
 
 
+def compute_rsi_series(close: pd.Series, period: int = 14) -> pd.Series:
+    """Wilder RSI через EWM(alpha=1/period)."""
+    delta = close.diff()
+    gain = delta.where(delta > 0, 0.0)
+    loss = -delta.where(delta < 0, 0.0)
+    avg_gain = gain.ewm(alpha=1/period, adjust=False, min_periods=period).mean()
+    avg_loss = loss.ewm(alpha=1/period, adjust=False, min_periods=period).mean()
+    rs = avg_gain / avg_loss
+    rsi = 100 - (100 / (1 + rs))
+    return rsi
+
+
+def compute_rsi_last_map(closes: pd.DataFrame, period: int) -> Dict[str, float]:
+    """Считает RSI(period) для каждого столбца и возвращает последнее значение по каждому символу."""
+    rsi_last: Dict[str, float] = {}
+    for col in closes.columns:
+        try:
+            rsi = compute_rsi_series(closes[col], period=period)
+            val = rsi.iloc[-1]
+            rsi_last[col] = float(val) if pd.notna(val) else float("nan")
+        except Exception:
+            rsi_last[col] = float("nan")
+    return rsi_last
+
+
 @dataclass
 class PairStat:
     symbol_1: str
@@ -186,12 +214,22 @@ def compute_pairwise_correlations(
             p_val: Optional[float] = None
             if use_scipy and SCIPY_OK:
                 try:
-                    r2, p_val = pearsonr(sub[s1].values, sub[s2].values)
+                    r2, p_val = pearsonr(sub[s1].values, sub[s2].values)  # type: ignore
                     r = float(r2)  # выравниваем на SciPy-значение
                 except Exception:
                     p_val = None
             pairs.append(PairStat(s1, s2, float(r), p_val, n))
     return pairs
+
+
+def attach_rsi_to_pairs(pair_dicts: List[Dict[str, Any]], rsi_last: Dict[str, float]) -> None:
+    """Добавляет symbol_1_rsi и symbol_2_rsi к каждому объекту пары (in-place)."""
+    for d in pair_dicts:
+        s1, s2 = d.get("symbol_1"), d.get("symbol_2")
+        v1 = rsi_last.get(s1, float("nan"))
+        v2 = rsi_last.get(s2, float("nan"))
+        d["symbol_1_rsi"] = None if (v1 is None or (isinstance(v1, float) and np.isnan(v1))) else float(v1)
+        d["symbol_2_rsi"] = None if (v2 is None or (isinstance(v2, float) and np.isnan(v2))) else float(v2)
 
 
 def persist_snapshot(snapshot: Dict[str, Any]) -> None:
@@ -208,6 +246,9 @@ def run_cycle(logger: logging.Logger) -> None:
         exchange = get_exchange()
 
         closes = fetch_closes(exchange, symbols, TIMEFRAME, LOOKBACK_BARS, logger)
+
+        # ---- RSI по последним значениям (по всем символам) ----
+        rsi_last_all = compute_rsi_last_map(closes, period=RSI_PERIOD)
 
         # ---- Расчёт доходностей (без fill_method по умолчанию) + чистка ----
         returns = closes.pct_change(fill_method=None)
@@ -239,6 +280,7 @@ def run_cycle(logger: logging.Logger) -> None:
                 "alerts": {"negative": [], "near_zero": []},
                 "pairs_sorted_by_corr": [],
                 "pairs_closest_to_zero": [],
+                "week_corr_pairs": [],
             }
             persist_snapshot(snapshot)
             return
@@ -257,33 +299,52 @@ def run_cycle(logger: logging.Logger) -> None:
             ts, TIMEFRAME, LOOKBACK_BARS, returns.shape[1], len(pair_stats_sorted)
         )
 
+        # Списки словарей
+        pairs_sorted_dicts = [p.as_dict() for p in pair_stats_sorted]
+        pairs_abs_dicts    = [p.as_dict() for p in pair_stats_by_abs]
+
+        # ---- week_corr_pairs (|corr| < WEAK_CORR_ABS_THRESH), сортируем по |corr| возрастанию ----
+        week_pairs = [p.as_dict() for p in pair_stats if abs(p.corr) < WEAK_CORR_ABS_THRESH]
+        week_pairs.sort(key=lambda d: abs(d["corr"]))
+
+        # ---- Приклеиваем RSI ----
+        attach_rsi_to_pairs(pairs_sorted_dicts, rsi_last_all)
+        attach_rsi_to_pairs(pairs_abs_dicts,    rsi_last_all)
+        attach_rsi_to_pairs(week_pairs,         rsi_last_all)
+
         # Алерты
-        negative_alerts = [p.as_dict() for p in pair_stats_sorted if p.corr <= ALERT_NEGATIVE_THRESH][:TOP_N_TO_LOG]
-        near_zero_alerts = [p.as_dict() for p in pair_stats_by_abs if abs(p.corr) <= ALERT_NEAR_ZERO_ABS][:TOP_N_TO_LOG]
+        negative_alerts = [d for d in pairs_sorted_dicts if d["corr"] <= ALERT_NEGATIVE_THRESH][:TOP_N_TO_LOG]
+        near_zero_alerts = [d for d in pairs_abs_dicts if abs(d["corr"]) <= ALERT_NEAR_ZERO_ABS][:TOP_N_TO_LOG]
 
         if negative_alerts:
             logger.info("Top negative correlation pairs (<= %.2f):", ALERT_NEGATIVE_THRESH)
-            for p in negative_alerts:
-                logger.info("  %s | corr=%.4f | n=%d | p=%s",
+            for p in negative_alerts[:TOP_N_TO_LOG]:
+                logger.info("  %s | corr=%.4f | n=%d | p=%s | rsi=(%.2f, %.2f)",
                             p["pair"], p["corr"], p["n_obs"],
-                            f"{p['p_value']:.4g}" if p["p_value"] is not None else "NA")
+                            f"{p['p_value']:.4g}" if p["p_value"] is not None else "NA",
+                            p.get("symbol_1_rsi") if p.get("symbol_1_rsi") is not None else float("nan"),
+                            p.get("symbol_2_rsi") if p.get("symbol_2_rsi") is not None else float("nan"))
 
         if near_zero_alerts:
             logger.info("Top near-zero correlation pairs (|corr|<= %.2f):", ALERT_NEAR_ZERO_ABS)
-            for p in near_zero_alerts:
-                logger.info("  %s | corr=%.4f | n=%d | p=%s",
+            for p in near_zero_alerts[:TOP_N_TO_LOG]:
+                logger.info("  %s | corr=%.4f | n=%d | p=%s | rsi=(%.2f, %.2f)",
                             p["pair"], p["corr"], p["n_obs"],
-                            f"{p['p_value']:.4g}" if p["p_value"] is not None else "NA")
+                            f"{p['p_value']:.4g}" if p["p_value"] is not None else "NA",
+                            p.get("symbol_1_rsi") if p.get("symbol_1_rsi") is not None else float("nan"),
+                            p.get("symbol_2_rsi") if p.get("symbol_2_rsi") is not None else float("nan"))
 
-        # Срез для снапшота (чтобы не раздувать файл)
+        # Срезы для снапшота (чтобы не раздувать файл)
         to_persist_sorted = (
-            [p.as_dict() for p in pair_stats_sorted[:TOP_N_TO_PERSIST]]
-            if TOP_N_TO_PERSIST else [p.as_dict() for p in pair_stats_sorted]
+            pairs_sorted_dicts[:TOP_N_TO_PERSIST]
+            if TOP_N_TO_PERSIST else pairs_sorted_dicts
         )
         to_persist_abs = (
-            [p.as_dict() for p in pair_stats_by_abs[:TOP_N_TO_PERSIST]]
-            if TOP_N_TO_PERSIST else [p.as_dict() for p in pair_stats_by_abs]
+            pairs_abs_dicts[:TOP_N_TO_PERSIST]
+            if TOP_N_TO_PERSIST else pairs_abs_dicts
         )
+        # weak-пары пишем полностью (обычно их меньше), при желании можно тоже ограничивать
+        to_persist_week = week_pairs
 
         snapshot = {
             "timestamp_utc": ts,
@@ -295,6 +356,7 @@ def run_cycle(logger: logging.Logger) -> None:
             "alerts": {"negative": negative_alerts, "near_zero": near_zero_alerts},
             "pairs_sorted_by_corr": to_persist_sorted,
             "pairs_closest_to_zero": to_persist_abs,
+            "week_corr_pairs": to_persist_week,
         }
         persist_snapshot(snapshot)
 
@@ -307,6 +369,7 @@ def apply_cli_overrides():
     global RUN_EVERY_MINUTES, HOURLY_AT, RUN_ONCE
     global MIN_OBS_PER_SYMBOL, MIN_OBS_PER_PAIR
     global ALERT_NEGATIVE_THRESH, ALERT_NEAR_ZERO_ABS
+    global RSI_PERIOD, WEAK_CORR_ABS_THRESH
 
     parser = argparse.ArgumentParser(description="Correlation Scanner Bot")
     parser.add_argument("--symbols-file", type=str, default=SYMBOLS_FILE)
@@ -320,6 +383,8 @@ def apply_cli_overrides():
     parser.add_argument("--min-obs-pair", type=int, default=MIN_OBS_PER_PAIR)
     parser.add_argument("--negative-thresh", type=float, default=ALERT_NEGATIVE_THRESH)
     parser.add_argument("--near-zero-abs", type=float, default=ALERT_NEAR_ZERO_ABS)
+    parser.add_argument("--rsi-period", type=int, default=RSI_PERIOD)
+    parser.add_argument("--weak-abs", type=float, default=WEAK_CORR_ABS_THRESH, help="abs(corr) < this is considered WEAK")
     args = parser.parse_args()
 
     SYMBOLS_FILE = args.symbols_file
@@ -333,6 +398,8 @@ def apply_cli_overrides():
     MIN_OBS_PER_PAIR = args.min_obs_pair
     ALERT_NEGATIVE_THRESH = args.negative_thresh
     ALERT_NEAR_ZERO_ABS = args.near_zero_abs
+    RSI_PERIOD = args.rsi_period
+    WEAK_CORR_ABS_THRESH = args.weak_abs
 
 
 def main():
