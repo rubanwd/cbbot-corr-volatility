@@ -1709,3 +1709,125 @@ ccxt.base.errors.NetworkError: binance GET https://api.binance.com/api/v3/exchan
 2025-08-30 18:21:40,261 | INFO | Scheduled main cycle hourly at :01
 2025-08-30 18:21:40,262 | INFO | Telegram report scheduled hourly at :05 (max_rows=30)
 2025-08-30 18:50:44,063 | INFO | Shutting down by user request.
+2025-08-31 20:52:47,140 | INFO | Starting Correlation Scanner Bot (ENV mode)
+2025-08-31 20:52:52,257 | WARNING | MATIC/USDT: fetch_ohlcv failed: binance does not have market symbol MATIC/USDT
+2025-08-31 20:52:57,181 | WARNING | RNDR/USDT: fetch_ohlcv failed: binance does not have market symbol RNDR/USDT
+2025-08-31 20:53:07,777 | WARNING | RON/USDT: fetch_ohlcv failed: binance does not have market symbol RON/USDT
+2025-08-31 20:53:09,231 | WARNING | SATS/USDT: fetch_ohlcv failed: binance does not have market symbol SATS/USDT
+2025-08-31 20:53:09,518 | WARNING | BONK/USDT: fetch_ohlcv failed: binance does not have market symbol BONK/USDT
+2025-08-31 20:53:09,806 | WARNING | PEPE/USDT: fetch_ohlcv failed: binance does not have market symbol PEPE/USDT
+2025-08-31 20:53:09,806 | WARNING | FLOKI/USDT: fetch_ohlcv failed: binance does not have market symbol FLOKI/USDT
+2025-08-31 20:53:10,830 | WARNING | ASI/USDT: fetch_ohlcv failed: binance does not have market symbol ASI/USDT
+2025-08-31 20:53:11,691 | WARNING | HNT/USDT: fetch_ohlcv failed: binance does not have market symbol HNT/USDT
+2025-08-31 20:53:16,180 | WARNING | AIOZ/USDT: fetch_ohlcv failed: binance does not have market symbol AIOZ/USDT
+2025-08-31 20:53:16,180 | WARNING | OSMO/USDT: fetch_ohlcv failed: binance does not have market symbol OSMO/USDT
+2025-08-31 20:53:16,471 | WARNING | BLAST/USDT: fetch_ohlcv failed: binance does not have market symbol BLAST/USDT
+2025-08-31 20:53:18,543 | INFO | Dropped 4 symbols (insufficient data or zero variance): FTM/USDT, KLAY/USDT, RAY/USDT, SC/USDT
+2025-08-31 20:53:25,439 | INFO | Cycle 2025-08-31T17:53:25.439398+00:00 | timeframe=1h | lookback=500 | symbols=84 | pairs=3486
+2025-08-31 20:53:46,810 | INFO | Scheduled main cycle hourly at :01
+2025-08-31 20:53:46,811 | INFO | Telegram report scheduled hourly at :05 (max_rows=30)
+2025-08-31 20:59:53,784 | INFO | Shutting down by user request.
+2025-08-31 21:00:25,650 | INFO | Starting Correlation Scanner Bot (ENV mode)
+2025-08-31 21:00:30,663 | WARNING | MATIC/USDT: fetch_ohlcv failed: binance does not have market symbol MATIC/USDT
+2025-08-31 21:00:35,553 | WARNING | RNDR/USDT: fetch_ohlcv failed: binance does not have market symbol RNDR/USDT
+2025-08-31 21:00:44,216 | WARNING | RON/USDT: fetch_ohlcv failed: binance does not have market symbol RON/USDT
+2025-08-31 21:00:45,656 | WARNING | SATS/USDT: fetch_ohlcv failed: binance does not have market symbol SATS/USDT
+2025-08-31 21:00:45,944 | WARNING | BONK/USDT: fetch_ohlcv failed: binance does not have market symbol BONK/USDT
+2025-08-31 21:00:46,232 | WARNING | PEPE/USDT: fetch_ohlcv failed: binance does not have market symbol PEPE/USDT
+2025-08-31 21:00:46,233 | WARNING | FLOKI/USDT: fetch_ohlcv failed: binance does not have market symbol FLOKI/USDT
+2025-08-31 21:00:46,520 | WARNING | ASI/USDT: fetch_ohlcv failed: binance does not have market symbol ASI/USDT
+2025-08-31 21:00:47,395 | WARNING | HNT/USDT: fetch_ohlcv failed: binance does not have market symbol HNT/USDT
+2025-08-31 21:00:51,381 | WARNING | AIOZ/USDT: fetch_ohlcv failed: binance does not have market symbol AIOZ/USDT
+2025-08-31 21:00:51,382 | WARNING | OSMO/USDT: fetch_ohlcv failed: binance does not have market symbol OSMO/USDT
+2025-08-31 21:00:51,677 | WARNING | BLAST/USDT: fetch_ohlcv failed: binance does not have market symbol BLAST/USDT
+2025-08-31 21:00:53,595 | INFO | Dropped 4 symbols (insufficient data or zero variance): FTM/USDT, KLAY/USDT, RAY/USDT, SC/USDT
+2025-08-31 21:01:01,474 | INFO | Cycle 2025-08-31T18:01:01.474054+00:00 | timeframe=1h | lookback=500 | symbols=84 | pairs=3486
+2025-08-31 21:01:22,801 | INFO | Scheduled main cycle hourly at :01
+2025-08-31 21:01:22,801 | INFO | Telegram report scheduled hourly at :05 (max_rows=30)
+2025-08-31 21:13:28,633 | INFO | Shutting down by user request.
+2025-08-31 21:14:01,578 | INFO | Starting Correlation Scanner Bot (ENV mode)
+2025-08-31 21:14:06,765 | WARNING | MATIC/USDT: fetch_ohlcv failed: binance does not have market symbol MATIC/USDT
+2025-08-31 21:14:12,595 | WARNING | RNDR/USDT: fetch_ohlcv failed: binance does not have market symbol RNDR/USDT
+2025-08-31 21:14:24,372 | WARNING | RON/USDT: fetch_ohlcv failed: binance does not have market symbol RON/USDT
+2025-08-31 21:14:26,042 | WARNING | SATS/USDT: fetch_ohlcv failed: binance does not have market symbol SATS/USDT
+2025-08-31 21:14:26,337 | WARNING | BONK/USDT: fetch_ohlcv failed: binance does not have market symbol BONK/USDT
+2025-08-31 21:14:26,624 | WARNING | PEPE/USDT: fetch_ohlcv failed: binance does not have market symbol PEPE/USDT
+2025-08-31 21:14:26,625 | WARNING | FLOKI/USDT: fetch_ohlcv failed: binance does not have market symbol FLOKI/USDT
+2025-08-31 21:14:26,913 | WARNING | ASI/USDT: fetch_ohlcv failed: binance does not have market symbol ASI/USDT
+2025-08-31 21:14:28,012 | WARNING | HNT/USDT: fetch_ohlcv failed: binance does not have market symbol HNT/USDT
+2025-08-31 21:14:32,727 | WARNING | AIOZ/USDT: fetch_ohlcv failed: binance does not have market symbol AIOZ/USDT
+2025-08-31 21:14:32,727 | WARNING | OSMO/USDT: fetch_ohlcv failed: binance does not have market symbol OSMO/USDT
+2025-08-31 21:14:33,012 | WARNING | BLAST/USDT: fetch_ohlcv failed: binance does not have market symbol BLAST/USDT
+2025-08-31 21:14:35,050 | INFO | Dropped 4 symbols (insufficient data or zero variance): FTM/USDT, KLAY/USDT, RAY/USDT, SC/USDT
+2025-08-31 21:14:42,885 | INFO | Cycle 2025-08-31T18:14:42.885312+00:00 | timeframe=1h | lookback=500 | symbols=84 | pairs=3486
+2025-08-31 21:15:04,972 | INFO | Scheduled main cycle hourly at :01
+2025-08-31 21:15:04,972 | INFO | Telegram report scheduled hourly at :05 (max_rows=30)
+2025-08-31 21:32:09,458 | INFO | Shutting down by user request.
+2025-08-31 21:32:13,896 | INFO | Starting Correlation Scanner Bot (ENV mode)
+2025-08-31 21:32:19,031 | WARNING | MATIC/USDT: fetch_ohlcv failed: binance does not have market symbol MATIC/USDT
+2025-08-31 21:32:24,162 | WARNING | RNDR/USDT: fetch_ohlcv failed: binance does not have market symbol RNDR/USDT
+2025-08-31 21:32:32,786 | WARNING | RON/USDT: fetch_ohlcv failed: binance does not have market symbol RON/USDT
+2025-08-31 21:32:34,225 | WARNING | SATS/USDT: fetch_ohlcv failed: binance does not have market symbol SATS/USDT
+2025-08-31 21:32:34,514 | WARNING | BONK/USDT: fetch_ohlcv failed: binance does not have market symbol BONK/USDT
+2025-08-31 21:32:34,804 | WARNING | PEPE/USDT: fetch_ohlcv failed: binance does not have market symbol PEPE/USDT
+2025-08-31 21:32:34,804 | WARNING | FLOKI/USDT: fetch_ohlcv failed: binance does not have market symbol FLOKI/USDT
+2025-08-31 21:32:35,093 | WARNING | ASI/USDT: fetch_ohlcv failed: binance does not have market symbol ASI/USDT
+2025-08-31 21:32:35,951 | WARNING | HNT/USDT: fetch_ohlcv failed: binance does not have market symbol HNT/USDT
+2025-08-31 21:32:39,947 | WARNING | AIOZ/USDT: fetch_ohlcv failed: binance does not have market symbol AIOZ/USDT
+2025-08-31 21:32:39,948 | WARNING | OSMO/USDT: fetch_ohlcv failed: binance does not have market symbol OSMO/USDT
+2025-08-31 21:32:40,236 | WARNING | BLAST/USDT: fetch_ohlcv failed: binance does not have market symbol BLAST/USDT
+2025-08-31 21:32:42,054 | INFO | Dropped 4 symbols (insufficient data or zero variance): FTM/USDT, KLAY/USDT, RAY/USDT, SC/USDT
+2025-08-31 21:32:50,157 | INFO | Cycle 2025-08-31T18:32:50.157087+00:00 | timeframe=1h | lookback=500 | symbols=84 | pairs=3486
+2025-08-31 21:33:11,450 | INFO | Scheduled main cycle hourly at :01
+2025-08-31 21:33:11,451 | INFO | Telegram report scheduled hourly at :05 (max_rows=30)
+2025-08-31 21:33:21,982 | INFO | Shutting down by user request.
+2025-08-31 21:33:39,262 | INFO | Starting Correlation Scanner Bot (ENV mode)
+2025-08-31 21:33:44,609 | WARNING | MATIC/USDT: fetch_ohlcv failed: binance does not have market symbol MATIC/USDT
+2025-08-31 21:33:49,487 | WARNING | RNDR/USDT: fetch_ohlcv failed: binance does not have market symbol RNDR/USDT
+2025-08-31 21:33:58,071 | WARNING | RON/USDT: fetch_ohlcv failed: binance does not have market symbol RON/USDT
+2025-08-31 21:33:59,508 | WARNING | SATS/USDT: fetch_ohlcv failed: binance does not have market symbol SATS/USDT
+2025-08-31 21:33:59,792 | WARNING | BONK/USDT: fetch_ohlcv failed: binance does not have market symbol BONK/USDT
+2025-08-31 21:34:00,080 | WARNING | PEPE/USDT: fetch_ohlcv failed: binance does not have market symbol PEPE/USDT
+2025-08-31 21:34:00,081 | WARNING | FLOKI/USDT: fetch_ohlcv failed: binance does not have market symbol FLOKI/USDT
+2025-08-31 21:34:00,375 | WARNING | ASI/USDT: fetch_ohlcv failed: binance does not have market symbol ASI/USDT
+2025-08-31 21:34:01,229 | WARNING | HNT/USDT: fetch_ohlcv failed: binance does not have market symbol HNT/USDT
+2025-08-31 21:34:05,932 | WARNING | AIOZ/USDT: fetch_ohlcv failed: binance does not have market symbol AIOZ/USDT
+2025-08-31 21:34:05,932 | WARNING | OSMO/USDT: fetch_ohlcv failed: binance does not have market symbol OSMO/USDT
+2025-08-31 21:34:06,221 | WARNING | BLAST/USDT: fetch_ohlcv failed: binance does not have market symbol BLAST/USDT
+2025-08-31 21:34:08,755 | INFO | Dropped 4 symbols (insufficient data or zero variance): FTM/USDT, KLAY/USDT, RAY/USDT, SC/USDT
+2025-08-31 21:34:16,707 | INFO | Cycle 2025-08-31T18:34:16.707799+00:00 | timeframe=1h | lookback=500 | symbols=84 | pairs=3486
+2025-08-31 21:34:40,177 | INFO | Scheduled main cycle hourly at :01
+2025-08-31 21:34:40,178 | INFO | Telegram report scheduled hourly at :05 (max_rows=100)
+2025-08-31 21:39:49,056 | INFO | Shutting down by user request.
+2025-08-31 21:39:52,780 | INFO | Starting Correlation Scanner Bot (ENV mode)
+2025-08-31 21:39:58,225 | WARNING | MATIC/USDT: fetch_ohlcv failed: binance does not have market symbol MATIC/USDT
+2025-08-31 21:40:03,161 | WARNING | RNDR/USDT: fetch_ohlcv failed: binance does not have market symbol RNDR/USDT
+2025-08-31 21:40:12,666 | WARNING | RON/USDT: fetch_ohlcv failed: binance does not have market symbol RON/USDT
+2025-08-31 21:40:14,463 | WARNING | SATS/USDT: fetch_ohlcv failed: binance does not have market symbol SATS/USDT
+2025-08-31 21:40:14,751 | WARNING | BONK/USDT: fetch_ohlcv failed: binance does not have market symbol BONK/USDT
+2025-08-31 21:40:15,037 | WARNING | PEPE/USDT: fetch_ohlcv failed: binance does not have market symbol PEPE/USDT
+2025-08-31 21:40:15,038 | WARNING | FLOKI/USDT: fetch_ohlcv failed: binance does not have market symbol FLOKI/USDT
+2025-08-31 21:40:15,327 | WARNING | ASI/USDT: fetch_ohlcv failed: binance does not have market symbol ASI/USDT
+2025-08-31 21:40:16,187 | WARNING | HNT/USDT: fetch_ohlcv failed: binance does not have market symbol HNT/USDT
+2025-08-31 21:40:20,231 | WARNING | AIOZ/USDT: fetch_ohlcv failed: binance does not have market symbol AIOZ/USDT
+2025-08-31 21:40:20,232 | WARNING | OSMO/USDT: fetch_ohlcv failed: binance does not have market symbol OSMO/USDT
+2025-08-31 21:40:20,535 | WARNING | BLAST/USDT: fetch_ohlcv failed: binance does not have market symbol BLAST/USDT
+2025-08-31 21:40:22,395 | INFO | Dropped 4 symbols (insufficient data or zero variance): FTM/USDT, KLAY/USDT, RAY/USDT, SC/USDT
+2025-08-31 21:40:30,693 | INFO | Cycle 2025-08-31T18:40:30.693876+00:00 | timeframe=1h | lookback=500 | symbols=84 | pairs=3486
+2025-08-31 21:40:51,960 | INFO | Scheduled main cycle hourly at :01
+2025-08-31 21:40:51,961 | INFO | Telegram report scheduled hourly at :05 (max_rows=100)
+2025-08-31 22:01:06,783 | WARNING | MATIC/USDT: fetch_ohlcv failed: binance does not have market symbol MATIC/USDT
+2025-08-31 22:01:11,465 | WARNING | RNDR/USDT: fetch_ohlcv failed: binance does not have market symbol RNDR/USDT
+2025-08-31 22:01:19,721 | WARNING | RON/USDT: fetch_ohlcv failed: binance does not have market symbol RON/USDT
+2025-08-31 22:01:21,097 | WARNING | SATS/USDT: fetch_ohlcv failed: binance does not have market symbol SATS/USDT
+2025-08-31 22:01:21,375 | WARNING | BONK/USDT: fetch_ohlcv failed: binance does not have market symbol BONK/USDT
+2025-08-31 22:01:21,655 | WARNING | PEPE/USDT: fetch_ohlcv failed: binance does not have market symbol PEPE/USDT
+2025-08-31 22:01:21,658 | WARNING | FLOKI/USDT: fetch_ohlcv failed: binance does not have market symbol FLOKI/USDT
+2025-08-31 22:01:21,935 | WARNING | ASI/USDT: fetch_ohlcv failed: binance does not have market symbol ASI/USDT
+2025-08-31 22:01:22,758 | WARNING | HNT/USDT: fetch_ohlcv failed: binance does not have market symbol HNT/USDT
+2025-08-31 22:01:26,588 | WARNING | AIOZ/USDT: fetch_ohlcv failed: binance does not have market symbol AIOZ/USDT
+2025-08-31 22:01:26,588 | WARNING | OSMO/USDT: fetch_ohlcv failed: binance does not have market symbol OSMO/USDT
+2025-08-31 22:01:26,862 | WARNING | BLAST/USDT: fetch_ohlcv failed: binance does not have market symbol BLAST/USDT
+2025-08-31 22:01:28,629 | INFO | Dropped 4 symbols (insufficient data or zero variance): FTM/USDT, KLAY/USDT, RAY/USDT, SC/USDT
+2025-08-31 22:01:36,626 | INFO | Cycle 2025-08-31T19:01:36.625368+00:00 | timeframe=1h | lookback=500 | symbols=84 | pairs=3486
+2025-08-31 22:03:59,322 | INFO | Shutting down by user request.

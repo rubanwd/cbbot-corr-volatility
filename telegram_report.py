@@ -1,20 +1,25 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """
-Telegram weak_corr_pairs reporter (list view)
-- Экспортирует send_report_once(json_path, token, chat_id, max_rows)
-- Формат: удобный для мобильного список; числа округлены до 2 знаков.
+Telegram weak_corr_pairs reporter
+- MACD = BULL/BEAR (по знаку histogram, fallback macd)
+- Если отчёт > лимита Telegram (~4096), шлём ОДНО сообщение с .txt файлом.
+- BB не показываем.
 """
 
 from __future__ import annotations
 
 import os
+import re
 import json
 import math
 from datetime import datetime, timezone
-from typing import List, Dict, Any
+from typing import List, Dict, Any, Optional
 
 import requests
+import html as html_mod
+
+# ─────────── I/O helpers ───────────
 
 def _load_latest_snapshot(path: str) -> Dict[str, Any]:
     if not os.path.exists(path):
@@ -26,8 +31,9 @@ def _select_weak_pairs(data: Dict[str, Any]) -> List[Dict[str, Any]]:
     arr = data.get("weak_corr_pairs") or data.get("week_corr_pairs")
     return arr if isinstance(arr, list) else []
 
+# ─────────── formatting ───────────
+
 def _fmt2(v: Any) -> str:
-    # Округление до 2 знаков (для float/int). Пусто для None/NaN/Inf.
     if v is None:
         return ""
     if isinstance(v, (int, float)):
@@ -39,42 +45,111 @@ def _fmt2(v: Any) -> str:
     except Exception:
         return str(v)
 
-def _fmt_pval(v: Any) -> str:
-    if v is None:
-        return ""
+def _get_ind(data: Dict[str, Any], symbol: str, tf: str) -> Dict[str, Any]:
+    inds = data.get("indicators") or {}
+    symmap = inds.get(symbol) or {}
+    return symmap.get(tf) or {}
+
+def _fmt_rsi_line(rsi_map: Dict[str, Optional[float]], tfs: List[str]) -> str:
+    parts = []
+    for tf in tfs:
+        v = rsi_map.get(tf)
+        parts.append(f"{tf}: {_fmt2(v) if v is not None else '—'}")
+    return " | ".join(parts)
+
+def _macd_label(m: Optional[Dict[str, Any]], eps: float = 1e-6) -> str:
+    """
+    Возвращает 'BULL' если hist>eps (или macd>eps, если hist нет),
+    иначе 'BEAR'. При отсутствии данных — '—'.
+    """
+    if not m:
+        return "—"
+    h = m.get("hist")
     try:
-        x = float(v)
+        if h is not None:
+            hf = float(h)
+            if not math.isnan(hf) and not math.isinf(hf):
+                return "BULL" if hf > eps else "BEAR"
     except Exception:
-        return str(v)
-    if math.isnan(x) or math.isinf(x):
-        return ""
-    # Очень маленькие p показываем научной нотацией; иначе 2 знака.
-    return f"{x:.2e}" if x < 0.01 else f"{x:.2f}"
+        pass
+    try:
+        macd = m.get("macd")
+        if macd is None:
+            return "—"
+        mf = float(macd)
+        if math.isnan(mf) or math.isinf(mf):
+            return "—"
+        return "BULL" if mf > eps else "BEAR"
+    except Exception:
+        return "—"
 
-def _chunk_text(text: str, max_len: int = 4000) -> List[str]:
-    if len(text) <= max_len:
-        return [text]
-    parts, cur, cur_len = [], [], 0
-    for line in text.splitlines(True):
-        if cur_len + len(line) > max_len:
-            parts.append("".join(cur)); cur, cur_len = [line], len(line)
-        else:
-            cur.append(line); cur_len += len(line)
-    if cur:
-        parts.append("".join(cur))
-    return parts
+def _fmt_macd_labels_line(macd_map: Dict[str, Optional[Dict[str, Any]]], tfs: List[str]) -> str:
+    parts = []
+    for tf in tfs:
+        parts.append(f"{tf}: {_macd_label(macd_map.get(tf))}")
+    return " | ".join(parts)
 
-def _send_telegram_html(token: str, chat_id: str, html: str) -> None:
+def _build_symbol_block(data: Dict[str, Any], symbol: str, tfs: List[str]) -> str:
+    rsi_map: Dict[str, Optional[float]] = {}
+    macd_map: Dict[str, Optional[Dict[str, Any]]] = {}
+    for tf in tfs:
+        ind = _get_ind(data, symbol, tf)
+        rsi_map[tf] = ind.get("rsi")
+        macd_map[tf] = ind.get("macd")
+    rsi_line = _fmt_rsi_line(rsi_map, tfs)
+    macd_line = _fmt_macd_labels_line(macd_map, tfs)
+    return (
+        f"<b>{symbol}</b>\n"
+        f"      • RSI  {rsi_line}\n"
+        f"      • MACD {macd_line}"
+    )
+
+# ─────────── Telegram senders ───────────
+
+TG_TEXT_LIMIT = 4096
+# оставим запас на всякий случай (HTML-теги иногда считаются по-разному)
+TG_SAFE_LIMIT = 3900
+
+def _send_telegram_html_single(token: str, chat_id: str, html: str) -> None:
+    """Отправляет ОДНО HTML-сообщение (без чанков). Вызывай только если <= TG_SAFE_LIMIT."""
     url = f"https://api.telegram.org/bot{token}/sendMessage"
-    for part in _chunk_text(html):
-        r = requests.post(url, data={
-            "chat_id": chat_id,
-            "text": part,
-            "parse_mode": "HTML",
-            "disable_web_page_preview": True
-        }, timeout=30)
-        if r.status_code != 200:
-            raise RuntimeError(f"Telegram error: {r.status_code} {r.text}")
+    r = requests.post(url, data={
+        "chat_id": chat_id,
+        "text": html,
+        "parse_mode": "HTML",
+        "disable_web_page_preview": True
+    }, timeout=30)
+    if r.status_code != 200:
+        raise RuntimeError(f"Telegram error: {r.status_code} {r.text}")
+
+def _html_to_text(html: str) -> str:
+    # самый простой «стрипер»: убираем теги и декодируем сущности
+    text = re.sub(r"<br\s*/?>", "\n", html, flags=re.I)
+    text = re.sub(r"</p\s*>", "\n", text, flags=re.I)
+    text = re.sub(r"<[^>]+>", "", text)
+    text = html_mod.unescape(text)
+    return text
+
+def _truncate(s: str, limit: int) -> str:
+    return s if len(s) <= limit else s[:limit-1] + "…"
+
+def _send_telegram_document(token: str, chat_id: str, filename: str, content_text: str, caption: str) -> None:
+    """Отправляет один .txt с короткой подписью (caption у Telegram ограничен ~1024)."""
+    url = f"https://api.telegram.org/bot{token}/sendDocument"
+    files = {
+        "document": (filename, content_text.encode("utf-8"), "text/plain"),
+    }
+    data = {
+        "chat_id": chat_id,
+        "caption": _truncate(caption, 950),
+        "parse_mode": "HTML",  # caption можно жирнить
+        "disable_content_type_detection": False,
+    }
+    r = requests.post(url, data=data, files=files, timeout=60)
+    if r.status_code != 200:
+        raise RuntimeError(f"Telegram error (doc): {r.status_code} {r.text}")
+
+# ─────────── Entry ───────────
 
 def send_report_once(json_path: str, token: str, chat_id: str, max_rows: int = 30) -> None:
     if not token or not chat_id:
@@ -84,33 +159,40 @@ def send_report_once(json_path: str, token: str, chat_id: str, max_rows: int = 3
     rows = _select_weak_pairs(data)[:max_rows]
     timeframe = data.get("timeframe", "?")
     ts = data.get("timestamp_utc") or datetime.now(timezone.utc).isoformat()
+    tfs: List[str] = data.get("indicator_tfs") or ["15m", "1h", "1d"]
 
     header = (
         f"<b>Weak Corr Report</b>\n"
-        f"Timeframe: <b>{timeframe}</b>\n"
+        f"Pairs TF: <b>{timeframe}</b>\n"
         f"As of: <b>{ts}</b>\n\n"
     )
 
     if not rows:
-        _send_telegram_html(token, chat_id, header + "(weak_corr_pairs пуст)")
+        _send_telegram_html_single(token, chat_id, header + "(weak_corr_pairs пуст)")
         return
 
-    # Список: по одной паре в 2–3 строки, удобочитаемо на мобильном
     lines = []
     for i, r in enumerate(rows, start=1):
         pair = r.get("pair", "")
         s1   = r.get("symbol_1", "")
         s2   = r.get("symbol_2", "")
         corr = _fmt2(r.get("corr"))
-        pval = _fmt_pval(r.get("p_value"))
-        n    = r.get("n_obs", "")
-        rsi1 = _fmt2(r.get("symbol_1_rsi"))
-        rsi2 = _fmt2(r.get("symbol_2_rsi"))
-        lines.append(
+        block = (
             f"{i}. <b>{pair}</b>\n"
-            f"   corr: <b>{corr}</b> | p: {pval} | n: {n}\n"
-            f"   RSI: {s1} <b>{rsi1}</b> / {s2} <b>{rsi2}</b>"
+            f"   corr: <b>{corr}</b>\n"
+            f"   {_build_symbol_block(data, s1, tfs)}\n"
+            f"   {_build_symbol_block(data, s2, tfs)}"
         )
+        lines.append(block)
 
-    body = "\n\n".join(lines)
-    _send_telegram_html(token, chat_id, header + body)
+    body_html = "\n\n".join(lines)
+    full_html = header + body_html
+
+    if len(full_html) <= TG_SAFE_LIMIT:
+        # поместилось — одно сообщение
+        _send_telegram_html_single(token, chat_id, full_html)
+    else:
+        # длинно — одно сообщение с .txt
+        text_content = _html_to_text(full_html)
+        caption = f"<b>Weak Corr Report</b> • TF: <b>{timeframe}</b> • {ts}\nПолный отчёт во вложении."
+        _send_telegram_document(token, chat_id, "corr_report.txt", text_content, caption)

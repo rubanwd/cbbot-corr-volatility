@@ -6,6 +6,8 @@ Correlation Scanner Bot for Binance via CCXT (ENV-only)
 - считает корреляции/RSI, формирует weak_corr_pairs, position_candidates
 - ведёт json/jsonl-логи + dedup 24h для position_entry_cases.json
 - и, при TELEGRAM_ENABLED=true, каждый час шлёт отчёт в Telegram
+- ДОБАВЛЕНО: расчёт индикаторов (RSI, MACD, Bollinger Bands) на ТФ 15m/1h/1d
+  по символам из top weak_corr_pairs и сохранение в snapshot["indicators"].
 """
 
 from __future__ import annotations
@@ -123,6 +125,15 @@ TELEGRAM_SEND_ON_START: bool = _get_bool("TELEGRAM_SEND_ON_START", True)
 TELEGRAM_BOT_TOKEN: Optional[str] = _get_str("TELEGRAM_BOT_TOKEN", None)
 TELEGRAM_CHAT_ID: Optional[str] = _get_str("TELEGRAM_CHAT_ID", None)
 
+# ── ДОБАВЛЕНО: Индикаторы для репорта
+INDICATOR_TFS: List[str] = [t.strip() for t in (_get_str("INDICATOR_TFS", "15m,1h,1d") or "15m,1h,1d").split(",") if t.strip()]
+INDICATOR_MAX_PAIRS: int = _get_int("INDICATOR_MAX_PAIRS", 30)   # сколько первых weak_corr_pairs считать
+INDICATOR_BARS: int = _get_int("INDICATOR_BARS", 200)
+MACD_FAST: int = _get_int("MACD_FAST", 12)
+MACD_SLOW: int = _get_int("MACD_SLOW", 26)
+MACD_SIGNAL: int = _get_int("MACD_SIGNAL", 9)
+BB_PERIOD: int = _get_int("BB_PERIOD", 20)
+BB_MULT: float = _get_float("BB_MULT", 2.0)
 
 # ───────────────────────── Core helpers ─────────────────────────
 
@@ -130,6 +141,9 @@ def setup_logger(log_file: str) -> logging.Logger:
     os.makedirs(os.path.dirname(log_file), exist_ok=True)
     logger = logging.getLogger("corr_bot")
     logger.setLevel(logging.INFO)
+    # не плодим хендлеры при повторном импорте/запуске
+    if logger.handlers:
+        logger.handlers.clear()
     formatter = logging.Formatter("%(asctime)s | %(levelname)s | %(message)s")
     fh = logging.FileHandler(log_file, encoding="utf-8")
     fh.setFormatter(formatter)
@@ -176,6 +190,18 @@ def fetch_closes(exchange, symbols: List[str], timeframe: str, limit: int, logge
         raise RuntimeError("Нет OHLCV ни по одному символу.")
     return pd.concat(all_series, axis=1).sort_index()
 
+def fetch_close_series(exchange, symbol: str, timeframe: str, limit: int) -> Optional[pd.Series]:
+    try:
+        ohlcv = exchange.fetch_ohlcv(symbol, timeframe=timeframe, limit=limit)
+        if not ohlcv:
+            return None
+        df = pd.DataFrame(ohlcv, columns=["ts", "open", "high", "low", "close", "volume"])
+        df["ts"] = pd.to_datetime(df["ts"], unit="ms", utc=True)
+        df.set_index("ts", inplace=True)
+        return df["close"].astype(float)
+    except Exception:
+        return None
+
 def compute_rsi_series(close: pd.Series, period: int = 14) -> pd.Series:
     delta = close.diff()
     gain = delta.where(delta > 0, 0.0)
@@ -185,6 +211,24 @@ def compute_rsi_series(close: pd.Series, period: int = 14) -> pd.Series:
     rs = avg_gain / avg_loss
     rsi = 100 - (100 / (1 + rs))
     return rsi
+
+def compute_macd_series(close: pd.Series, fast: int = 12, slow: int = 26, signal: int = 9) -> Tuple[pd.Series, pd.Series, pd.Series]:
+    ema_fast = close.ewm(span=fast, adjust=False, min_periods=fast).mean()
+    ema_slow = close.ewm(span=slow, adjust=False, min_periods=slow).mean()
+    macd_line = ema_fast - ema_slow
+    signal_line = macd_line.ewm(span=signal, adjust=False, min_periods=signal).mean()
+    hist = macd_line - signal_line
+    return macd_line, signal_line, hist
+
+def compute_bbands_series(close: pd.Series, period: int = 20, mult: float = 2.0) -> Tuple[pd.Series, pd.Series, pd.Series, pd.Series]:
+    mid = close.rolling(window=period, min_periods=period).mean()
+    std = close.rolling(window=period, min_periods=period).std()
+    upper = mid + mult * std
+    lower = mid - mult * std
+    # %b — положение цены в полосах (0 у нижней, 1 у верхней)
+    width = (upper - lower)
+    pb = (close - lower) / width
+    return lower, mid, upper, pb
 
 def compute_rsi_last_map(closes: pd.DataFrame, period: int) -> Dict[str, float]:
     out: Dict[str, float] = {}
@@ -320,6 +364,61 @@ def log_position_cases(candidates: List[Dict[str, Any]], ts: str, logger: Option
     if logger:
         logger.info("Position cases saved: appended %d new unique entries (24h window).", appended)
 
+# ───────────────────────── Индикаторы для набора символов ─────────────────────
+
+def compute_indicators_for_symbol(exchange, symbol: str, tfs: List[str]) -> Dict[str, Any]:
+    """
+    Возвращает:
+    {
+      "15m": {
+        "rsi": 62.7,
+        "macd": {"macd": ..., "signal": ..., "hist": ...},
+        "bb": {"lower": ..., "middle": ..., "upper": ..., "close": ..., "percent_b": ...}
+      },
+      "1h": {...},
+      "1d": {...}
+    }
+    """
+    result: Dict[str, Any] = {}
+    for tf in tfs:
+        close = fetch_close_series(exchange, symbol, tf, INDICATOR_BARS)
+        if close is None or len(close) < max(RSI_PERIOD, MACD_SLOW + MACD_SIGNAL, BB_PERIOD) + 1:
+            result[tf] = {"rsi": None, "macd": None, "bb": None}
+            continue
+        # RSI
+        rsi = compute_rsi_series(close, period=RSI_PERIOD)
+        rsi_val = float(rsi.iloc[-1]) if pd.notna(rsi.iloc[-1]) else None
+
+        # MACD
+        macd_line, signal_line, hist = compute_macd_series(close, MACD_FAST, MACD_SLOW, MACD_SIGNAL)
+        macd_val = macd_line.iloc[-1] if len(macd_line) else np.nan
+        signal_val = signal_line.iloc[-1] if len(signal_line) else np.nan
+        hist_val = hist.iloc[-1] if len(hist) else np.nan
+        macd_obj = None if (pd.isna(macd_val) or pd.isna(signal_val) or pd.isna(hist_val)) else {
+            "macd": float(macd_val),
+            "signal": float(signal_val),
+            "hist": float(hist_val),
+        }
+
+        # Bollinger
+        lower, middle, upper, pb = compute_bbands_series(close, BB_PERIOD, BB_MULT)
+        last_idx = close.index[-1]
+        l = lower.loc[last_idx] if last_idx in lower.index else np.nan
+        m = middle.loc[last_idx] if last_idx in middle.index else np.nan
+        u = upper.loc[last_idx] if last_idx in upper.index else np.nan
+        p = pb.loc[last_idx] if last_idx in pb.index else np.nan
+        c = close.iloc[-1]
+        bb_obj = None if (pd.isna(l) or pd.isna(m) or pd.isna(u) or pd.isna(p)) else {
+            "lower": float(l),
+            "middle": float(m),
+            "upper": float(u),
+            "close": float(c),
+            "percent_b": float(p),
+        }
+
+        result[tf] = {"rsi": rsi_val, "macd": macd_obj, "bb": bb_obj}
+    return result
+
 # ───────────────────────── Core cycle ─────────────────────────
 
 def run_cycle(logger: logging.Logger) -> None:
@@ -362,6 +461,8 @@ def run_cycle(logger: logging.Logger) -> None:
                 "pairs_closest_to_zero": [],
                 "weak_corr_pairs": [],
                 "position_candidates": [],
+                "indicators": {},
+                "indicator_tfs": INDICATOR_TFS,
             }
             persist_snapshot(snapshot)
             return
@@ -433,6 +534,23 @@ def run_cycle(logger: logging.Logger) -> None:
         to_persist_sorted = pairs_sorted_dicts[:TOP_N_TO_PERSIST] if TOP_N_TO_PERSIST else pairs_sorted_dicts
         to_persist_abs    = pairs_abs_dicts[:TOP_N_TO_PERSIST]    if TOP_N_TO_PERSIST else pairs_abs_dicts
 
+        # ── ДОБАВЛЕНО: индикаторы для топ weak_corr_pairs
+        symbols_for_ind: List[str] = []
+        top_pairs_for_ind = weak_pairs[:INDICATOR_MAX_PAIRS] if INDICATOR_MAX_PAIRS > 0 else weak_pairs
+        for item in top_pairs_for_ind:
+            s1 = item.get("symbol_1"); s2 = item.get("symbol_2")
+            if s1: symbols_for_ind.append(s1)
+            if s2: symbols_for_ind.append(s2)
+        symbols_for_ind = sorted(set([s for s in symbols_for_ind if s]))
+
+        indicators: Dict[str, Any] = {}
+        for sym in symbols_for_ind:
+            try:
+                indicators[sym] = compute_indicators_for_symbol(exchange, sym, INDICATOR_TFS)
+            except Exception as e:
+                logger.warning("Indicators failed for %s: %s", sym, e)
+                indicators[sym] = {}
+
         snapshot = {
             "timestamp_utc": ts,
             "exchange": "binanceusdm" if USE_FUTURES else "binance",
@@ -445,6 +563,8 @@ def run_cycle(logger: logging.Logger) -> None:
             "pairs_closest_to_zero": to_persist_abs,
             "weak_corr_pairs": weak_pairs,
             "position_candidates": position_candidates,
+            "indicators": indicators,          # <── ключ для Telegram
+            "indicator_tfs": INDICATOR_TFS,    # <── чтобы знать какие ТФ показывать
         }
         persist_snapshot(snapshot)
 
