@@ -162,7 +162,7 @@ def send_report_once(json_path: str, token: str, chat_id: str, max_rows: int = 3
     tfs: List[str] = data.get("indicator_tfs") or ["15m", "1h", "1d"]
 
     header = (
-        f"<b>Weak Corr Report</b>\n"
+        f"<b>BINANCE Futures : Weak Corr Report</b>\n"
         f"Pairs TF: <b>{timeframe}</b>\n"
         f"As of: <b>{ts}</b>\n\n"
     )
@@ -188,11 +188,7 @@ def send_report_once(json_path: str, token: str, chat_id: str, max_rows: int = 3
     body_html = "\n\n".join(lines)
     full_html = header + body_html
 
-    if len(full_html) <= TG_SAFE_LIMIT:
-        # поместилось — одно сообщение
-        _send_telegram_html_single(token, chat_id, full_html)
-    else:
-        # длинно — одно сообщение с .txt
-        text_content = _html_to_text(full_html)
-        caption = f"<b>Weak Corr Report</b> • TF: <b>{timeframe}</b> • {ts}\nПолный отчёт во вложении."
-        _send_telegram_document(token, chat_id, "corr_report.txt", text_content, caption)
+    # длинно — одно сообщение с .txt
+    text_content = _html_to_text(full_html)
+    caption = f"<b>Weak Corr Report</b> • TF: <b>{timeframe}</b> • {ts}\nПолный отчёт во вложении."
+    _send_telegram_document(token, chat_id, "corr_report.txt", text_content, caption)

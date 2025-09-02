@@ -1,84 +1,28 @@
-2025-08-31 23:18:15,139 | INFO | Starting Correlation Scanner Bot | dynamic=True
-2025-08-31 23:18:17,883 | INFO | Dynamic: start with 480 USDT-perp symbols
-2025-08-31 23:18:17,884 | INFO | Symbol allow/block filters disabled.
-2025-08-31 23:18:18,539 | INFO | Volume filter: 39 pass (>=100M), preselect=39
-2025-08-31 23:18:18,539 | INFO | CAP filter disabled — пропускаем (CAP_FILTER_ENABLED=false).
-2025-08-31 23:18:29,359 | INFO | ATR% filter (>= 5.00%): 32/39
-2025-08-31 23:18:38,124 | INFO | Orderbook filter (gaps <= 1.00% top 20): 32/32
-2025-08-31 23:19:06,569 | INFO | Corr filter (max|corr| <= 0.60 @ 1h): 11/32
-2025-08-31 23:19:06,572 | INFO | Dynamic universe saved to ./data\symbols_dynamic_20250831_201906.txt (11 symbols).
-2025-08-31 23:19:09,895 | INFO | Cycle 2025-08-31T20:19:09.894942+00:00 | timeframe=1h | lookback=500 | symbols=11 | pairs=55
-2025-08-31 23:19:19,241 | INFO | Position cases saved: appended 1 new unique entries (24h window).
-2025-08-31 23:19:19,315 | INFO | Scheduled main cycle hourly at :01
-2025-08-31 23:19:19,316 | INFO | Telegram report scheduled hourly at :05 (max_rows=100)
-2025-08-31 23:20:43,808 | INFO | Shutting down by user request.
-2025-08-31 23:20:48,211 | INFO | Starting Correlation Scanner Bot | dynamic=False
-2025-08-31 23:20:50,763 | INFO | Static universe: 100 symbols (from symbols.txt or STATIC_SYMBOLS).
-2025-08-31 23:20:53,401 | WARNING | MATIC/USDT: empty OHLCV
-2025-08-31 23:20:58,408 | WARNING | RNDR/USDT: empty OHLCV
-2025-08-31 23:21:07,225 | WARNING | RON/USDT: empty OHLCV
-2025-08-31 23:21:08,698 | WARNING | SATS/USDT: empty OHLCV
-2025-08-31 23:21:09,015 | WARNING | BONK/USDT: empty OHLCV
-2025-08-31 23:21:09,309 | WARNING | PEPE/USDT: empty OHLCV
-2025-08-31 23:21:09,310 | WARNING | FLOKI/USDT: empty OHLCV
-2025-08-31 23:21:09,607 | WARNING | ASI/USDT: empty OHLCV
-2025-08-31 23:21:10,486 | WARNING | HNT/USDT: empty OHLCV
-2025-08-31 23:21:15,291 | WARNING | AIOZ/USDT: empty OHLCV
-2025-08-31 23:21:15,292 | WARNING | OSMO/USDT: empty OHLCV
-2025-08-31 23:21:15,585 | WARNING | BLAST/USDT: empty OHLCV
-2025-08-31 23:21:17,435 | INFO | Dropped 4 symbols (insufficient data or zero variance): FTM/USDT, KLAY/USDT, RAY/USDT, SC/USDT
-2025-08-31 23:21:25,790 | INFO | Cycle 2025-08-31T20:21:25.790462+00:00 | timeframe=1h | lookback=500 | symbols=84 | pairs=3486
-2025-08-31 23:21:47,193 | INFO | Scheduled main cycle hourly at :01
-2025-08-31 23:21:47,194 | INFO | Telegram report scheduled hourly at :05 (max_rows=100)
-2025-08-31 23:22:06,849 | INFO | Shutting down by user request.
-2025-08-31 23:25:26,030 | INFO | Starting Correlation Scanner Bot | dynamic=True
-2025-08-31 23:25:28,503 | INFO | Dynamic: start with 480 USDT-perp symbols
-2025-08-31 23:25:28,503 | INFO | Symbol allow/block filters disabled.
-2025-08-31 23:25:29,336 | INFO | Volume filter: 39 pass (>=100M), preselect=39
-2025-08-31 23:25:29,337 | INFO | CAP filter disabled — пропускаем (CAP_FILTER_ENABLED=false).
-2025-08-31 23:25:40,203 | INFO | ATR% filter (>= 5.00%): 32/39
-2025-08-31 23:25:51,410 | INFO | Orderbook filter (gaps <= 1.00% top 20): 32/32
-2025-08-31 23:26:19,103 | INFO | Corr filter (max|corr| <= 0.60 @ 1h): 11/32
-2025-08-31 23:26:19,107 | INFO | Dynamic universe saved to ./data\symbols_dynamic_20250831_202619.txt (11 symbols).
-2025-08-31 23:26:23,197 | INFO | Cycle 2025-08-31T20:26:23.197323+00:00 | timeframe=1h | lookback=500 | symbols=11 | pairs=55
-2025-08-31 23:26:32,922 | INFO | Position cases saved: appended 0 new unique entries (24h window).
-2025-08-31 23:26:32,996 | INFO | Scheduled main cycle hourly at :01
-2025-08-31 23:26:32,997 | INFO | Telegram report scheduled hourly at :05 (max_rows=100)
-2025-08-31 23:32:40,115 | INFO | Shutting down by user request.
-2025-08-31 23:33:03,294 | INFO | Starting Correlation Scanner Bot | dynamic=True
-2025-08-31 23:33:05,855 | INFO | Dynamic: start with 480 USDT-perp symbols
-2025-08-31 23:33:05,855 | INFO | Symbol allow/block filters disabled.
-2025-08-31 23:33:06,728 | INFO | Volume filter DISABLED. Preselect top-300 by volume out of 480
-2025-08-31 23:33:06,728 | INFO | CAP filter disabled — пропускаем (CAP_FILTER_ENABLED=false).
-2025-08-31 23:34:33,697 | INFO | ATR% filter (>= 5.00%): 280/300
-2025-08-31 23:35:51,826 | INFO | Orderbook filter (gaps <= 1.00% top 20): 280/280
-2025-08-31 23:39:52,684 | INFO | Corr filter (max|corr| <= 0.60 @ 1h): 106/280
-2025-08-31 23:39:52,687 | INFO | Dynamic universe saved to ./data\symbols_dynamic_20250831_203952.txt (106 symbols).
-2025-08-31 23:40:37,173 | INFO | Cycle 2025-08-31T20:40:37.173248+00:00 | timeframe=1h | lookback=500 | symbols=106 | pairs=5565
-2025-08-31 23:40:52,758 | INFO | Position cases saved: appended 8 new unique entries (24h window).
-2025-08-31 23:40:52,811 | INFO | Scheduled main cycle hourly at :01
-2025-08-31 23:40:52,812 | INFO | Telegram report scheduled hourly at :05 (max_rows=100)
-2025-08-31 23:46:41,078 | INFO | Shutting down by user request.
-2025-08-31 23:54:51,727 | INFO | Starting Correlation Scanner Bot | dynamic=True
-2025-08-31 23:54:54,335 | INFO | Dynamic: start with 480 USDT-perp symbols
-2025-08-31 23:54:54,335 | INFO | Symbol allow/block filters disabled.
-2025-08-31 23:54:55,073 | INFO | Volume filter: 39 pass (>=100M), preselect=39
-2025-08-31 23:54:55,074 | INFO | CAP filter disabled — пропускаем (CAP_FILTER_ENABLED=false).
-2025-08-31 23:55:07,809 | INFO | ATR% filter (>= 5.00%): 32/39
-2025-08-31 23:55:17,527 | INFO | Orderbook filter (gaps <= 1.00% top 20): 32/32
-2025-08-31 23:55:45,323 | INFO | Corr filter (max|corr| <= 0.60 @ 1h): 11/32
-2025-08-31 23:55:45,325 | INFO | Dynamic universe saved to ./data\symbols_dynamic_20250831_205545.txt (11 symbols).
-2025-08-31 23:55:49,002 | INFO | Cycle 2025-08-31T20:55:49.002892+00:00 | timeframe=1h | lookback=500 | symbols=11 | pairs=55
-2025-08-31 23:55:58,348 | INFO | Position cases saved: appended 0 new unique entries (24h window).
-2025-08-31 23:55:58,417 | INFO | Scheduled main cycle hourly at :01
-2025-08-31 23:55:58,418 | INFO | Telegram report scheduled hourly at :05 (max_rows=30)
-2025-09-01 00:01:03,699 | INFO | Dynamic: start with 480 USDT-perp symbols
-2025-09-01 00:01:03,699 | INFO | Symbol allow/block filters disabled.
-2025-09-01 00:01:04,484 | INFO | Volume filter: 39 pass (>=100M), preselect=39
-2025-09-01 00:01:04,485 | INFO | CAP filter disabled — пропускаем (CAP_FILTER_ENABLED=false).
-2025-09-01 00:01:15,446 | INFO | ATR% filter (>= 5.00%): 32/39
-2025-09-01 00:01:26,167 | INFO | Orderbook filter (gaps <= 1.00% top 20): 32/32
-2025-09-01 00:01:55,031 | INFO | Corr filter (max|corr| <= 0.60 @ 1h): 11/32
-2025-09-01 00:01:55,034 | INFO | Dynamic universe saved to ./data\symbols_dynamic_20250831_210155.txt (11 symbols).
-2025-09-01 00:01:59,076 | INFO | Cycle 2025-08-31T21:01:59.076527+00:00 | timeframe=1h | lookback=500 | symbols=11 | pairs=55
-2025-09-01 00:09:46,298 | INFO | Shutting down by user request.
+2025-09-02 21:37:15,422 | INFO | Starting Correlation Scanner Bot | dynamic=True
+2025-09-02 21:37:17,958 | INFO | Dynamic: start with 482 USDT-perp symbols
+2025-09-02 21:37:17,958 | INFO | Symbol allow/block filters disabled.
+2025-09-02 21:37:18,804 | INFO | Volume filter: 60 pass (>=100M), preselect=60
+2025-09-02 21:37:18,818 | INFO | CAP filter disabled — пропускаем (CAP_FILTER_ENABLED=false).
+2025-09-02 21:37:37,365 | INFO | ATR% filter (>= 5.00%): 48/60
+2025-09-02 21:37:50,980 | INFO | Orderbook filter (gaps <= 1.00% top 20): 48/48
+2025-09-02 21:38:31,705 | INFO | Corr filter (max|corr| <= 0.60 @ 1h): 12/48
+2025-09-02 21:38:31,719 | INFO | Dynamic universe saved to ./data\symbols_dynamic_20250902_183831.txt (12 symbols).
+2025-09-02 21:38:36,017 | INFO | Cycle 2025-09-02T18:38:36.017824+00:00 | timeframe=1h | lookback=500 | symbols=12 | pairs=66
+2025-09-02 21:38:46,137 | INFO | Scheduled main cycle hourly at :01
+2025-09-02 21:38:46,137 | INFO | Telegram report scheduled hourly at :05 (max_rows=30)
+2025-09-02 21:43:35,622 | INFO | Shutting down by user request.
+2025-09-02 21:43:45,948 | INFO | Starting Correlation Scanner Bot | dynamic=False
+2025-09-02 21:43:49,103 | INFO | Static universe: 100 symbols (from symbols.txt or STATIC_SYMBOLS).
+2025-09-02 21:43:52,391 | WARNING | SHIB/USDT: empty OHLCV
+2025-09-02 21:43:55,942 | WARNING | RNDR/USDT: empty OHLCV
+2025-09-02 21:44:03,033 | WARNING | PEPE/USDT: empty OHLCV
+2025-09-02 21:44:03,034 | WARNING | FLOKI/USDT: empty OHLCV
+2025-09-02 21:44:03,306 | WARNING | BONK/USDT: empty OHLCV
+2025-09-02 21:44:04,140 | WARNING | BLAST/USDT: empty OHLCV
+2025-09-02 21:44:13,720 | WARNING | BTT/USDT: empty OHLCV
+2025-09-02 21:44:13,720 | WARNING | CORE/USDT: empty OHLCV
+2025-09-02 21:44:14,365 | INFO | Dropped 2 symbols (insufficient data or zero variance): FTM/USDT, RAY/USDT
+2025-09-02 21:44:24,335 | INFO | Cycle 2025-09-02T18:44:24.335646+00:00 | timeframe=1h | lookback=500 | symbols=90 | pairs=4005
+2025-09-02 21:44:46,276 | INFO | Scheduled main cycle hourly at :01
+2025-09-02 21:44:46,276 | INFO | Telegram report scheduled hourly at :05 (max_rows=30)
+2025-09-02 21:48:10,188 | INFO | Shutting down by user request.
