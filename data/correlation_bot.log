@@ -26,3 +26,91 @@
 2025-09-02 21:44:46,276 | INFO | Scheduled main cycle hourly at :01
 2025-09-02 21:44:46,276 | INFO | Telegram report scheduled hourly at :05 (max_rows=30)
 2025-09-02 21:48:10,188 | INFO | Shutting down by user request.
+2025-09-02 22:34:00,257 | INFO | Starting Correlation Scanner Bot | dynamic=False
+2025-09-02 22:34:02,654 | INFO | Static universe: 100 symbols (from symbols.txt or STATIC_SYMBOLS).
+2025-09-02 22:34:06,345 | WARNING | SHIB/USDT: empty OHLCV
+2025-09-02 22:34:10,104 | WARNING | RNDR/USDT: empty OHLCV
+2025-09-02 22:34:19,274 | WARNING | PEPE/USDT: empty OHLCV
+2025-09-02 22:34:19,274 | WARNING | FLOKI/USDT: empty OHLCV
+2025-09-02 22:34:19,550 | WARNING | BONK/USDT: empty OHLCV
+2025-09-02 22:34:20,423 | WARNING | BLAST/USDT: empty OHLCV
+2025-09-02 22:34:33,118 | WARNING | BTT/USDT: empty OHLCV
+2025-09-02 22:34:33,118 | WARNING | CORE/USDT: empty OHLCV
+2025-09-02 22:34:33,794 | INFO | Dropped 2 symbols (insufficient data or zero variance): FTM/USDT, RAY/USDT
+2025-09-02 22:34:42,158 | INFO | Cycle 2025-09-02T19:34:42.158879+00:00 | timeframe=1h | lookback=500 | symbols=90 | pairs=4005
+2025-09-02 22:35:05,569 | INFO | Scheduled main cycle hourly at :01
+2025-09-02 22:35:05,569 | INFO | Telegram report scheduled hourly at :05 (max_rows=30)
+2025-09-02 22:35:29,172 | INFO | Shutting down by user request.
+2025-09-04 17:19:52,659 | INFO | Starting Correlation Scanner Bot | dynamic=False
+2025-09-04 17:19:59,915 | INFO | Static universe: 100 symbols (from symbols.txt or STATIC_SYMBOLS).
+2025-09-04 17:20:03,445 | WARNING | SHIB/USDT: empty OHLCV
+2025-09-04 17:20:07,223 | WARNING | RNDR/USDT: empty OHLCV
+2025-09-04 17:20:14,768 | WARNING | PEPE/USDT: empty OHLCV
+2025-09-04 17:20:14,771 | WARNING | FLOKI/USDT: empty OHLCV
+2025-09-04 17:20:15,059 | WARNING | BONK/USDT: empty OHLCV
+2025-09-04 17:20:15,926 | WARNING | BLAST/USDT: empty OHLCV
+2025-09-04 17:20:26,384 | WARNING | BTT/USDT: empty OHLCV
+2025-09-04 17:20:26,384 | WARNING | CORE/USDT: empty OHLCV
+2025-09-04 17:20:27,286 | INFO | Dropped 2 symbols (insufficient data or zero variance): FTM/USDT, RAY/USDT
+2025-09-04 17:20:40,682 | INFO | Cycle 2025-09-04T14:20:40.682078+00:00 | timeframe=1h | lookback=500 | symbols=90 | pairs=4005
+2025-09-04 17:22:22,513 | INFO | Scheduled main cycle hourly at :01
+2025-09-04 17:22:22,513 | INFO | WeakCorr report scheduled hourly at :05 (max_rows=30)
+2025-09-04 17:25:22,749 | INFO | Shutting down by user request.
+2025-09-04 17:33:02,282 | INFO | Starting Correlation Scanner Bot | dynamic=False
+2025-09-04 17:33:08,619 | INFO | Static universe: 100 symbols (from symbols.txt or STATIC_SYMBOLS).
+2025-09-04 17:33:12,327 | WARNING | SHIB/USDT: empty OHLCV
+2025-09-04 17:33:16,082 | WARNING | RNDR/USDT: empty OHLCV
+2025-09-04 17:33:23,799 | WARNING | PEPE/USDT: empty OHLCV
+2025-09-04 17:33:23,799 | WARNING | FLOKI/USDT: empty OHLCV
+2025-09-04 17:33:24,090 | WARNING | BONK/USDT: empty OHLCV
+2025-09-04 17:33:24,958 | WARNING | BLAST/USDT: empty OHLCV
+2025-09-04 17:33:35,151 | WARNING | BTT/USDT: empty OHLCV
+2025-09-04 17:33:35,151 | WARNING | CORE/USDT: empty OHLCV
+2025-09-04 17:33:35,808 | INFO | Dropped 2 symbols (insufficient data or zero variance): FTM/USDT, RAY/USDT
+2025-09-04 17:33:44,766 | INFO | Cycle 2025-09-04T14:33:44.766302+00:00 | timeframe=1h | lookback=500 | symbols=90 | pairs=4005
+2025-09-04 17:35:27,581 | INFO | Scheduled main cycle hourly at :01
+2025-09-04 17:35:27,582 | INFO | WeakCorr report scheduled hourly at :05 (max_rows=30)
+2025-09-04 17:35:27,892 | INFO | RSI report scheduled hourly at :07 (top_n=10, tf=1h)
+2025-09-04 17:52:42,590 | INFO | Shutting down by user request.
+2025-09-04 17:53:16,726 | INFO | Starting Correlation Scanner Bot | dynamic=False
+2025-09-04 17:53:19,382 | INFO | Static universe: 100 symbols (from symbols.txt or STATIC_SYMBOLS).
+2025-09-04 17:53:22,856 | WARNING | SHIB/USDT: empty OHLCV
+2025-09-04 17:53:26,639 | WARNING | RNDR/USDT: empty OHLCV
+2025-09-04 17:53:34,612 | WARNING | PEPE/USDT: empty OHLCV
+2025-09-04 17:53:34,612 | WARNING | FLOKI/USDT: empty OHLCV
+2025-09-04 17:53:34,901 | WARNING | BONK/USDT: empty OHLCV
+2025-09-04 17:53:36,017 | WARNING | BLAST/USDT: empty OHLCV
+2025-09-04 17:53:46,217 | WARNING | BTT/USDT: empty OHLCV
+2025-09-04 17:53:46,218 | WARNING | CORE/USDT: empty OHLCV
+2025-09-04 17:53:46,880 | INFO | Dropped 2 symbols (insufficient data or zero variance): FTM/USDT, RAY/USDT
+2025-09-04 17:53:55,718 | INFO | Cycle 2025-09-04T14:53:55.718724+00:00 | timeframe=1h | lookback=500 | symbols=90 | pairs=4005
+2025-09-04 17:55:40,597 | INFO | Scheduled main cycle hourly at :01
+2025-09-04 17:55:40,598 | INFO | WeakCorr report scheduled hourly at :05 (max_rows=30)
+2025-09-04 17:55:40,982 | INFO | RSI report scheduled hourly at :07 (top_n=10, tf=1h)
+2025-09-04 18:01:04,189 | INFO | Static universe: 100 symbols (from symbols.txt or STATIC_SYMBOLS).
+2025-09-04 18:01:07,682 | WARNING | SHIB/USDT: empty OHLCV
+2025-09-04 18:01:11,450 | WARNING | RNDR/USDT: empty OHLCV
+2025-09-04 18:01:18,977 | WARNING | PEPE/USDT: empty OHLCV
+2025-09-04 18:01:18,977 | WARNING | FLOKI/USDT: empty OHLCV
+2025-09-04 18:01:19,268 | WARNING | BONK/USDT: empty OHLCV
+2025-09-04 18:01:20,143 | WARNING | BLAST/USDT: empty OHLCV
+2025-09-04 18:01:30,277 | WARNING | BTT/USDT: empty OHLCV
+2025-09-04 18:01:30,277 | WARNING | CORE/USDT: empty OHLCV
+2025-09-04 18:01:30,973 | INFO | Dropped 2 symbols (insufficient data or zero variance): FTM/USDT, RAY/USDT
+2025-09-04 18:01:41,275 | INFO | Cycle 2025-09-04T15:01:41.275418+00:00 | timeframe=1h | lookback=500 | symbols=90 | pairs=4005
+2025-09-04 18:17:09,885 | INFO | Shutting down by user request.
+2025-09-04 18:17:20,237 | INFO | Starting Correlation Scanner Bot | dynamic=False
+2025-09-04 18:17:23,004 | INFO | Static universe: 100 symbols (from symbols.txt or STATIC_SYMBOLS).
+2025-09-04 18:17:26,476 | WARNING | SHIB/USDT: empty OHLCV
+2025-09-04 18:17:30,225 | WARNING | RNDR/USDT: empty OHLCV
+2025-09-04 18:17:37,731 | WARNING | PEPE/USDT: empty OHLCV
+2025-09-04 18:17:37,732 | WARNING | FLOKI/USDT: empty OHLCV
+2025-09-04 18:17:38,018 | WARNING | BONK/USDT: empty OHLCV
+2025-09-04 18:17:38,886 | WARNING | BLAST/USDT: empty OHLCV
+2025-09-04 18:17:48,972 | WARNING | BTT/USDT: empty OHLCV
+2025-09-04 18:17:48,972 | WARNING | CORE/USDT: empty OHLCV
+2025-09-04 18:17:49,659 | INFO | Dropped 2 symbols (insufficient data or zero variance): FTM/USDT, RAY/USDT
+2025-09-04 18:17:59,652 | INFO | Cycle 2025-09-04T15:17:59.652359+00:00 | timeframe=1h | lookback=500 | symbols=90 | pairs=4005
+2025-09-04 18:20:19,555 | INFO | Scheduled main cycle hourly at :01
+2025-09-04 18:20:19,556 | INFO | WeakCorr report scheduled hourly at :05 (max_rows=30)
+2025-09-04 18:20:19,849 | INFO | RSI report scheduled hourly at :07 (top_n=10, tf=1h)

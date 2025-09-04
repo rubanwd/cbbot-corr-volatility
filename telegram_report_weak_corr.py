@@ -1,9 +1,9 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """
-Telegram weak_corr_pairs reporter
-- MACD = BULL/BEAR (по знаку histogram, fallback macd)
-- Если отчёт > лимита Telegram (~4096), шлём ОДНО сообщение с .txt файлом.
+Telegram weak_corr_pairs reporter (всегда .txt)
+- Формируем HTML как раньше, конвертируем в текст и отправляем ОДНИМ .txt-файлом
+  с короткой подписью (caption). Никаких sendMessage — только sendDocument.
 - BB не показываем.
 """
 
@@ -19,7 +19,7 @@ from typing import List, Dict, Any, Optional
 import requests
 import html as html_mod
 
-# ─────────── I/O helpers ───────────
+# ───────── helpers ─────────
 
 def _load_latest_snapshot(path: str) -> Dict[str, Any]:
     if not os.path.exists(path):
@@ -30,8 +30,6 @@ def _load_latest_snapshot(path: str) -> Dict[str, Any]:
 def _select_weak_pairs(data: Dict[str, Any]) -> List[Dict[str, Any]]:
     arr = data.get("weak_corr_pairs") or data.get("week_corr_pairs")
     return arr if isinstance(arr, list) else []
-
-# ─────────── formatting ───────────
 
 def _fmt2(v: Any) -> str:
     if v is None:
@@ -58,10 +56,6 @@ def _fmt_rsi_line(rsi_map: Dict[str, Optional[float]], tfs: List[str]) -> str:
     return " | ".join(parts)
 
 def _macd_label(m: Optional[Dict[str, Any]], eps: float = 1e-6) -> str:
-    """
-    Возвращает 'BULL' если hist>eps (или macd>eps, если hist нет),
-    иначе 'BEAR'. При отсутствии данных — '—'.
-    """
     if not m:
         return "—"
     h = m.get("hist")
@@ -104,26 +98,7 @@ def _build_symbol_block(data: Dict[str, Any], symbol: str, tfs: List[str]) -> st
         f"      • MACD {macd_line}"
     )
 
-# ─────────── Telegram senders ───────────
-
-TG_TEXT_LIMIT = 4096
-# оставим запас на всякий случай (HTML-теги иногда считаются по-разному)
-TG_SAFE_LIMIT = 3900
-
-def _send_telegram_html_single(token: str, chat_id: str, html: str) -> None:
-    """Отправляет ОДНО HTML-сообщение (без чанков). Вызывай только если <= TG_SAFE_LIMIT."""
-    url = f"https://api.telegram.org/bot{token}/sendMessage"
-    r = requests.post(url, data={
-        "chat_id": chat_id,
-        "text": html,
-        "parse_mode": "HTML",
-        "disable_web_page_preview": True
-    }, timeout=30)
-    if r.status_code != 200:
-        raise RuntimeError(f"Telegram error: {r.status_code} {r.text}")
-
 def _html_to_text(html: str) -> str:
-    # самый простой «стрипер»: убираем теги и декодируем сущности
     text = re.sub(r"<br\s*/?>", "\n", html, flags=re.I)
     text = re.sub(r"</p\s*>", "\n", text, flags=re.I)
     text = re.sub(r"<[^>]+>", "", text)
@@ -134,7 +109,6 @@ def _truncate(s: str, limit: int) -> str:
     return s if len(s) <= limit else s[:limit-1] + "…"
 
 def _send_telegram_document(token: str, chat_id: str, filename: str, content_text: str, caption: str) -> None:
-    """Отправляет один .txt с короткой подписью (caption у Telegram ограничен ~1024)."""
     url = f"https://api.telegram.org/bot{token}/sendDocument"
     files = {
         "document": (filename, content_text.encode("utf-8"), "text/plain"),
@@ -142,14 +116,14 @@ def _send_telegram_document(token: str, chat_id: str, filename: str, content_tex
     data = {
         "chat_id": chat_id,
         "caption": _truncate(caption, 950),
-        "parse_mode": "HTML",  # caption можно жирнить
+        "parse_mode": "HTML",
         "disable_content_type_detection": False,
     }
     r = requests.post(url, data=data, files=files, timeout=60)
     if r.status_code != 200:
         raise RuntimeError(f"Telegram error (doc): {r.status_code} {r.text}")
 
-# ─────────── Entry ───────────
+# ───────── entry ─────────
 
 def send_report_once(json_path: str, token: str, chat_id: str, max_rows: int = 30) -> None:
     if not token or not chat_id:
@@ -168,7 +142,10 @@ def send_report_once(json_path: str, token: str, chat_id: str, max_rows: int = 3
     )
 
     if not rows:
-        _send_telegram_html_single(token, chat_id, header + "(weak_corr_pairs пуст)")
+        # даже если пусто — присылаем .txt с заголовком
+        text_content = _html_to_text(header + "(weak_corr_pairs пуст)")
+        caption = f"<b>Weak Corr Report</b> • TF: <b>{timeframe}</b> • {ts}"
+        _send_telegram_document(token, chat_id, "corr_report.txt", text_content, caption)
         return
 
     lines = []
@@ -187,8 +164,6 @@ def send_report_once(json_path: str, token: str, chat_id: str, max_rows: int = 3
 
     body_html = "\n\n".join(lines)
     full_html = header + body_html
-
-    # длинно — одно сообщение с .txt
     text_content = _html_to_text(full_html)
     caption = f"<b>Weak Corr Report</b> • TF: <b>{timeframe}</b> • {ts}\nПолный отчёт во вложении."
     _send_telegram_document(token, chat_id, "corr_report.txt", text_content, caption)

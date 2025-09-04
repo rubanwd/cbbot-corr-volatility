@@ -2,8 +2,10 @@
 # -*- coding: utf-8 -*-
 """
 Correlation Scanner Bot — динамический/статический универс + кастомные фильтры
-- Переключение через .env:
-    DYNAMIC_UNIVERSE_ENABLED=true|false
++ Telegram отчёты:
+  1) weak_corr_pairs (старый; файл переименован в telegram_report_weak_corr.py)
+  2) high/low RSI (НОВЫЙ: telegram_report_rsi.py)
+
 - В динамическом режиме можно включить/выключить фильтр «разрешённых/запрещённых» активов:
     DYN_SYMBOL_FILTERS_ENABLED=true|false
     DYN_ALLOWED_BASES=BTC,ETH,BNB          # БАЗОВЫЕ тикеры (до /USDT)
@@ -12,7 +14,7 @@ Correlation Scanner Bot — динамический/статический ун
     DYN_BLOCKED_SYMBOLS=SOME/USDT
 - Остальные фильтры (объём/ATR/стакан/корр. и опц. капа) — отдельные тумблеры.
 - Сохраняет выбранные символы в data/symbols_dynamic_YYYYMMDD_HHMMSS.txt (+latest)
-- Считает корреляции, RSI, MACD; пишет снапшот; шлёт телеграм-отчёт.
+- Считает корреляции, RSI, MACD; пишет снапшот; шлёт телеграм-отчёты.
 """
 
 from __future__ import annotations
@@ -52,11 +54,19 @@ try:
 except Exception:
     requests = None  # CoinGecko фильтр будет выключен, если requests недоступен
 
-# Telegram-компонент
+# Telegram-компоненты
+# РАНЕЕ было: from telegram_report import send_report_once as tg_send_report_once
+# Теперь: weak_corr вынесен в telegram_report_weak_corr.py;
+#         новый отчёт по RSI — в telegram_report_rsi.py
 try:
-    from telegram_report import send_report_once as tg_send_report_once
+    from telegram_report_weak_corr import send_report_once as tg_send_weak_corr_once
 except Exception:
-    tg_send_report_once = None
+    tg_send_weak_corr_once = None
+
+try:
+    from telegram_report_rsi import send_report_once as tg_send_rsi_once
+except Exception:
+    tg_send_rsi_once = None
 
 # SciPy (не обязателен; если нет — используем pandas corr)
 try:
@@ -138,6 +148,7 @@ HOURLY_AT: Optional[str] = _get_str("HOURLY_AT", ":01")
 HOURLY_AT = None if (HOURLY_AT or "").strip() == "" else HOURLY_AT
 RUN_ONCE: bool = _get_bool("RUN_ONCE", False)
 
+# ── Weak Corr Telegram (Старый отчёт)
 TELEGRAM_ENABLED: bool = _get_bool("TELEGRAM_ENABLED", False)
 TELEGRAM_HOURLY_AT: str = _get_str("TELEGRAM_HOURLY_AT", ":05") or ":05"
 TELEGRAM_MAX_ROWS: int = _get_int("TELEGRAM_MAX_ROWS", 100)
@@ -145,7 +156,7 @@ TELEGRAM_SEND_ON_START: bool = _get_bool("TELEGRAM_SEND_ON_START", True)
 TELEGRAM_BOT_TOKEN: Optional[str] = _get_str("TELEGRAM_BOT_TOKEN", None)
 TELEGRAM_CHAT_ID: Optional[str] = _get_str("TELEGRAM_CHAT_ID", None)
 
-# Индикаторы для отчёта
+# ── Индикаторы (общие настройки)
 INDICATOR_TFS: List[str] = [t.strip() for t in (_get_str("INDICATOR_TFS", "15m,1h,1d") or "15m,1h,1d").split(",") if t.strip()]
 INDICATOR_MAX_PAIRS: int = _get_int("INDICATOR_MAX_PAIRS", 30)
 INDICATOR_BARS: int = _get_int("INDICATOR_BARS", 200)
@@ -155,40 +166,42 @@ MACD_SIGNAL: int = _get_int("MACD_SIGNAL", 9)
 BB_PERIOD: int = _get_int("BB_PERIOD", 20)
 BB_MULT: float = _get_float("BB_MULT", 2.0)
 
-# Динамический отбор тикеров — параметры + тумблеры
-# 0) Символьные фильтры (allow/block)
+# ── Динамический отбор тикеров — параметры + тумблеры
 DYN_SYMBOL_FILTERS_ENABLED: bool = _get_bool("DYN_SYMBOL_FILTERS_ENABLED", False)
 DYN_ALLOWED_BASES:   List[str] = [x.upper() for x in _parse_csv(_get_str("DYN_ALLOWED_BASES", ""))]
 DYN_BLOCKED_BASES:   List[str] = [x.upper() for x in _parse_csv(_get_str("DYN_BLOCKED_BASES", ""))]
 DYN_ALLOWED_SYMBOLS: List[str] = [x.upper() for x in _parse_csv(_get_str("DYN_ALLOWED_SYMBOLS", ""))]
 DYN_BLOCKED_SYMBOLS: List[str] = [x.upper() for x in _parse_csv(_get_str("DYN_BLOCKED_SYMBOLS", ""))]
 
-# 1) Ликвидность (объём)
 DYN_FILTER_VOLUME_ENABLED: bool = _get_bool("DYN_FILTER_VOLUME_ENABLED", True)
 MIN_DAILY_QUOTE_VOLUME_USD: float = _get_float("MIN_DAILY_QUOTE_VOLUME_USD", 100_000_000.0)
 DYN_PRESELECT_TOP_N_BY_VOLUME: int = _get_int("DYN_PRESELECT_TOP_N_BY_VOLUME", 300)
 
-# 2) (опц.) капа через CoinGecko
 CAP_FILTER_ENABLED: bool = _get_bool("CAP_FILTER_ENABLED", False)
 MIN_MARKET_CAP_USD: float = _get_float("MIN_MARKET_CAP_USD", 500_000_000.0)
 
-# 3) Волатильность (ATR%)
 DYN_FILTER_ATR_ENABLED: bool = _get_bool("DYN_FILTER_ATR_ENABLED", True)
 ATR_PERCENT_MIN: float = _get_float("ATR_PERCENT_MIN", 5.0)  # ATR14% 1D
 ATR_PERIOD: int = _get_int("ATR_PERIOD", 14)
 ATR_LOOKBACK_DAYS: int = _get_int("ATR_LOOKBACK_DAYS", 30)
 
-# 4) Стакан (дырки)
 DYN_FILTER_ORDERBOOK_ENABLED: bool = _get_bool("DYN_FILTER_ORDERBOOK_ENABLED", True)
 ORDERBOOK_TOP_LEVELS: int = _get_int("ORDERBOOK_TOP_LEVELS", 20)
 ORDERBOOK_HOLE_PCT: float = _get_float("ORDERBOOK_HOLE_PCT", 0.01)  # 1%
 
-# 5) Корреляция с BTC/ETH
 DYN_FILTER_CORR_ENABLED: bool = _get_bool("DYN_FILTER_CORR_ENABLED", True)
 CORR_TF: str = _get_str("CORR_TF", "1h") or "1h"
 CORR_LOOKBACK_BARS: int = _get_int("CORR_LOOKBACK_BARS", 200)
 CORR_WITH_BTC_ETH_MAX: float = _get_float("CORR_WITH_BTC_ETH_MAX", 0.60)
 
+# ── NEW: RSI Report (второй телеграм-бот)
+RSI_REPORT_ENABLED: bool = _get_bool("RSI_REPORT_ENABLED", False)
+RSI_REPORT_TF: str = _get_str("RSI_REPORT_TF", "1h") or "1h"  # ранжируем по этому ТФ
+RSI_REPORT_TOP_N: int = _get_int("RSI_REPORT_TOP_N", 10)
+RSI_REPORT_HOURLY_AT: str = _get_str("RSI_REPORT_HOURLY_AT", ":07") or ":07"
+RSI_REPORT_SEND_ON_START: bool = _get_bool("RSI_REPORT_SEND_ON_START", True)
+RSI_TELEGRAM_BOT_TOKEN: Optional[str] = _get_str("RSI_TELEGRAM_BOT_TOKEN", None)
+RSI_TELEGRAM_CHAT_ID: Optional[str] = _get_str("RSI_TELEGRAM_CHAT_ID", None)
 
 # ───────────────────────── Utils ─────────────────────────
 
@@ -232,7 +245,6 @@ def load_symbols_static() -> List[str]:
             return syms
     raise SystemExit("Статический режим: не найден список. Задай STATIC_SYMBOLS или symbols.txt")
 
-
 # ───────────────────────── Data fetch ─────────────────────────
 
 def fetch_ohlcv_df(exchange, symbol: str, timeframe: str, limit: int) -> Optional[pd.DataFrame]:
@@ -265,7 +277,6 @@ def fetch_closes(exchange, symbols: List[str], timeframe: str, limit: int, logge
     if not all_series:
         raise RuntimeError("Нет OHLCV ни по одному символу.")
     return pd.concat(all_series, axis=1).sort_index()
-
 
 # ───────────────────────── Indicators ─────────────────────────
 
@@ -305,7 +316,6 @@ def compute_rsi_last_map(closes: pd.DataFrame, period: int) -> Dict[str, float]:
         except Exception:
             out[col] = float("nan")
     return out
-
 
 # ───────────────────────── Correlation core ─────────────────────────
 
@@ -354,7 +364,6 @@ def attach_rsi_to_pairs(pair_dicts: List[Dict[str, Any]], rsi_last: Dict[str, fl
         d["symbol_1_rsi"] = None if (isinstance(v1, float) and np.isnan(v1)) else float(v1)
         d["symbol_2_rsi"] = None if (isinstance(v2, float) and np.isnan(v2)) else float(v2)
 
-
 # ───────────────────────── Persistence ─────────────────────────
 
 def persist_snapshot(snapshot: Dict[str, Any]) -> None:
@@ -363,7 +372,6 @@ def persist_snapshot(snapshot: Dict[str, Any]) -> None:
         f.write(json.dumps(snapshot, ensure_ascii=False) + "\n")
     with open(LATEST_JSON_FILE, "w", encoding="utf-8") as f:
         json.dump(snapshot, f, ensure_ascii=False, indent=2)
-
 
 # ───────────────────────── Position cases dedup ───────────────────────
 
@@ -435,11 +443,9 @@ def log_position_cases(candidates: List[Dict[str, Any]], ts: str, logger: Option
     if logger:
         logger.info("Position cases saved: appended %d new unique entries (24h window).", appended)
 
-
 # ───────────────────────── Dynamic universe helpers ───────────────────
-
+# (без изменений логики фильтров)
 def _get_usdm_linear_symbols(exchange) -> List[str]:
-    """USDT-маржин. перпет. контракты (linear swaps), active=True"""
     out = []
     for m in exchange.markets.values():
         try:
@@ -457,7 +463,6 @@ def _get_usdm_linear_symbols(exchange) -> List[str]:
     return sorted(set(out))
 
 def _fetch_quote_volumes(exchange, symbols: List[str]) -> Dict[str, float]:
-    """Возвращает {symbol: 24h_quote_volume_usd} по fetch_tickers()."""
     out: Dict[str, float] = {}
     try:
         tickers = exchange.fetch_tickers()
@@ -482,7 +487,6 @@ def _fetch_quote_volumes(exchange, symbols: List[str]) -> Dict[str, float]:
     return out
 
 def _compute_atr_percent_last(exchange, symbol: str, period: int = 14, days: int = 30) -> Optional[float]:
-    """ATR% на дневках (ATR14/Close*100). Возвращает последнее значение."""
     df = fetch_ohlcv_df(exchange, symbol, "1d", limit=period + days + 2)
     if df is None or len(df) < period + 2:
         return None
@@ -500,7 +504,6 @@ def _compute_atr_percent_last(exchange, symbol: str, period: int = 14, days: int
     return float((atr_last / last_close) * 100.0)
 
 def _check_orderbook_ok(exchange, symbol: str, top_levels: int = 20, gap_pct: float = 0.01) -> bool:
-    """Простой sanity-чек стакана: без больших дыр между соседними уровнями в топ-N."""
     try:
         ob = exchange.fetch_order_book(symbol, limit=max(10, top_levels))
         bids = (ob.get("bids") or [])[:top_levels]
@@ -523,7 +526,6 @@ def _check_orderbook_ok(exchange, symbol: str, top_levels: int = 20, gap_pct: fl
         return False
 
 def _compute_corr_with_btc_eth_ok(exchange, symbol: str, tf: str, bars: int, max_abs: float) -> bool:
-    """Макс(|corr с BTC|, |corr с ETH|) <= порога."""
     closes_sym = fetch_close_series(exchange, symbol, tf, bars)
     if closes_sym is None or closes_sym.dropna().shape[0] < 20:
         return False
@@ -543,11 +545,6 @@ def _compute_corr_with_btc_eth_ok(exchange, symbol: str, tf: str, bars: int, max
     return max(abs(float(corr_btc)), abs(float(corr_eth))) <= max_abs
 
 def _apply_symbol_allow_block(symbols: List[str], logger: logging.Logger) -> List[str]:
-    """
-    Применяет allow/block списки при включённом DYN_SYMBOL_FILTERS_ENABLED.
-    - Allowed срабатывает как whitelist (если задан хоть один из списков Allowed).
-    - Затем всегда применяется Block (если задан).
-    """
     if not DYN_SYMBOL_FILTERS_ENABLED:
         logger.info("Symbol allow/block filters disabled.")
         return symbols
@@ -557,18 +554,15 @@ def _apply_symbol_allow_block(symbols: List[str], logger: logging.Logger) -> Lis
     allowed_symbols = set(DYN_ALLOWED_SYMBOLS)
     blocked_symbols = set(DYN_BLOCKED_SYMBOLS)
 
-    # нормализуем к аппер-кейсу для сравнения
     def base_of(sym: str) -> str:
         return (sym.split("/")[0]).upper()
 
     before = len(symbols)
     out = symbols
 
-    # Если есть allow-листы — берём пересечение
     if allowed_bases or allowed_symbols:
         out = [s for s in out if (base_of(s) in allowed_bases) or (s.upper() in allowed_symbols)]
 
-    # Затем вычёркиваем из блок-листов
     if blocked_bases or blocked_symbols:
         out = [s for s in out if (base_of(s) not in blocked_bases) and (s.upper() not in blocked_symbols)]
 
@@ -578,10 +572,6 @@ def _apply_symbol_allow_block(symbols: List[str], logger: logging.Logger) -> Lis
     return out
 
 def _maybe_filter_by_market_cap(symbols: List[str], logger: logging.Logger) -> List[str]:
-    """
-    Опциональный фильтр капы через CoinGecko (по символам; риск ложных совпадений).
-    В проде лучше дать маппинг BASE->coingecko_id.
-    """
     if not CAP_FILTER_ENABLED:
         logger.info("CAP filter disabled — пропускаем (CAP_FILTER_ENABLED=false).")
         return symbols
@@ -621,25 +611,13 @@ def _maybe_filter_by_market_cap(symbols: List[str], logger: logging.Logger) -> L
         return symbols
 
 def build_dynamic_universe(exchange, logger: logging.Logger) -> List[str]:
-    """
-    Пайплайн динамического отбора (каждый шаг можно выключать в .env):
-      0) Символьные allow/block-фильтры (если включены)
-      1) Объём
-      2) (опц.) Market Cap
-      3) ATR%
-      4) Стакан
-      5) Corr с BTC/ETH
-    """
     all_syms = _get_usdm_linear_symbols(exchange)
     if not all_syms:
         raise RuntimeError("Не удалось получить список USDT-перов.")
 
     logger.info("Dynamic: start with %d USDT-perp symbols", len(all_syms))
-
-    # 0) allow/block
     syms = _apply_symbol_allow_block(all_syms, logger)
 
-    # 1) объём
     qvol = _fetch_quote_volumes(exchange, syms)
     if DYN_FILTER_VOLUME_ENABLED:
         vol_kept = [s for s in syms if qvol.get(s, 0.0) >= MIN_DAILY_QUOTE_VOLUME_USD]
@@ -648,15 +626,12 @@ def build_dynamic_universe(exchange, logger: logging.Logger) -> List[str]:
         logger.info("Volume filter: %d pass (>=%.0fM), preselect=%d",
                     len(vol_kept), MIN_DAILY_QUOTE_VOLUME_USD/1e6, len(preselect))
     else:
-        # без фильтра — просто отсортируем и ограничим preselect для экономии запросов
         pre = sorted(syms, key=lambda s: qvol.get(s, 0.0), reverse=True)
         preselect = pre[:DYN_PRESELECT_TOP_N_BY_VOLUME]
         logger.info("Volume filter DISABLED. Preselect top-%d by volume out of %d", len(preselect), len(syms))
 
-    # 2) (опц.) CAP
     preselect = _maybe_filter_by_market_cap(preselect, logger)
 
-    # 3) ATR%
     if DYN_FILTER_ATR_ENABLED:
         atr_kept = []
         for s in preselect:
@@ -670,7 +645,6 @@ def build_dynamic_universe(exchange, logger: logging.Logger) -> List[str]:
         atr_kept = preselect
         logger.info("ATR%% filter DISABLED. Passing %d symbols.", len(atr_kept))
 
-    # 4) Стакан
     if DYN_FILTER_ORDERBOOK_ENABLED:
         depth_kept = []
         for s in atr_kept:
@@ -682,7 +656,6 @@ def build_dynamic_universe(exchange, logger: logging.Logger) -> List[str]:
         depth_kept = atr_kept
         logger.info("Orderbook filter DISABLED. Passing %d symbols.", len(depth_kept))
 
-    # 5) Корреляция
     if DYN_FILTER_CORR_ENABLED:
         corr_kept = []
         for s in depth_kept:
@@ -698,7 +671,6 @@ def build_dynamic_universe(exchange, logger: logging.Logger) -> List[str]:
         corr_kept = depth_kept
         logger.info("Corr filter DISABLED. Passing %d symbols.", len(corr_kept))
 
-    # Отсортируем финальный список по объёму убыв.
     corr_kept = sorted(corr_kept, key=lambda s: qvol.get(s, 0.0), reverse=True)
     return corr_kept
 
@@ -714,7 +686,6 @@ def save_dynamic_symbols(symbols: List[str]) -> str:
         for s in symbols:
             f.write(s + "\n")
     return path
-
 
 # ───────────────────────── Indicators for report ──────────────────────
 
@@ -736,7 +707,6 @@ def compute_indicators_for_symbol(exchange, symbol: str, tfs: List[str]) -> Dict
             "signal": float(signal_val),
             "hist": float(hist_val),
         }
-        # BB считаем «про запас», в телеге не выводим
         lower, middle, upper, pb = compute_bbands_series(close, BB_PERIOD, BB_MULT)
         last_idx = close.index[-1]
         l = lower.loc[last_idx] if last_idx in lower.index else np.nan
@@ -750,7 +720,6 @@ def compute_indicators_for_symbol(exchange, symbol: str, tfs: List[str]) -> Dict
         }
         result[tf] = {"rsi": rsi_val, "macd": macd_obj, "bb": bb_obj}
     return result
-
 
 # ───────────────────────── Core cycle ─────────────────────────
 
@@ -783,6 +752,7 @@ def run_cycle(logger: logging.Logger) -> None:
                 "weak_corr_pairs": [],
                 "position_candidates": [],
                 "indicators": {},
+                "indicators_all": {},     # NEW: для RSI-репорта
                 "indicator_tfs": INDICATOR_TFS,
             }
             persist_snapshot(snapshot)
@@ -822,6 +792,7 @@ def run_cycle(logger: logging.Logger) -> None:
                 "weak_corr_pairs": [],
                 "position_candidates": [],
                 "indicators": {},
+                "indicators_all": {},     # NEW
                 "indicator_tfs": INDICATOR_TFS,
             }
             persist_snapshot(snapshot)
@@ -835,22 +806,20 @@ def run_cycle(logger: logging.Logger) -> None:
         logger.info("Cycle %s | timeframe=%s | lookback=%d | symbols=%d | pairs=%d",
                     ts_now, TIMEFRAME, LOOKBACK_BARS, returns.shape[1], len(pair_stats_sorted))
 
-        # Словари (НЕ объекты) — важно для сериализации JSON
         pairs_sorted_dicts = [p.as_dict() for p in pair_stats_sorted]
         pairs_abs_dicts    = [p.as_dict() for p in pair_stats_by_abs]
         attach_rsi_to_pairs(pairs_sorted_dicts, rsi_last_all)
         attach_rsi_to_pairs(pairs_abs_dicts,    rsi_last_all)
 
-        # weak pairs: |corr| < threshold, сортируем по разнице RSI
         weak_pairs = [p.as_dict() for p in pair_stats if abs(p.corr) < WEAK_CORR_ABS_THRESH]
         attach_rsi_to_pairs(weak_pairs, rsi_last_all)
+
         def rsi_gap(d: Dict[str, Any]) -> float:
             r1 = d.get("symbol_1_rsi"); r2 = d.get("symbol_2_rsi")
             if r1 is None or r2 is None: return -1.0
             return abs(float(r1) - float(r2))
         weak_pairs.sort(key=rsi_gap, reverse=True)
 
-        # позиции: один RSI>70, другой <30
         def is_position_candidate(d: Dict[str, Any]) -> bool:
             r1 = d.get("symbol_1_rsi"); r2 = d.get("symbol_2_rsi")
             if r1 is None or r2 is None: return False
@@ -860,7 +829,7 @@ def run_cycle(logger: logging.Logger) -> None:
         negative_alerts = [d for d in pairs_sorted_dicts if d["corr"] <= ALERT_NEGATIVE_THRESH][:TOP_N_TO_LOG]
         near_zero_alerts = [d for d in pairs_abs_dicts if abs(d["corr"]) <= ALERT_NEAR_ZERO_ABS][:TOP_N_TO_LOG]
 
-        # Индикаторы только для топ weak_corr_pairs
+        # Индикаторы для weak_corr (как было)
         symbols_for_ind: List[str] = []
         top_pairs_for_ind = weak_pairs[:INDICATOR_MAX_PAIRS] if INDICATOR_MAX_PAIRS > 0 else weak_pairs
         for item in top_pairs_for_ind:
@@ -877,7 +846,14 @@ def run_cycle(logger: logging.Logger) -> None:
                 logger.warning("Indicators failed for %s: %s", sym, e)
                 indicators[sym] = {}
 
-        # snapshot (только словари!)
+        # NEW: Индикаторы для ВСЕХ символов — чтобы RSI-репорт мог читать из снапшота
+        indicators_all: Dict[str, Any] = {}
+        try:
+            for sym in list(returns.columns):
+                indicators_all[sym] = compute_indicators_for_symbol(exchange, sym, INDICATOR_TFS)
+        except Exception as e:
+            logger.warning("Indicators_all failed: %s", e)
+
         to_persist_sorted = pairs_sorted_dicts[:TOP_N_TO_PERSIST] if TOP_N_TO_PERSIST else pairs_sorted_dicts
         to_persist_abs    = pairs_abs_dicts[:TOP_N_TO_PERSIST]    if TOP_N_TO_PERSIST else pairs_abs_dicts
 
@@ -894,6 +870,7 @@ def run_cycle(logger: logging.Logger) -> None:
             "weak_corr_pairs": weak_pairs,
             "position_candidates": position_candidates,
             "indicators": indicators,
+            "indicators_all": indicators_all,            # NEW: на этот ключ смотрит telegram_report_rsi.py
             "indicator_tfs": INDICATOR_TFS,
         }
         persist_snapshot(snapshot)
@@ -902,7 +879,6 @@ def run_cycle(logger: logging.Logger) -> None:
 
     except Exception as e:
         logger.exception("Cycle failed: %s", e)
-
 
 # ───────────────────────── Main (scheduler) ─────────────────────────
 
@@ -927,24 +903,47 @@ def main():
         schedule.every(RUN_EVERY_MINUTES).minutes.do(run_cycle, logger=logger)
         logger.info("Scheduled main cycle every %d minute(s)", RUN_EVERY_MINUTES)
 
-    # telegram отчёт
+    # ── Weak Corr: старый телеграм отчёт
     if TELEGRAM_ENABLED:
-        if tg_send_report_once is None:
-            logger.error("Telegram enabled but telegram_report.py not importable")
+        if tg_send_weak_corr_once is None:
+            logger.error("WeakCorr Telegram enabled but telegram_report_weak_corr.py not importable")
         elif not TELEGRAM_BOT_TOKEN or not TELEGRAM_CHAT_ID:
-            logger.error("Telegram enabled but TELEGRAM_BOT_TOKEN/TELEGRAM_CHAT_ID not set")
+            logger.error("WeakCorr Telegram enabled but TELEGRAM_BOT_TOKEN/TELEGRAM_CHAT_ID not set")
         else:
-            def telegram_job():
+            def telegram_job_weak_corr():
                 try:
-                    tg_send_report_once(LATEST_JSON_FILE, TELEGRAM_BOT_TOKEN, TELEGRAM_CHAT_ID, TELEGRAM_MAX_ROWS)
+                    tg_send_weak_corr_once(LATEST_JSON_FILE, TELEGRAM_BOT_TOKEN, TELEGRAM_CHAT_ID, TELEGRAM_MAX_ROWS)
                 except Exception as e:
-                    logger.exception("Telegram report failed: %s", e)
+                    logger.exception("WeakCorr Telegram report failed: %s", e)
 
-            schedule.every().hour.at(TELEGRAM_HOURLY_AT).do(telegram_job)
-            logger.info("Telegram report scheduled hourly at %s (max_rows=%d)", TELEGRAM_HOURLY_AT, TELEGRAM_MAX_ROWS)
-
+            schedule.every().hour.at(TELEGRAM_HOURLY_AT).do(telegram_job_weak_corr)
+            logger.info("WeakCorr report scheduled hourly at %s (max_rows=%d)", TELEGRAM_HOURLY_AT, TELEGRAM_MAX_ROWS)
             if TELEGRAM_SEND_ON_START:
-                telegram_job()
+                telegram_job_weak_corr()
+
+    # ── NEW: High/Low RSI телеграм отчёт
+    if RSI_REPORT_ENABLED:
+        if tg_send_rsi_once is None:
+            logger.error("RSI Telegram enabled but telegram_report_rsi.py not importable")
+        elif not RSI_TELEGRAM_BOT_TOKEN or not RSI_TELEGRAM_CHAT_ID:
+            logger.error("RSI Telegram enabled but RSI_TELEGRAM_BOT_TOKEN/RSI_TELEGRAM_CHAT_ID not set")
+        else:
+            def telegram_job_rsi():
+                try:
+                    tg_send_rsi_once(
+                        json_path=LATEST_JSON_FILE,
+                        token=RSI_TELEGRAM_BOT_TOKEN,
+                        chat_id=RSI_TELEGRAM_CHAT_ID,
+                        top_n=RSI_REPORT_TOP_N,
+                        rank_tf=RSI_REPORT_TF
+                    )
+                except Exception as e:
+                    logger.exception("RSI Telegram report failed: %s", e)
+
+            schedule.every().hour.at(RSI_REPORT_HOURLY_AT).do(telegram_job_rsi)
+            logger.info("RSI report scheduled hourly at %s (top_n=%d, tf=%s)", RSI_REPORT_HOURLY_AT, RSI_REPORT_TOP_N, RSI_REPORT_TF)
+            if RSI_REPORT_SEND_ON_START:
+                telegram_job_rsi()
 
     while True:
         try:
